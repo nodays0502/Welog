@@ -56,7 +56,7 @@ $ sudo docker run -d -p 8399:8399 --rm --name jaringulbi-spring hotoron/jaringul
 
 <br>
 
-## 📚[WIKI](https://lab.ssafy.com/s05-webmobile2-sub2/S05P12B303/-/wikis/home)
+## 📚[WIKI](https://lab.ssafy.com/s05-final/S05P31B305/-/wikis/home)
 
 
 
