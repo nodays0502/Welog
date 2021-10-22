@@ -1,3 +1,13 @@
+<p align="center">
+  <img src="https://img.shields.io/badge/License-SSAFY-blue"/></a>&nbsp 
+  <img src="https://img.shields.io/badge/License-SSAFY-blue"/></a>&nbsp 
+  <img src="https://img.shields.io/badge/License-SSAFY-blue"/></a>&nbsp 
+<p>
+
+![Archive Team Wiki Wrapup: 20160409082617 : Free Download, Borrow, and  Streaming : Internet Archive](https://archive.org/download/archiveteam_wiki_20160409082617/wikilogo.jpg)
+
+
+
 # 👥Welog📜
 
 > Welog는 어쩌구 저쩌구인  뫄뫄뫄 기능을 바탕으로,  사용자 간의 뫄뫄 기능을 제공하는 어쩌구  서비스입니다.
@@ -9,11 +19,11 @@
 
 |   Name   |                            김주현                            |                            김종혁                            |                            임호정                            |                            최승재                            |                            하태린                            |
 | :------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-| Profile  | <img width="200" src="https://user-images.githubusercontent.com/26705587/138379727-56d98a40-954f-4c0e-bb0e-6ad5893905da.png"> | <img width="200" src="https://user-images.githubusercontent.com/26705587/138379680-a37e76a3-33ea-4da1-9ad1-04f27061faf0.png"> | <img width="200" src="https://user-images.githubusercontent.com/26705587/138378068-02dea784-d357-43db-86ee-9b0c0dbc3f4d.png"> | <img width="200" src="https://user-images.githubusercontent.com/26705587/138378068-02dea784-d357-43db-86ee-9b0c0dbc3f4d.png"> | <img width="200" src="https://user-images.githubusercontent.com/26705587/127587865-a754c895-67f4-4654-82e0-13c49820512e.png"> |
+| Profile  | <img width="200" src="https://user-images.githubusercontent.com/26705587/138379727-56d98a40-954f-4c0e-bb0e-6ad5893905da.png"> | <img width="200" src="https://user-images.githubusercontent.com/26705587/138379680-a37e76a3-33ea-4da1-9ad1-04f27061faf0.png"> | <img width="200" src="https://user-images.githubusercontent.com/26705587/138378068-02dea784-d357-43db-86ee-9b0c0dbc3f4d.png"> | <img width="200" src="https://user-images.githubusercontent.com/26705587/138381814-3203d8e3-33f0-4df1-8308-53259839e096.jpg"> | <img width="200" src="https://user-images.githubusercontent.com/26705587/127587865-a754c895-67f4-4654-82e0-13c49820512e.png"> |
 | Position |                           Backend                            |                           Backend                            |                           Frontend                           |                           Backend                            |                           Backend                            |
 |  GitHub  |            [@KJH-Sun](https://github.com/KJH-Sun)            |           [@alb7979s](https://github.com/alb7979s)           |          [@IMHOJEONG](https://github.com/IMHOJEONG)          |         [@nodays0502](https://github.com/nodays0502)         |           [@hataerin](https://github.com/hataerin)           |
 
-#### 👉[B305팀의 협업방법 보러가기]()👈
+#### 
 
 <br>
 
@@ -59,4 +69,12 @@ $ sudo docker run -d -p 8399:8399 --rm --name jaringulbi-spring hotoron/jaringul
 ## 📚[WIKI](https://lab.ssafy.com/s05-final/S05P31B305/-/wikis/home)
 
 
+
+<br>
+
+```
+© ✨Youngstargram
+
+Our Team: 김주현, 김종혁, 임호정, 
+```
 
