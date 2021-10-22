@@ -1,7 +1,7 @@
 <p align="center">
-  <img src="https://img.shields.io/badge/License-SSAFY-blue"/></a>
-  <img src="https://img.shields.io/badge/License-SSAFY-blue"/></a>
-  <img src="https://img.shields.io/badge/License-SSAFY-blue"/></a>
+  <img src="https://img.shields.io/badge/License-SSAFY-blue"/></a> &ensp;
+  <img src="https://img.shields.io/badge/License-SSAFY-blue"/></a> &ensp;
+  <img src="https://img.shields.io/badge/License-SSAFY-blue"/></a> &ensp;
 <p>
 
 ![Archive Team Wiki Wrapup: 20160409082617 : Free Download, Borrow, and  Streaming : Internet Archive](https://archive.org/download/archiveteam_wiki_20160409082617/wikilogo.jpg)
