@@ -1,7 +1,7 @@
 <p align="center">
-  <img src="https://img.shields.io/badge/License-SSAFY-blue"/></a>&nbsp 
-  <img src="https://img.shields.io/badge/License-SSAFY-blue"/></a>&nbsp 
-  <img src="https://img.shields.io/badge/License-SSAFY-blue"/></a>&nbsp 
+  <img src="https://img.shields.io/badge/License-SSAFY-blue"/></a>
+  <img src="https://img.shields.io/badge/License-SSAFY-blue"/></a>
+  <img src="https://img.shields.io/badge/License-SSAFY-blue"/></a>
 <p>
 
 ![Archive Team Wiki Wrapup: 20160409082617 : Free Download, Borrow, and  Streaming : Internet Archive](https://archive.org/download/archiveteam_wiki_20160409082617/wikilogo.jpg)
@@ -10,7 +10,7 @@
 
 # 👥Welog📜
 
-> Welog는 어쩌구 저쩌구인  뫄뫄뫄 기능을 바탕으로,  사용자 간의 뫄뫄 기능을 제공하는 어쩌구  서비스입니다.
+> Welog는 어쩌구 저쩌구인  뫄뫄뫄 기능을 바탕으로,  사용자 간의 뫄뫄 기능을 제공하는 어쩌구  서비스입니다. <br>
 > Welog는 새로운 지식 공유 문화를 만들어 갑니다.
 
 <br>
@@ -73,8 +73,8 @@ $ sudo docker run -d -p 8399:8399 --rm --name jaringulbi-spring hotoron/jaringul
 <br>
 
 ```
-© ✨Youngstargram
+© ✨Welog
 
-Our Team: 김주현, 김종혁, 임호정, 
+Our Team: 김주현, 김종혁, 임호정, 최승재, 하태린
 ```
 
