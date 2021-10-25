@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter
-public class Comments {
+public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "comments_id")
@@ -19,17 +19,17 @@ public class Comments {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "comments_id")
-    private Comments comments;
+    private Comment comments;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_id")
     private Board board;
 
-    public Comments() {
+    public Comment() {
     }
 
     @Builder
-    public Comments(Long commentsId, String content, LocalDateTime registerTime, Comments comments, Board board) {
+    public Comment(Long commentsId, String content, LocalDateTime registerTime, Comment comments, Board board) {
         this.commentsId = commentsId;
         this.content = content;
         this.registerTime = registerTime;
