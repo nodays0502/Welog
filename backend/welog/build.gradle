@@ -2,23 +2,11 @@ plugins {
     id 'org.springframework.boot' version '2.5.3'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
-    id 'org.asciidoctor.jvm.convert' version '3.3.2'
 }
 
 group = 'com.ssafy'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
-
-configurations {
-//    compileOnly {
-//        extendsFrom annotationProcessor
-//    }
-    asciidoctorExtensions
-}
-
-ext {
-    set('snippetsDir', file('build/generated-snippets'))
-}
 
 repositories {
     mavenCentral()
@@ -48,12 +36,4 @@ dependencies {
 
 test {
     useJUnitPlatform()
-    outputs.dir snippetsDir
-}
-bootJar {
-    dependsOn asciidoctor
-    copy {
-        from "${asciidoctor.outputDir}"
-        into 'src/main/resources/static/api/docs'
-    }
 }
