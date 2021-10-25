@@ -13,6 +13,8 @@
     "prepare": "yarn husky install"
   },
   "devDependencies": {
+    "@commitlint/cli": "^13.2.1",
+    "@commitlint/config-conventional": "^13.2.0",
     "@types/node": "^16.11.4",
     "@types/react": "^17.0.32",
     "@typescript-eslint/eslint-plugin": "latest",
@@ -30,7 +32,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "yarn lint-staged",
+      "commit-msg": "yarn commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
@@ -45,6 +48,11 @@
     ],
     "./pages/**": [
       "yarn prettier --write ."
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
     ]
   }
 }
