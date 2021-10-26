@@ -11,15 +11,15 @@ import java.time.LocalDateTime;
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "comments_id")
-    private Long commentsId;
+    @Column(name = "comment_id")
+    private Long commentId;
     @Column(length = 1000)
     private String content;
     private LocalDateTime registerTime;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "comments_id")
-    private Comment comments;
+    @JoinColumn(name = "comment_id")
+    private Comment comment;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_id")
@@ -29,11 +29,12 @@ public class Comment {
     }
 
     @Builder
-    public Comment(Long commentsId, String content, LocalDateTime registerTime, Comment comments, Board board) {
-        this.commentsId = commentsId;
+
+    public Comment(Long commentId, String content, LocalDateTime registerTime, Comment comment, Board board) {
+        this.commentId = commentId;
         this.content = content;
         this.registerTime = registerTime;
-        this.comments = comments;
+        this.comment = comment;
         this.board = board;
     }
 }
