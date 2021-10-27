@@ -31,9 +31,9 @@ public class AdminApiController {
     /*
      * 해당 유저를 삭제하는 구현한 메서드
      */
-    @DeleteMapping("/user/{userId}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long userId) {
-        adminService.deleteUser(userId);
+    @DeleteMapping("/user/{userEmail}")
+    public ResponseEntity<Void> deleteUser(@PathVariable String userEmail) {
+        adminService.deleteUser(userEmail);
         return OK;
     }
 
@@ -49,13 +49,13 @@ public class AdminApiController {
     /*
      * 모든 유저를 조회하는 메서드
      */
-    @GetMapping("/user/{userId}")
+    @GetMapping("/user/{userEmail}")
     public ResponseEntity<SearchAllUserResDto> searchAllUser(
-        @PathVariable(required = false) Long userId) {
-        if (userId == null) {
+        @PathVariable(required = false) String userEmail) {
+        if (userEmail == null) {
             return ResponseEntity.ok(adminService.searchAllUser());
         } else {
-            return ResponseEntity.ok(adminService.searchUser(userId));
+            return ResponseEntity.ok(adminService.searchUser(userEmail));
         }
     }
 
@@ -67,7 +67,7 @@ public class AdminApiController {
     }
 
     // 게시글 롤백 하는 메서드
-    @PatchMapping("/board")
+    @PatchMapping("/rollbackboard")
     public ResponseEntity<BoardRollBackResDto> rollBackBoard(
         BoardRollBackReqDto boardRollBackReqDto) {
         return ResponseEntity.ok(adminService.rollBackBoard(boardRollBackReqDto));
