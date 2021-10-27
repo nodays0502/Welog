@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AdminService {
 
-    public void deleteUser(Long userId) {
+    public void deleteUser(String userEmail) {
         log.info("유저 삭제");
     }
 
@@ -46,7 +46,7 @@ public class AdminService {
             .build();
     }
 
-    public SearchAllUserResDto searchUser(Long userId) {
+    public SearchAllUserResDto searchUser(String userEmail) {
         log.info("하나의 유저 조회");
         List<SeachUserDto> userList = new ArrayList<>();
         userList.add(SeachUserDto.builder()
