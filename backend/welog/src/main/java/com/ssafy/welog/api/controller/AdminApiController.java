@@ -4,7 +4,8 @@ import static com.ssafy.welog.common.util.constants.ResponseConstants.OK;
 
 import com.ssafy.welog.api.controller.dto.AdminDto.BoardRollBackReqDto;
 import com.ssafy.welog.api.controller.dto.AdminDto.BoardRollBackResDto;
-import com.ssafy.welog.api.controller.dto.AdminDto.SearchAllUserReqDto;
+import com.ssafy.welog.api.controller.dto.AdminDto.ChangeBoardReqDto;
+import com.ssafy.welog.api.controller.dto.AdminDto.SearchAllUserResDto;
 import com.ssafy.welog.api.controller.dto.AdminDto.UserChangeReqDto;
 import com.ssafy.welog.service.AdminService;
 import lombok.extern.slf4j.Slf4j;
@@ -20,10 +21,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/admin")
 public class AdminApiController {
+
     private final AdminService adminService;
-    public AdminApiController(AdminService adminService){
+
+    public AdminApiController(AdminService adminService) {
         this.adminService = adminService;
     }
+
     /*
      * 해당 유저를 삭제하는 구현한 메서드
      */
@@ -32,25 +36,40 @@ public class AdminApiController {
         adminService.deleteUser(userId);
         return OK;
     }
+
     /*
-     * 해당 유저 권한 변경하
+     * 해당 유저 권한 변경하는 메서드
      */
     @PatchMapping("/user")
     public ResponseEntity<Void> changeUser(UserChangeReqDto userChangeReqDto) {
         adminService.changeUser(userChangeReqDto);
         return OK;
     }
-    @GetMapping("/user")
-    public ResponseEntity<SearchAllUserReqDto> searchAllUser() {
-        SearchAllUserReqDto searchAllUserReqDto = adminService.searchAllUser();
-        return ResponseEntity.ok(searchAllUserReqDto);
+
+    /*
+     * 모든 유저를 조회하는 메서드
+     */
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<SearchAllUserResDto> searchAllUser(
+        @PathVariable(required = false) Long userId) {
+        if (userId == null) {
+            return ResponseEntity.ok(adminService.searchAllUser());
+        } else {
+            return ResponseEntity.ok(adminService.searchUser(userId));
+        }
     }
 
-
-    // 글 수정 권한 변경????
+    // 게시글 권한 수정 변경하는 메서드
     @PatchMapping("/board")
-    public ResponseEntity<BoardRollBackResDto> rollBackBoard(BoardRollBackReqDto boardRollBackReqDto) {
-        BoardRollBackResDto boardRollBackResDto = adminService.rollBackBoard(boardRollBackReqDto);
-        return ResponseEntity.ok(boardRollBackResDto);
+    public ResponseEntity<Void> changeBoard(ChangeBoardReqDto changeBoardReqDto) {
+        adminService.changeBoard(changeBoardReqDto);
+        return OK;
+    }
+
+    // 게시글 롤백 하는 메서드
+    @PatchMapping("/board")
+    public ResponseEntity<BoardRollBackResDto> rollBackBoard(
+        BoardRollBackReqDto boardRollBackReqDto) {
+        return ResponseEntity.ok(adminService.rollBackBoard(boardRollBackReqDto));
     }
 }
