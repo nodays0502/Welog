@@ -71,6 +71,17 @@ public class BoardDto {
         }
     }
 
+
+    @Getter
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class PageDto {
+        private Integer page;
+
+        @Builder
+        public PageDto(Integer page) {
+            this.page = page;
+        }
+    }
     
 
 }
