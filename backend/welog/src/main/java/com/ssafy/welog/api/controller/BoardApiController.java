@@ -52,7 +52,7 @@ public class BoardApiController {
      * 게시글 수정
      */
     @PutMapping
-    public ResponseEntity<Void> changeBoard(BoardDto.ChangeBoardReqDto changeBoardDto) {
+    public ResponseEntity<Void> changeBoard(ChangeBoardReqDto changeBoardDto) {
         boardService.changeBoard(changeBoardDto);
         return OK;
     }

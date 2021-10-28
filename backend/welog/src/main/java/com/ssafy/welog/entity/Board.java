@@ -1,5 +1,6 @@
 package com.ssafy.welog.entity;
 
+import com.ssafy.welog.domain.users.common.AuthLevel;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -17,16 +18,17 @@ public class Board {
     private String title;
     private String version;
     private String category;
-
+    private AuthLevel auth;
     public Board() {
     }
 
     @Builder
-    public Board(Long boardId, String content, String title, String version, String category) {
+    public Board(Long boardId, String content, String title, String version, String category, AuthLevel auth) {
         this.boardId = boardId;
         this.content = content;
         this.title = title;
         this.version = version;
         this.category = category;
+        this.auth = auth;
     }
 }
