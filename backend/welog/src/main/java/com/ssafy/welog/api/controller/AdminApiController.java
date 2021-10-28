@@ -49,15 +49,16 @@ public class AdminApiController {
     /*
      * 모든 유저를 조회하는 메서드
      */
-    @GetMapping("/user/{userEmail}")
-    public ResponseEntity<SearchAllUserResDto> searchAllUser(
-        @PathVariable(required = false) String userEmail) {
-        if (userEmail == null) {
-            return ResponseEntity.ok(adminService.searchAllUser());
-        } else {
-            return ResponseEntity.ok(adminService.searchUser(userEmail));
-        }
+    @GetMapping("/user")
+    public ResponseEntity<SearchAllUserResDto> searchAllUser() {
+        return ResponseEntity.ok(adminService.searchAllUser());
     }
+
+    @GetMapping("/user/{userEmail}")
+    public ResponseEntity<SearchAllUserResDto> searchAllUser(@PathVariable String userEmail) {
+        return ResponseEntity.ok(adminService.searchUser(userEmail));
+    }
+
 
     // 게시글 권한 수정 변경하는 메서드
     @PatchMapping("/board")
