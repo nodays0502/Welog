@@ -55,7 +55,7 @@ public class AdminApiController {
     }
 
     @GetMapping("/user/{userEmail}")
-    public ResponseEntity<SearchAllUserResDto> searchAllUser(@PathVariable String userEmail) {
+    public ResponseEntity<SearchAllUserResDto> searchUser(@PathVariable String userEmail) {
         return ResponseEntity.ok(adminService.searchUser(userEmail));
     }
 
