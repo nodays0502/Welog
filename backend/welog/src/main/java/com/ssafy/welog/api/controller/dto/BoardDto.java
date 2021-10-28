@@ -42,6 +42,9 @@ public class BoardDto {
             this.boardList = boardList;
         }
     }
+
+    @Getter
+    @NoArgsConstructor(access = AccessLevel.PUBLIC)
     public static class SearchBoardDto{
 
         private Long boardId;
