@@ -39,22 +39,60 @@ include::{snippets}/common/commonResponse/custom-response-fields.adoc[]
 
 &#160;
 
-== 1. UserApi
+== 1. AdminAPI
 
-=== 2-1. 회원가입
-
-==== 학생 회원가입
-
-//include::{snippets}/userApi/signup/student/successful/request-fields.adoc[]
-
-==== 학생 회원가입 성공
+=== 관리자 회원 탈퇴
 
 Request Example
 
-//include::{snippets}/userApi/signup/student/successful/http-request.adoc[]
+include::{snippets}/adminApi/deleteUserInfo/successful/path-parameters.adoc[]
+include::{snippets}/adminApi/deleteUserInfo/successful/http-request.adoc[]
+
+Response Example
+include::{snippets}/adminApi/deleteUserInfo/successful/http-response.adoc[]
+
+=== 관리자 회원 정보 변경
+
+include::{snippets}/adminApi/changeUserInfo/successful/request-fields.adoc[]
+
+Request Example
+
+include::{snippets}/adminApi/changeUserInfo/successful/http-request.adoc[]
 
 Response Example
 
+include::{snippets}/adminApi/changeUserInfo/successful/http-response.adoc[]
 
+=== 관리자 유저 조회
+
+Request Example
+
+include::{snippets}/adminApi/getUserInfo/successful/path-parameters.adoc[]
+include::{snippets}/adminApi/getUserInfo/successful/http-request.adoc[]
+
+Response Example
+include::{snippets}/adminApi/getUserInfo/successful/response-fields.adoc[]
+include::{snippets}/adminApi/getUserInfo/successful/http-response.adoc[]
+
+=== 관리자 게시글 권한 수정
+
+include::{snippets}/adminApi/changeBoardAuth/successful/http-request.adoc[]
+
+Response Example
+
+include::{snippets}/adminApi/changeBoardAuth/successful/http-response.adoc[]
+
+=== 관리자 게시글 버전 롤백
+
+include::{snippets}/adminApi/patchRollBackBoard/successful/request-fields.adoc[]
+
+Request Example
+
+include::{snippets}/adminApi/patchRollBackBoard/successful/path-parameters.adoc[]
+include::{snippets}/adminApi/patchRollBackBoard/successful/http-request.adoc[]
+
+Response Example
+include::{snippets}/adminApi/patchRollBackBoard/successful/response-fields.adoc[]
+include::{snippets}/adminApi/patchRollBackBoard/successful/http-response.adoc[]
 
 
