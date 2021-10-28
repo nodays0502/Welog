@@ -1,10 +1,11 @@
 package com.ssafy.welog.service;
 
-import com.ssafy.welog.api.controller.dto.BoardDto.AddBoardReqDto;
 import com.ssafy.welog.api.controller.dto.BoardDto;
+import com.ssafy.welog.api.controller.dto.BoardDto.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 @Slf4j
@@ -13,14 +14,14 @@ public class BoardService {
     public void addBoard(AddBoardReqDto addBoardDto){
         log.info("게시글 등록");
     }
-    public BoardDto.SearchBoardResDto searchAllBoard(int page){
+    public SearchBoardResDto searchAllBoard(PageDto page){
         log.info("게시글 전체 조회");
-        return new BoardDto.SearchBoardResDto().builder().boardList(new LinkedList<>()).build();
+        return SearchBoardResDto.builder().boardList(new ArrayList<>()).build();
     }
 
-    public BoardDto.SearchBoardResDto searchBoard(Long boardId){
+    public SearchBoardResDto searchBoard(Long boardId){
         log.info("게시글 상세 조회");
-        return new BoardDto.SearchBoardResDto().builder().boardList(new LinkedList<>()).build();
+        return SearchBoardResDto.builder().boardList(new ArrayList<>()).build();
     }
 
 

@@ -25,12 +25,12 @@ public class AdminDto {
 
     @Getter
     @NoArgsConstructor(access = AccessLevel.PUBLIC)
-    public static class SearchAllUserReqDto {
+    public static class SearchAllUserResDto {
 
         private List<SeachUserDto> userList;
 
         @Builder
-        public SearchAllUserReqDto(List<SeachUserDto> userList) {
+        public SearchAllUserResDto(List<SeachUserDto> userList) {
             this.userList = userList;
         }
     }
@@ -43,6 +43,15 @@ public class AdminDto {
         private String userName;
         private String userEmail;
         private AuthLevel authLevel;
+
+        @Builder
+        public SeachUserDto(Long userId, String userName, String userEmail,
+            AuthLevel authLevel) {
+            this.userId = userId;
+            this.userName = userName;
+            this.userEmail = userEmail;
+            this.authLevel = authLevel;
+        }
     }
 
     @Getter
@@ -58,6 +67,7 @@ public class AdminDto {
             this.version = version;
         }
     }
+
     @Getter
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class BoardRollBackResDto {
@@ -69,6 +79,20 @@ public class AdminDto {
         public BoardRollBackResDto(String version, String content) {
             this.version = version;
             this.content = content;
+        }
+    }
+
+    @Getter
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class ChangeBoardReqDto {
+
+        private Long boardId;
+        private AuthLevel Auth;
+
+        @Builder
+        public ChangeBoardReqDto(Long boardId, AuthLevel auth) {
+            this.boardId = boardId;
+            Auth = auth;
         }
     }
 }

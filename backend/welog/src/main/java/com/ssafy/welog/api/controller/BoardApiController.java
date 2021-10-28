@@ -36,9 +36,8 @@ public class BoardApiController {
      * 게시글 전체 조회
      */
     @GetMapping
-    public ResponseEntity<SearchBoardResDto> searchAllBoard(@RequestParam("page") int page) {
-        SearchBoardResDto searchBoardResDto = boardService.searchAllBoard(page);
-        return ResponseEntity.ok(searchBoardResDto);
+    public ResponseEntity<SearchBoardResDto> searchAllBoard(PageDto page) {
+        return ResponseEntity.ok(boardService.searchAllBoard(page));
     }
 
     /*
@@ -46,8 +45,7 @@ public class BoardApiController {
      */
     @GetMapping("/{boardId}")
     public ResponseEntity<SearchBoardResDto> searchBoard(@PathVariable Long boardId) {
-        SearchBoardResDto searchBoardResDto = boardService.searchBoard(boardId);
-        return ResponseEntity.ok(searchBoardResDto);
+        return ResponseEntity.ok(boardService.searchBoard(boardId));
     }
 
     /*

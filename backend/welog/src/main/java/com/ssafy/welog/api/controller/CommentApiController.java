@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/comment")
 public class CommentApiController {
+
     private final CommentService commentService;
 
     public CommentApiController(CommentService commentService) {
@@ -43,8 +44,7 @@ public class CommentApiController {
      */
     @GetMapping
     public ResponseEntity<SearchCommentResDto> searchComment(Long BoardId) {
-        SearchCommentResDto searchCommentResDto = commentService.searchComment(BoardId);
-        return ResponseEntity.ok(searchCommentResDto);
+        return ResponseEntity.ok(commentService.searchComment(BoardId));
     }
 
     /*
@@ -55,6 +55,7 @@ public class CommentApiController {
         commentService.changeComment(changeCommentDto);
         return OK;
     }
+
     /*
      * 댓글 삭제를 구현한 메서드
      */

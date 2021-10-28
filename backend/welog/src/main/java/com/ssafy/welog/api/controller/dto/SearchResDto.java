@@ -8,13 +8,13 @@ import java.util.List;
 
 @Getter
 public class SearchResDto {
-    private List<Object> data = new ArrayList<>();
+    private List<SearchDto> data = new ArrayList<>();
 
     public SearchResDto() {
     }
 
     @Builder
-    public SearchResDto(List<Object> data) {
+    public SearchResDto(List<SearchDto> data) {
         this.data = data;
     }
 }
