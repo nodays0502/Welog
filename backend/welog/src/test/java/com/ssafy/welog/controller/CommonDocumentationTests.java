@@ -39,9 +39,6 @@ class CommonDocumentationTests {
     @Autowired
     private MockMvc mockMvc;
 
-//    @MockBean
-//    private NotificationManager notificationManager;
-
     @Autowired
     ObjectMapper objectMapper;
 
