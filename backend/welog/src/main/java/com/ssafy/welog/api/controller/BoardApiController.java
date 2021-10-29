@@ -44,7 +44,7 @@ public class BoardApiController {
      * 게시글 상세 조회
      */
     @GetMapping("/{boardId}")
-    public ResponseEntity<SearchBoardResDto> searchBoard(@PathVariable Long boardId) {
+    public ResponseEntity<SearchBoardDto> searchBoard(@PathVariable Long boardId) {
         return ResponseEntity.ok(boardService.searchBoard(boardId));
     }
 

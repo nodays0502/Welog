@@ -19,9 +19,9 @@ public class BoardService {
         return SearchBoardResDto.builder().boardList(new ArrayList<>()).build();
     }
 
-    public SearchBoardResDto searchBoard(Long boardId){
+    public SearchBoardDto searchBoard(Long boardId){
         log.info("게시글 상세 조회");
-        return SearchBoardResDto.builder().boardList(new ArrayList<>()).build();
+        return SearchBoardDto.builder().build();
     }
 
 

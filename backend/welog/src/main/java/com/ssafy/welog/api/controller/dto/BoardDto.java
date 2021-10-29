@@ -13,7 +13,7 @@ import java.util.List;
 public class BoardDto {
 
     @Getter
-    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)//인자가 없는 객체를 만들었을때
     public static class AddBoardReqDto {
 
         private Long boardId;
@@ -33,7 +33,7 @@ public class BoardDto {
     }
 
     @Getter
-    @NoArgsConstructor(access = AccessLevel.PUBLIC)
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class SearchBoardResDto {
         private List<SearchBoardDto> boardList;
 
@@ -42,6 +42,9 @@ public class BoardDto {
             this.boardList = boardList;
         }
     }
+
+    @Getter
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class SearchBoardDto{
 
         private Long boardId;

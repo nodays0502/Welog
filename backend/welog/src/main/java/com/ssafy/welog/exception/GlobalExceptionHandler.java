@@ -1,4 +1,4 @@
-//package com.ssafy.welog.exception;
+package com.ssafy.welog.exception;//package com.ssafy.welog.exception;
 //
 //import static com.B305.ogym.common.util.constants.ResponseConstants.AUTHORITY_NOT_FOUND;
 //import static com.B305.ogym.common.util.constants.ResponseConstants.DUPLICATION_EMAIL;
