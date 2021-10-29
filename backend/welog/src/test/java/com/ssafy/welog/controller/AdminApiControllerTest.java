@@ -77,15 +77,6 @@ class AdminApiControllerTest {
             .build();
     }
 
-    @Test
-    public void 메서드명() throws Exception{
-      //given
-
-      //when
-
-      //then
-    }
-
 
     @Test
     @DisplayName("관리자 회원 탈퇴 - 성공")

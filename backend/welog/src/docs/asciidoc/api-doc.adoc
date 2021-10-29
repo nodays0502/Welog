@@ -95,4 +95,15 @@ Response Example
 include::{snippets}/adminApi/patchRollBackBoard/successful/response-fields.adoc[]
 include::{snippets}/adminApi/patchRollBackBoard/successful/http-response.adoc[]
 
+== 2. UserApi
+
+=== 2-1. 회원 탈퇴 (유저 본인)
+
+Request Example
+
+include::{snippets}/userApi/deleteUserInfo/successful/http-request.adoc[]
+
+Response Example
+
+include::{snippets}/userApi/deleteUserInfo/successful/http-response.adoc[]
 
