@@ -45,22 +45,19 @@ import static org.springframework.test.web.servlet.setup.SharedHttpSessionConfig
 
 
 @ExtendWith(RestDocumentationExtension.class) // JUnit 5 사용시 문서 스니펫 생성용
-@WebMvcTest(controllers = BoardApiController.class)
+@WebMvcTest(controllers = BoardApiController.class) //@WebMvcTest:컨트롤러만 테스트하기위한 특수 어노테이션
 class BoardApiControllerTest {
 
     @Autowired
-    private MockMvc mockMvc;
+    private MockMvc mockMvc;//mock객체 만드는애
 
     @Autowired
-    ObjectMapper objectMapper;
+    ObjectMapper objectMapper;//직렬화 역직렬화 하는애
 
-    @MockBean
-    AdminService adminService;
-
-    @MockBean
+    @MockBean // mockbean이 다른애(같은레벨)한테 의존성을 가지고있으면 에러남, mock은 순수 목객체/ mockbean은 슬라이스테스트
     BoardService boardService;
 
-    @BeforeEach
+    @BeforeEach//mock객체 관련 환경설정
     public void setup(WebApplicationContext webApplicationContext,
         RestDocumentationContextProvider restDocumentation) {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
@@ -71,16 +68,7 @@ class BoardApiControllerTest {
     }
 
     @Test
-    public void 메서드명() throws Exception{
-      //given
-
-      //when
-
-      //then
-    }
-
-    @Test
-    @DisplayName("게시글 삭제 - 성공")
+    @DisplayName("게시글 삭제 - 성공")//테스트 돌릴때 뜨는 이름 
     public void deleteBoard_success() throws Exception {
         //given
         Long boardID = 1L;
@@ -94,7 +82,7 @@ class BoardApiControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk()) // 200 isOk
                 .andDo(
-                        document(
+                        document( //spring rest docs를 만들기 위함
                                 "boardApi/deleteBoardInfo/successful",
                                 getDocumentRequest(),
                                 getDocumentResponse(),
@@ -110,7 +98,7 @@ class BoardApiControllerTest {
         //given
         ChangeBoardReqDto changeBoardReqDto = ChangeBoardReqDto.builder()
                 .boardId(1L)
-                .content("")
+                .content("예시 내용도 채우기이")
                 .registerTime(LocalDateTime.now())
                 .build();
         //when
