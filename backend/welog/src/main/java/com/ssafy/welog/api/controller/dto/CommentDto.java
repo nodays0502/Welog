@@ -7,6 +7,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 public class CommentDto {
 
@@ -39,6 +40,9 @@ public class CommentDto {
             this.commentList = commentList;
         }
     }
+
+    @Getter
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class SearchCommentDto{
 
         private Long commentId;

@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.request.*;
 import static com.ssafy.welog.ApiDocumentUtils.getDocumentRequest;
 import static com.ssafy.welog.ApiDocumentUtils.getDocumentResponse;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
@@ -53,6 +54,8 @@ import org.springframework.restdocs.RestDocumentationExtension;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
@@ -95,8 +98,8 @@ public class CommentApiControllerTest {
 
         //then
         mockMvc.perform(post("/api/comment")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(addCommentReqDto)))
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(objectMapper.writeValueAsString(addCommentReqDto)))
             .andDo(print())
             .andExpect(status().isCreated()) // 201 isCreated()
             .andDo(
@@ -139,38 +142,39 @@ public class CommentApiControllerTest {
             .commentList(commentList)
             .build();
         //when
-        doReturn(searchCommentResDto).when(commentService).searchComment(boardId);
+        doReturn(searchCommentResDto).when(commentService).searchComment(any());
+        given(commentService.searchComment(boardId)).willReturn(searchCommentResDto);
 
         //then
         mockMvc.perform(get("/api/comment")
-                .contentType(MediaType.APPLICATION_JSON)
-                .param("boardId",String.valueOf(1)))
+            .contentType(MediaType.APPLICATION_JSON)
+            .param("boardId", String.valueOf(boardId))
+        )
             .andDo(print())
             .andExpect(status().isOk()) // 200 isOk()
-            ;
-//            .andDo(
-//                document(
-//                    "commentApi/searchComment/successful",
-//                    getDocumentRequest(),
-//                    getDocumentResponse(),
-//                    requestParameters(
-//                        parameterWithName("boardId")
-//                            .description("글 번호")
-//                    ),
-//                    responseFields(
-//                        fieldWithPath("commentList[].commentId").type(JsonFieldType.NUMBER)
-//                            .description("댓글의 번호"),
-//                        fieldWithPath("commentList[].content").type(JsonFieldType.STRING)
-//                            .description("댓글 내용"),
-//                        fieldWithPath("commentList[].registerTime").type(JsonFieldType.STRING)
-//                            .description("댓글 작성 시간")
-//                    )
-//                ));
+            .andDo(
+                document(
+                    "commentApi/searchComment/successful",
+                    getDocumentRequest(),
+                    getDocumentResponse(),
+                    requestParameters(
+                        parameterWithName("boardId")
+                            .description("글 번호")
+                    ),
+                    responseFields(
+                        fieldWithPath("commentList[].commentId").type(JsonFieldType.NUMBER)
+                            .description("댓글의 번호"),
+                        fieldWithPath("commentList[].content").type(JsonFieldType.STRING)
+                            .description("댓글 내용"),
+                        fieldWithPath("commentList[].registerTime").type(JsonFieldType.STRING)
+                            .description("댓글 작성 시간")
+                    )
+                ));
     }
 
     @Test
     @DisplayName("댓글 수정 - 성공")
-    public void changeComment_success()throws Exception {
+    public void changeComment_success() throws Exception {
         //given
         ChangeCommentReqDto changeCommentDto = ChangeCommentReqDto.builder()
             .commentId(1L)
@@ -182,8 +186,8 @@ public class CommentApiControllerTest {
 
         //then
         mockMvc.perform(put("/api/comment")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(changeCommentDto)))
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(objectMapper.writeValueAsString(changeCommentDto)))
             .andDo(print())
             .andExpect(status().isOk()) // 200 isOk()
             .andDo(
@@ -202,7 +206,7 @@ public class CommentApiControllerTest {
 
     @Test
     @DisplayName("댓글 삭제 - 성공")
-    public void deleteComment_success()throws Exception {
+    public void deleteComment_success() throws Exception {
         //given
         Long commentId = 1L;
 
@@ -210,9 +214,9 @@ public class CommentApiControllerTest {
         doNothing().when(commentService).deleteComment(commentId);
 
         //then
-        mockMvc.perform(delete("/api/comment/{commentId}",commentId)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(commentId)))
+        mockMvc.perform(delete("/api/comment/{commentId}", commentId)
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(objectMapper.writeValueAsString(commentId)))
             .andDo(print())
             .andExpect(status().isOk()) // 200 isOk()
             .andDo(
@@ -229,7 +233,7 @@ public class CommentApiControllerTest {
 
     @Test
     @DisplayName("댓글 좋아요 - 성공")
-    public void addLike_success()throws Exception {
+    public void addLike_success() throws Exception {
         //given
         AddFeelingtReqDto addFeelingtDto = AddFeelingtReqDto.builder()
             .commentId(1L)
@@ -241,8 +245,8 @@ public class CommentApiControllerTest {
 
         //then
         mockMvc.perform(patch("/api/comment")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(addFeelingtDto)))
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(objectMapper.writeValueAsString(addFeelingtDto)))
             .andDo(print())
             .andExpect(status().isOk()) // 200 isOk()
             .andDo(
