@@ -7,6 +7,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 public class CommentDto {
 
@@ -15,16 +16,14 @@ public class CommentDto {
     public static class AddCommentReqDto {
 
         private String content;
-        private Long BoardId;
         private Long line;
         private Long ParentId;
         private LocalDateTime registerTime;
 
         @Builder
-        public AddCommentReqDto(String content, Long boardId, Long line, Long parentId,
+        public AddCommentReqDto(String content,  Long line, Long parentId,
             LocalDateTime registerTime) {
             this.content = content;
-            BoardId = boardId;
             this.line = line;
             ParentId = parentId;
             this.registerTime = registerTime;
@@ -32,7 +31,7 @@ public class CommentDto {
     }
 
     @Getter
-    @NoArgsConstructor(access = AccessLevel.PUBLIC)
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class SearchCommentResDto {
         private List<SearchCommentDto> commentList;
 
@@ -41,6 +40,9 @@ public class CommentDto {
             this.commentList = commentList;
         }
     }
+
+    @Getter
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class SearchCommentDto{
 
         private Long commentId;
@@ -60,13 +62,11 @@ public class CommentDto {
     public static class ChangeCommentReqDto {
         private Long commentId;
         private String content;
-        private LocalDateTime registerTime;
 
         @Builder
         public ChangeCommentReqDto(Long commentId, String content, LocalDateTime registerTime) {
             this.commentId = commentId;
             this.content = content;
-            this.registerTime = registerTime;
         }
     }
 
