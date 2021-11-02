@@ -1,8 +1,6 @@
-package com.ssafy.welog.entity;
+package com.ssafy.welog.domain.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,12 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import lombok.Builder;
-import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Getter
-public class Feel {
+@Setter
+public class UserComment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userCommentId;
@@ -28,14 +25,11 @@ public class Feel {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @Enumerated(EnumType.STRING)
-    private Feeling feeling;
-
-    public Feel() {
+    public UserComment() {
     }
 
     @Builder
-    public Feel(Long userCommentId, Comment comment, User user) {
+    public UserComment(Long userCommentId, Comment comment, User user) {
         this.userCommentId = userCommentId;
         this.comment = comment;
         this.user = user;

@@ -1,4 +1,4 @@
-package com.ssafy.welog.entity;
+package com.ssafy.welog.domain.entity;
 
 public enum Feeling {
     DISLIEK , LIKE , NONE

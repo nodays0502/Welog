@@ -1,6 +1,5 @@
 package com.ssafy.welog.api.controller.dto;
 
-import com.ssafy.welog.domain.users.common.AuthLevel;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

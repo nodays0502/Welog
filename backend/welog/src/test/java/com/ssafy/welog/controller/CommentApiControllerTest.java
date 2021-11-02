@@ -1,18 +1,13 @@
 package com.ssafy.welog.controller;
 
-import com.ssafy.welog.api.controller.AdminApiController;
 import com.ssafy.welog.api.controller.CommentApiController;
 import com.ssafy.welog.api.controller.dto.CommentDto.AddFeelingtReqDto;
 import com.ssafy.welog.api.controller.dto.CommentDto.ChangeCommentReqDto;
 import com.ssafy.welog.api.controller.dto.CommentDto.SearchCommentDto;
 import com.ssafy.welog.api.controller.dto.CommentDto.SearchCommentResDto;
-import com.ssafy.welog.entity.Feeling;
+import com.ssafy.welog.domain.entity.Feeling;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders;
-import org.springframework.test.web.servlet.request.*;
 
 import static com.ssafy.welog.ApiDocumentUtils.getDocumentRequest;
 import static com.ssafy.welog.ApiDocumentUtils.getDocumentResponse;
@@ -54,8 +49,6 @@ import org.springframework.restdocs.RestDocumentationExtension;
 import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
 

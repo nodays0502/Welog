@@ -2,7 +2,6 @@ package com.ssafy.welog.controller;
 
 import static com.ssafy.welog.ApiDocumentUtils.getDocumentRequest;
 import static com.ssafy.welog.ApiDocumentUtils.getDocumentResponse;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doNothing;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
@@ -16,11 +15,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.setup.SharedHttpSessionConfigurer.sharedHttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ssafy.welog.api.controller.AdminApiController;
 import com.ssafy.welog.api.controller.UserApiController;
 import com.ssafy.welog.api.controller.dto.UserDto.UserInfoDto;
-import com.ssafy.welog.domain.users.common.AuthLevel;
-import com.ssafy.welog.service.AdminService;
+import com.ssafy.welog.domain.common.AuthLevel;
 import com.ssafy.welog.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

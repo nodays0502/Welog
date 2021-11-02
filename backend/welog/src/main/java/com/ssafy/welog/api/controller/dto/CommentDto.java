@@ -1,13 +1,12 @@
 package com.ssafy.welog.api.controller.dto;
 
-import com.ssafy.welog.entity.Feeling;
+import com.ssafy.welog.domain.entity.Feeling;
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 public class CommentDto {
 

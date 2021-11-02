@@ -1,4 +1,4 @@
-package com.ssafy.welog.entity;
+package com.ssafy.welog.domain.entity;
 
 import lombok.Builder;
 import lombok.Getter;
