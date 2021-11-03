@@ -1,8 +1,6 @@
 package com.ssafy.welog.controller;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
@@ -29,7 +27,7 @@ import com.ssafy.welog.api.controller.dto.AdminDto.ChangeBoardReqDto;
 import com.ssafy.welog.api.controller.dto.AdminDto.SeachUserDto;
 import com.ssafy.welog.api.controller.dto.AdminDto.SearchAllUserResDto;
 import com.ssafy.welog.api.controller.dto.AdminDto.UserChangeReqDto;
-import com.ssafy.welog.domain.users.common.AuthLevel;
+import com.ssafy.welog.domain.common.AuthLevel;
 import com.ssafy.welog.service.AdminService;
 
 import static com.ssafy.welog.ApiDocumentUtils.*;
@@ -40,7 +38,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -75,15 +72,6 @@ class AdminApiControllerTest {
             .apply(sharedHttpSession())
             .addFilters(new CharacterEncodingFilter("UTF-8", true))
             .build();
-    }
-
-    @Test
-    public void 메서드명() throws Exception{
-      //given
-
-      //when
-
-      //then
     }
 
 

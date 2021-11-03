@@ -1,4 +1,4 @@
-package com.ssafy.welog.domain.users;
+package com.ssafy.welog.domain;
 
 import java.time.LocalDateTime;
 import lombok.AccessLevel;

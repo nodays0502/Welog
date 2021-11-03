@@ -6,7 +6,7 @@ import com.ssafy.welog.api.controller.dto.AdminDto.ChangeBoardReqDto;
 import com.ssafy.welog.api.controller.dto.AdminDto.SeachUserDto;
 import com.ssafy.welog.api.controller.dto.AdminDto.SearchAllUserResDto;
 import com.ssafy.welog.api.controller.dto.AdminDto.UserChangeReqDto;
-import com.ssafy.welog.domain.users.common.AuthLevel;
+import com.ssafy.welog.domain.common.AuthLevel;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;

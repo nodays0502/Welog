@@ -1,6 +1,7 @@
 package com.ssafy.welog.api.controller;
 
 
+import static com.ssafy.welog.common.util.constants.ResponseConstants.CREATED;
 import static com.ssafy.welog.common.util.constants.ResponseConstants.OK;
 
 import com.ssafy.welog.api.controller.dto.CommentDto.AddCommentReqDto;
@@ -36,7 +37,7 @@ public class CommentApiController {
     @PostMapping
     public ResponseEntity<Void> addComment(AddCommentReqDto addCommentDto) {
         commentService.addComment(addCommentDto);
-        return OK;
+        return CREATED;
     }
 
     /*

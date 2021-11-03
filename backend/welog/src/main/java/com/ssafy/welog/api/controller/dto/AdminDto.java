@@ -1,6 +1,6 @@
 package com.ssafy.welog.api.controller.dto;
 
-import com.ssafy.welog.domain.users.common.AuthLevel;
+import com.ssafy.welog.domain.common.AuthLevel;
 import java.util.List;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -24,7 +24,7 @@ public class AdminDto {
     }
 
     @Getter
-    @NoArgsConstructor(access = AccessLevel.PUBLIC)
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class SearchAllUserResDto {
 
         private List<SeachUserDto> userList;
@@ -36,7 +36,7 @@ public class AdminDto {
     }
 
     @Getter
-    @NoArgsConstructor(access = AccessLevel.PUBLIC)
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class SeachUserDto {
 
         private Long userId;
@@ -55,7 +55,7 @@ public class AdminDto {
     }
 
     @Getter
-    @NoArgsConstructor(access = AccessLevel.PUBLIC)
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class BoardRollBackReqDto {
 
         private Long boardId;

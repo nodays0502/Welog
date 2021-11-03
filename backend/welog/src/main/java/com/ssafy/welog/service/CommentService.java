@@ -34,7 +34,8 @@ public class CommentService {
             .content("댓글2")
             .registerTime(LocalDateTime.now())
             .build());
-        return new SearchCommentResDto().builder()
+
+        return SearchCommentResDto.builder()
             .commentList(commentList)
             .build();
     }

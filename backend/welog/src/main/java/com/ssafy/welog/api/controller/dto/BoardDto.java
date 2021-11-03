@@ -1,12 +1,10 @@
 package com.ssafy.welog.api.controller.dto;
 
-import com.ssafy.welog.entity.Feeling;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
 import java.time.LocalDateTime;
 import java.util.List;
 

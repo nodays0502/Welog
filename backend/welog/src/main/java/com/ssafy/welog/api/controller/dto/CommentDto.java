@@ -1,6 +1,6 @@
 package com.ssafy.welog.api.controller.dto;
 
-import com.ssafy.welog.entity.Feeling;
+import com.ssafy.welog.domain.entity.Feeling;
 import java.time.LocalDateTime;
 import java.util.List;
 import lombok.AccessLevel;
@@ -15,16 +15,14 @@ public class CommentDto {
     public static class AddCommentReqDto {
 
         private String content;
-        private Long BoardId;
         private Long line;
         private Long ParentId;
         private LocalDateTime registerTime;
 
         @Builder
-        public AddCommentReqDto(String content, Long boardId, Long line, Long parentId,
+        public AddCommentReqDto(String content,  Long line, Long parentId,
             LocalDateTime registerTime) {
             this.content = content;
-            BoardId = boardId;
             this.line = line;
             ParentId = parentId;
             this.registerTime = registerTime;
@@ -32,7 +30,7 @@ public class CommentDto {
     }
 
     @Getter
-    @NoArgsConstructor(access = AccessLevel.PUBLIC)
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class SearchCommentResDto {
         private List<SearchCommentDto> commentList;
 
@@ -41,6 +39,9 @@ public class CommentDto {
             this.commentList = commentList;
         }
     }
+
+    @Getter
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class SearchCommentDto{
 
         private Long commentId;
@@ -60,13 +61,11 @@ public class CommentDto {
     public static class ChangeCommentReqDto {
         private Long commentId;
         private String content;
-        private LocalDateTime registerTime;
 
         @Builder
         public ChangeCommentReqDto(Long commentId, String content, LocalDateTime registerTime) {
             this.commentId = commentId;
             this.content = content;
-            this.registerTime = registerTime;
         }
     }
 

@@ -1,6 +1,6 @@
-package com.ssafy.welog.entity;
+package com.ssafy.welog.domain.entity;
 
-import com.ssafy.welog.domain.users.common.AuthLevel;
+import com.ssafy.welog.domain.common.AuthLevel;
 import lombok.Builder;
 import lombok.Getter;
 
