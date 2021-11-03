@@ -1,46 +1,35 @@
-import React, { useState } from 'react';
+import React from "react";
 
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta } from "@storybook/react";
 
+import styled from "styled-components";
+import { Input } from "./Input";
 
-import { Input } from './Input';
-
-import styled from 'styled-components';
-
-export default{
-    component: Input,
-    title: 'Atoms/Input',
+export default {
+  component: Input,
+  title: "Atoms/Input",
 } as ComponentMeta<typeof Input>;
 
 const ComponentBox = styled.div`
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 `;
 
-export const Default: React.VFC<{}> = () => {
-  
-    return (<>
-        <>
-            <h5>Solid label</h5>
-            <ComponentBox>
-
-                <Input
-                    label="Solid Label" />
-                <Input 
-                    label="Solid Label" />
-                
-            </ComponentBox>
-        </>
-        <>
-            <h5> label</h5>
-            <ComponentBox>
-
-                <Input
-                    text="Solid Label" />
-                <Input 
-                    text="Solid Label" />
-                
-            </ComponentBox>
-        </>
-    </>);
-}
+export const Default: React.VFC<{}> = () => (
+  <>
+    <>
+      <h5>Solid label</h5>
+      <ComponentBox>
+        <Input placeHolder="Solid Label" />
+        <Input placeHolder="Solid Label" />
+      </ComponentBox>
+    </>
+    <>
+      <h5> label</h5>
+      <ComponentBox>
+        <Input placeHolder="Solid Label" />
+        <Input placeHolder="Solid Label" />
+      </ComponentBox>
+    </>
+  </>
+);

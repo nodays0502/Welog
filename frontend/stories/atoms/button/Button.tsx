@@ -1,18 +1,8 @@
-import React from 'react';
-import './button.css';
+import React from "react";
+import "./button.css";
+import { MdFindInPage, MdModeEditOutline } from "react-icons/md";
 
 interface ButtonProps {
-
-  /**
-   * 버튼 배경 색깔
-   */
-  backgroundColor?: string;
-
-  /**
-   * 버튼 테두리 라운드 설정
-   */
-  borderRadius?: string;
-
   /**
    * React className 설정
    */
@@ -21,43 +11,48 @@ interface ButtonProps {
   /**
    * 버튼 내부 내용 설정
    */
-  label: string;
+  label?: string;
   /**
    * 클릭 핸들러
    */
   onClick?: () => void;
+
+  /**
+   * style 설정
+   */
+  style?: object;
 }
 
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({
-  backgroundColor,
-  label,
-  borderRadius,
-  className,
-  onClick,
-}: ButtonProps) => (
+export const Button = ({ label, className, style, onClick }: ButtonProps) => (
   <button
     type="button"
-    style={{
-      backgroundColor,
-      borderRadius,
-    }}
-    className={`button_default ${className.join(' ')}`}
+    style={style}
+    className={`button_default ${className.join(" ")}`}
     onClick={onClick}
   >
     {label}
   </button>
 );
+
+/**
+ * 각 아이콘 버튼은 미리 컴포넌트로 각각 만들어서 사용할 예정
+ *
+ */
+export const IconButton = () => <MdModeEditOutline />;
+
+export const FindIconButton = () => <MdFindInPage />;
+
 /**
  * react/require-default-props
  */
 Button.defaultProps = {
-  backgroundColor: 'white',
-  borderRadius: '0%',
   className: [],
-  onClick: () => { },
+  style: {},
+  onClick: () => {},
+  label: "this is button",
 };
 
 export default Button;

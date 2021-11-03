@@ -1,10 +1,18 @@
-import React from 'react';
+import React from "react";
 
-import { GlobalStyle } from '../src/shared/global';
+import * as NextImage from "next/image";
+
+const OriginalNextImage = NextImage.default;
+Object.defineProperty(NextImage, "default", {
+  configurable: true,
+  value: (props) => <OriginalNextImage {...props} unoptimized />,
+});
+
+import { GlobalStyle } from "../src/shared/global";
 
 // 모든 스토리에 스타일을 적용하기 위한 글로벌 decorator
 export const decorators = [
-  Story => (
+  (Story) => (
     <>
       <GlobalStyle />
       <Story />
@@ -20,4 +28,4 @@ export const parameters = {
       date: /Date$/,
     },
   },
-}
+};
