@@ -4,7 +4,7 @@ import { ComponentMeta } from "@storybook/react";
 
 import styled from "styled-components";
 
-import { MainPage } from "./MainPage";
+import MainPage from "./MainPage";
 
 export default {
   component: MainPage,
