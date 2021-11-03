@@ -1,0 +1,4 @@
+.LeftNav_default {
+  display: flex;
+  flex-direction: column;
+}

@@ -15,14 +15,14 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Cafe24SsurroundAir';
     font-style: normal;
     font-weight: 400;
-    src: url('../../static/fonts/Cafe24SsurroundAir.ttf');
+    src: url('../../src/assets/fonts/Cafe24SsurroundAir.ttf');
   }
 
   @font-face{
     font-family: 'NunitoSans';
     font-style: normal;
     font-weight: 400;
-    src: url('../../static/fonts/NunitoSans-Light.ttf');
+    src: url('../../src/assets/fonts/NunitoSans-Light.ttf');
   }
 
   body {
