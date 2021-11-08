@@ -3,7 +3,10 @@ package com.ssafy.welog.api.controller;
 
 import static com.ssafy.welog.common.util.constants.ResponseConstants.*;
 
+
+import com.ssafy.welog.api.controller.dto.UserDto.UserCreateReqDto;
 import com.ssafy.welog.api.controller.dto.UserDto.UserInfoDto;
+import com.ssafy.welog.api.controller.dto.UserDto.UserPutReqDto;
 import com.ssafy.welog.service.UserService;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +16,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,6 +33,12 @@ public class UserApiController {
 
     public UserApiController(UserService userService) {
         this.userService = userService;
+    }
+
+    @PostMapping
+    public ResponseEntity<Void> createUser(@RequestBody UserCreateReqDto userCreateReqDto ){
+        userService.createUser(userCreateReqDto);
+        return OK;
     }
 
     /*
@@ -48,4 +60,9 @@ public class UserApiController {
         return ResponseEntity.ok(userService.getUser(email));
     }
 
+    @PatchMapping
+    public ResponseEntity<Void> patchUserInfo(UserPutReqDto userPutReqDto) {
+        userService.patchUser(userPutReqDto);
+        return OK;
+    }
 }

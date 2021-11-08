@@ -5,9 +5,11 @@ import lombok.Builder;
 import lombok.Getter;
 
 import javax.persistence.*;
+import lombok.ToString;
 
 @Entity
 @Getter
+@ToString
 public class User {
 
     @Id
@@ -15,6 +17,7 @@ public class User {
     private Long userId;
     private String userName;
     private String userEmail;
+    private String password;
 
     @JoinColumn(name = "role_name")
     @Enumerated(EnumType.STRING)
@@ -24,10 +27,11 @@ public class User {
     }
 
     @Builder
-    public User(Long userId, String userName, String userEmail, AuthLevel userRole) {
+    public User(Long userId, String userName, String userEmail,String password, AuthLevel userRole) {
         this.userId = userId;
         this.userName = userName;
         this.userEmail = userEmail;
+        this.password = password;
         this.userRole = userRole;
     }
 }
