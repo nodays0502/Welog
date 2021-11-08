@@ -16,9 +16,11 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
+@Transactional(readOnly = true)
 public class AdminService {
     private final UserRepository userRepository;
     private final BoardRepository boardRepository;
@@ -27,19 +29,22 @@ public class AdminService {
         this.userRepository = userRepository;
         this.boardRepository = boardRepository;
     }
-
+    @Transactional
     public void deleteUser(String userEmail) {
         if(userRepository.existsByUserEmail(userEmail)){
             userRepository.deleteByUserEmail(userEmail);
         }
         log.info("유저 삭제");
     }
-
+    @Transactional
     public void changeUser(UserChangeReqDto userChangeReqDto) {
         String email = userChangeReqDto.getUserEmail();
         if(userRepository.existsByUserEmail(email)){
+
             User user = userRepository.findByUserEmail(email).get();
+            System.out.println(user);
             user.changeInfo(null,null,userChangeReqDto.getAuthLevel());
+            System.out.println(user);
         }
         log.info("유저 권한 변경");
     }
@@ -73,10 +78,11 @@ public class AdminService {
     }
 
     // 글 권한 수정
+    @Transactional
     public void changeBoard(ChangeBoardReqDto changeBoardReqDto) {
         log.info("게시글 권한 변경");
     }
-
+    @Transactional
     public BoardRollBackResDto rollBackBoard(BoardRollBackReqDto boardRollBackReqDto) {
         log.info("게시글 롤백");
         return BoardRollBackResDto.builder()
