@@ -1,37 +1,36 @@
 package com.ssafy.welog.service;
 
-import com.ssafy.welog.api.controller.dto.BoardDto;
-import com.ssafy.welog.api.controller.dto.SearchDto;
-
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import com.ssafy.welog.domain.repository.BoardRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import static com.ssafy.welog.api.controller.dto.BoardDto.*;
-import static com.ssafy.welog.api.controller.dto.SearchDto.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.ssafy.welog.api.controller.dto.SearchDto.SearchReqDto;
+import static com.ssafy.welog.api.controller.dto.SearchDto.SearchResDto;
 
 @Slf4j
 @Service
 public class SearchService {
+    private final BoardRepository boardRepository;
+
+    public SearchService(BoardRepository boardRepository) {
+        this.boardRepository = boardRepository;
+    }
     List<Object> data;
-    public SearchResDto search(SearchReqDto param){
-        data = new ArrayList<>();
-        log.info(String.format("%s 검색", param.getSearchType()));
-        data.add(SearchBoardDto.builder()
-                .boardId(1L)
-                .content("내용")
-                .registerTime(LocalDateTime.now())
-            .build());
-        data.add(SearchBoardDto.builder()
-            .boardId(2L)
-            .content("내용2")
-            .registerTime(LocalDateTime.now())
-            .build());
-        return SearchResDto.builder()
-            .data(data)
-            .build();
+
+    // object로 처리하고 후에 수정
+    public Object search(SearchReqDto param){
+        switch (param.getSearchType()){
+            case "content":
+                return boardRepository.getByContent(param.getSearchWord());
+            case "title":
+                return boardRepository.getByTitle(param.getSearchWord());
+            case "category":
+                return boardRepository.getByCategory(param.getSearchWord());
+        }
+        return null;
     }
 
     public SearchResDto searchRecommendWords(SearchReqDto param) {

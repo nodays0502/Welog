@@ -22,7 +22,7 @@ public class SearchApiController {
     }
 
     @GetMapping
-    public ResponseEntity<SearchResDto> search(SearchReqDto param){
+    public ResponseEntity<Object> search(SearchReqDto param){
         return ResponseEntity.ok(searchService.search(param));
     }
 
