@@ -4,12 +4,17 @@ import static com.ssafy.welog.common.util.constants.ResponseConstants.OK;
 
 import com.ssafy.welog.api.controller.dto.AuthDto.LoginReqDto;
 import com.ssafy.welog.api.controller.dto.AuthDto.LoginResDto;
+import com.ssafy.welog.domain.entity.User;
 import com.ssafy.welog.service.AuthService;
 import java.util.UUID;
+import javax.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,13 +30,14 @@ public class AuthApiController {
     }
 
     @PostMapping
-    public ResponseEntity<LoginResDto> login(LoginReqDto loginReqDto){
+    public ResponseEntity<LoginResDto> login(@RequestBody LoginReqDto loginReqDto){
         return ResponseEntity.ok(authService.login(loginReqDto));
     }
 
     @DeleteMapping
-    public ResponseEntity<Void> logout(){
-        authService.logout();
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+    public ResponseEntity<Void> logout(HttpServletRequest req){
+        authService.logout(req.getHeader("Authorization").substring(7));
         return OK;
     }
 }
