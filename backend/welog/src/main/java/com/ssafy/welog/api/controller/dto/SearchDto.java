@@ -24,6 +24,15 @@ public class SearchDto {
             this.searchType = searchType;
             this.searchWord = searchWord;
         }
+
+        @Override
+        public String toString() {
+            return "SearchReqDto{" +
+                    "page=" + page +
+                    ", searchType='" + searchType + '\'' +
+                    ", searchWord='" + searchWord + '\'' +
+                    '}';
+        }
     }
 
     @Getter
