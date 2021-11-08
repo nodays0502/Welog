@@ -130,7 +130,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
             .and()
             .authorizeRequests()
-            .antMatchers("/api/search").permitAll()
+            .antMatchers("/api/search/**").permitAll()
             .anyRequest().authenticated();
     }
 }

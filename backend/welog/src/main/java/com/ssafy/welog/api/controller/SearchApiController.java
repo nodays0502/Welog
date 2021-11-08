@@ -27,7 +27,7 @@ public class SearchApiController {
     }
 
     @GetMapping("/recommend")
-    public ResponseEntity<SearchResDto> searchRecommendWords(SearchReqDto param){
+    public ResponseEntity<Object> searchRecommendWords(SearchReqDto param){
         return ResponseEntity.ok(searchService.searchRecommendWords(param));
     }
 }

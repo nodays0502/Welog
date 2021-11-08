@@ -4,14 +4,12 @@ package com.ssafy.welog.domain.repository;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.ssafy.welog.domain.entity.Board;
-import com.ssafy.welog.domain.entity.QBoard;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-import static com.ssafy.welog.domain.entity.QBoard.*;
+import static com.ssafy.welog.domain.entity.QBoard.board;
 
-@Repository
 public class BoardRepositoryImpl implements BoardRepositoryCustom{
     private final JPAQueryFactory jpaQueryFactory;
 

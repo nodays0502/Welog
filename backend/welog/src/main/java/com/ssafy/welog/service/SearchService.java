@@ -28,7 +28,6 @@ public class SearchService {
 
     // object로 처리하고 후에 수정
     public Object search(SearchReqDto param){
-        System.out.println("param = " + param);
         addRecommendWordCnt(param);
         switch (param.getSearchType()){
             case "content":
@@ -57,14 +56,7 @@ public class SearchService {
         }
     }
 
-    public SearchResDto searchRecommendWords(SearchReqDto param) {
-        log.info("추천 자동완성 검색");
-        data = new ArrayList<>();
-        data.add("추천어");
-        data.add("추천어 검색");
-        data.add("추천어 자동 검색");
-        return SearchResDto.builder()
-            .data(data)
-            .build();
+    public Object searchRecommendWords(SearchReqDto param) {
+        return recommendWordRepository.getRecommendWords(param.getSearchWord());
     }
 }
