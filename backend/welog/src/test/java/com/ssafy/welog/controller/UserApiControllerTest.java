@@ -60,8 +60,8 @@ class UserApiControllerTest {
 
     @Test
     @DisplayName("회원 탈퇴 기능 - 성공")
-    public void deleteUser_success() throws Exception {
-        doNothing().when(userService).deleteUser();
+    public void deleteUser_success(long userId) throws Exception {
+        doNothing().when(userService).deleteUser(userId);
 
         mockMvc.perform(delete("/api/user")
             .contentType(MediaType.APPLICATION_JSON))
@@ -82,13 +82,11 @@ class UserApiControllerTest {
         String userEmail = "juhyun7955@naver.com";
         UserInfoDto userInfoDto = UserInfoDto.builder()
             .email(userEmail)
-            .nickname("김주현닉네임")
-            .phone("010-0000-0000")
             .userLevel(AuthLevel.ADMIN)
             .build();
-        given(userService.getUser(userEmail)).willReturn(userInfoDto);
+        given(userService.getUser(1)).willReturn(userInfoDto);
 
-        mockMvc.perform(get("/api/user/{userEmail}", userEmail)
+        mockMvc.perform(get("/api/user")
             .contentType(MediaType.APPLICATION_JSON))
             .andDo(print())
             .andExpect(status().isOk()) // 200 isOk

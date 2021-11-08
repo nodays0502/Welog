@@ -34,4 +34,16 @@ public class User {
         this.password = password;
         this.userRole = userRole;
     }
+    public void changeInfo(String userEmail,String password,AuthLevel userRole){
+        if(userEmail != null){
+            this.userEmail = userEmail;
+        }
+        if(password != null){
+            this.password = password;
+        }
+        if(userRole != null){
+            this.userRole = userRole;
+        }
+
+    }
 }

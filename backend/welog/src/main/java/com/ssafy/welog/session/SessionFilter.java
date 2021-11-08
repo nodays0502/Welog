@@ -47,7 +47,8 @@ public class SessionFilter extends GenericFilterBean {
             User user = (User)redisUtil.get(sessionId);
 
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
-                user.getUserName(), null, authorities(user.getUserRole()));
+                user, null, authorities(user.getUserRole()));
+            System.out.println("doFIlter 들어옴");
             System.out.println("user:"+user);
 //            UsernamePasswordAuthenticationToken authenticationToken =
 //                new UsernamePasswordAuthenticationToken(user.getUserName(), user.getPassword());

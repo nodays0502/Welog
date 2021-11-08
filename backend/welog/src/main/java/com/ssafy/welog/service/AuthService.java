@@ -7,6 +7,7 @@ import com.ssafy.welog.domain.entity.User;
 import com.ssafy.welog.domain.entity.UserRepository;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import javax.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -62,8 +63,7 @@ public class AuthService {
             .build();
     }
 
-    public void logout() {
-        String sessionId = "";
+    public void logout(String sessionId) {
         redisUtil.delete(sessionId);
         log.info("로그아웃");
     }

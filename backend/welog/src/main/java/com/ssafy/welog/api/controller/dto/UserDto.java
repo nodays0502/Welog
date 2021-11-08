@@ -15,18 +15,15 @@ public class UserDto {
     @Getter
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class UserInfoDto {
-
         private String email;
-        private String nickname;
-        private String phone;
+        private String userName;
         private AuthLevel userLevel;
 
         @Builder
-        public UserInfoDto(String email, String nickname, String phone,
+        public UserInfoDto(String email, String userName,
             AuthLevel userLevel) {
             this.email = email;
-            this.nickname = nickname;
-            this.phone = phone;
+            this.userName = userName;
             this.userLevel = userLevel;
         }
     }
