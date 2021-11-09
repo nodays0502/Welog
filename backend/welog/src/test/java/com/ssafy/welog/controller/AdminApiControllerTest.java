@@ -105,7 +105,7 @@ class AdminApiControllerTest {
     public void changeUser_success() throws Exception {
         //given
         UserChangeReqDto userChangeReqDto = UserChangeReqDto.builder()
-            .userId(1L)
+            .userEmail("asd@naver.com")
             .authLevel(AuthLevel.AUTH)
             .build();
         //when

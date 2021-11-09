@@ -13,12 +13,12 @@ public class AdminDto {
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class UserChangeReqDto {
 
-        private Long userId;
+        private String userEmail;
         private AuthLevel authLevel;
 
         @Builder
-        public UserChangeReqDto(Long userId, AuthLevel authLevel) {
-            this.userId = userId;
+        public UserChangeReqDto(String userEmail, AuthLevel authLevel) {
+            this.userEmail = userEmail;
             this.authLevel = authLevel;
         }
     }

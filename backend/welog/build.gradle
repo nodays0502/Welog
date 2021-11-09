@@ -49,6 +49,7 @@ dependencies {
     asciidoctorExtensions 'org.springframework.restdocs:spring-restdocs-asciidoctor'
     // jpa
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.5.2'
+<<<<<<< HEAD
 
     // QueryDSL
     implementation ("com.querydsl:querydsl-jpa:${queryDslVersion}")
@@ -63,6 +64,14 @@ dependencies {
     // mysql
     runtimeOnly 'mysql:mysql-connector-java'
     implementation 'mysql:mysql-connector-java'
+=======
+    // h2
+    runtimeOnly 'com.h2database:h2'
+    // spring-redis
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.springframework.session:spring-session-data-redis'
+
+>>>>>>> 5a1210b9f24acf4afa6f6adac20d85392267d8da
 }
 
 test {

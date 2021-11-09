@@ -1,5 +1,5 @@
 package com.ssafy.welog.domain.common;
 
 public enum AuthLevel {
-    UNAUTH, AUTH, ADMIN
+    USER, UNAUTH, AUTH, ADMIN
 }
