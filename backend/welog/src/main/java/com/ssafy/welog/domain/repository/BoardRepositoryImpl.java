@@ -10,6 +10,7 @@ import java.util.List;
 
 import static com.ssafy.welog.domain.entity.QBoard.board;
 
+@Repository
 public class BoardRepositoryImpl implements BoardRepositoryCustom{
     private final JPAQueryFactory jpaQueryFactory;
 
@@ -18,23 +19,23 @@ public class BoardRepositoryImpl implements BoardRepositoryCustom{
     }
 
     public List<Board> getByContent(String searchWord){
-        return jpaQueryFactory.select(board).from(board).where(contentIn(searchWord)).fetch();
+        return jpaQueryFactory.select(board).from(board).where(contentContains(searchWord)).fetch();
     }
     public List<Board> getByTitle(String searchWord){
-        return jpaQueryFactory.select(board).from(board).where(titleIn(searchWord)).fetch();
+        return jpaQueryFactory.select(board).from(board).where(titleContains(searchWord)).fetch();
     }
     public List<Board> getByCategory(String searchWord){
-        return jpaQueryFactory.select(board).from(board).where(categoryIn(searchWord)).fetch();
+        return jpaQueryFactory.select(board).from(board).where(categoryContains(searchWord)).fetch();
     }
 
-    private BooleanExpression contentIn(String searchWord) {
-        return searchWord == null ? null : board.content.in(searchWord);
+    private BooleanExpression contentContains(String searchWord) {
+        return searchWord == null ? null : board.content.contains(searchWord);
     }
-    private BooleanExpression titleIn(String searchWord) {
-        return searchWord == null ? null : board.title.in(searchWord);
+    private BooleanExpression titleContains(String searchWord) {
+        return searchWord == null ? null : board.title.contains(searchWord);
     }
-    private BooleanExpression categoryIn(String searchWord) {
-        return searchWord == null ? null : board.category.in(searchWord);
+    private BooleanExpression categoryContains(String searchWord) {
+        return searchWord == null ? null : board.category.contains(searchWord);
     }
 
 }

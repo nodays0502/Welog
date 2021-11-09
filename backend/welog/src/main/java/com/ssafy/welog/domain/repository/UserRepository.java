@@ -1,6 +1,8 @@
-package com.ssafy.welog.domain.entity;
+package com.ssafy.welog.domain.repository;
 
 import java.util.Optional;
+
+import com.ssafy.welog.domain.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository extends JpaRepository<User,Long> {

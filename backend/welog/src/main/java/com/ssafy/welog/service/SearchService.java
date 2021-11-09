@@ -1,16 +1,15 @@
 package com.ssafy.welog.service;
 
+import com.ssafy.welog.domain.entity.Board;
 import com.ssafy.welog.domain.entity.RecommendWord;
 import com.ssafy.welog.domain.repository.BoardRepository;
 import com.ssafy.welog.domain.repository.RecommendWordRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static com.ssafy.welog.api.controller.dto.SearchDto.SearchReqDto;
-import static com.ssafy.welog.api.controller.dto.SearchDto.SearchResDto;
 
 @Slf4j
 @Service
@@ -27,7 +26,7 @@ public class SearchService {
     List<Object> data;
 
     // object로 처리하고 후에 수정
-    public Object search(SearchReqDto param){
+    public List<Board> search(SearchReqDto param){
         addRecommendWordCnt(param);
         switch (param.getSearchType()){
             case "content":

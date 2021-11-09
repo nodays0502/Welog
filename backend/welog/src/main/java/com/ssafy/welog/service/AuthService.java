@@ -1,20 +1,17 @@
 package com.ssafy.welog.service;
 
 import com.ssafy.welog.api.controller.dto.AuthDto.LoginReqDto;
-import com.ssafy.welog.api.controller.dto.AuthDto.LoginResDto;
 import com.ssafy.welog.common.util.RedisUtil;
 import com.ssafy.welog.domain.entity.User;
-import com.ssafy.welog.domain.entity.UserRepository;
+import com.ssafy.welog.domain.repository.UserRepository;
 import java.util.UUID;
 import java.util.stream.Collectors;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;

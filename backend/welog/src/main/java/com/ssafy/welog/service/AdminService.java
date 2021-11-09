@@ -6,13 +6,11 @@ import com.ssafy.welog.api.controller.dto.AdminDto.ChangeBoardReqDto;
 import com.ssafy.welog.api.controller.dto.AdminDto.SeachUserDto;
 import com.ssafy.welog.api.controller.dto.AdminDto.SearchAllUserResDto;
 import com.ssafy.welog.api.controller.dto.AdminDto.UserChangeReqDto;
-import com.ssafy.welog.domain.common.AuthLevel;
-import com.ssafy.welog.domain.entity.BoardRepository;
 import com.ssafy.welog.domain.entity.User;
-import com.ssafy.welog.domain.entity.UserRepository;
-import java.util.ArrayList;
+import com.ssafy.welog.domain.repository.BoardRepository;
+import com.ssafy.welog.domain.repository.UserRepository;
+
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

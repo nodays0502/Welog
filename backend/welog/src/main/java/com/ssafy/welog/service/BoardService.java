@@ -1,13 +1,15 @@
 package com.ssafy.welog.service;
 
 import com.ssafy.welog.api.controller.dto.BoardDto;
-import com.ssafy.welog.api.controller.dto.BoardDto.*;
-import com.ssafy.welog.domain.entity.BoardRepository;
+import com.ssafy.welog.api.controller.dto.BoardDto.AddBoardReqDto;
+import com.ssafy.welog.api.controller.dto.BoardDto.PageDto;
+import com.ssafy.welog.api.controller.dto.BoardDto.SearchBoardDto;
+import com.ssafy.welog.api.controller.dto.BoardDto.SearchBoardResDto;
+import com.ssafy.welog.domain.repository.BoardRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 @Slf4j
 @Service

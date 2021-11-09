@@ -37,11 +37,11 @@ public class SearchDto {
 
     @Getter
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
-    public static class SearchResDto {
-        private List<Object> data = new ArrayList<>();
+    public static class SearchResDto<T> {
+        private List<T> data = new ArrayList<>();
 
         @Builder
-        public SearchResDto(List<Object> data) {
+        public SearchResDto(List<T> data) {
             this.data = data;
         }
     }
