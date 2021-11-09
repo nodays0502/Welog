@@ -34,7 +34,7 @@ public class AuthService {
         this.redisUtil = redisUtil;
         this.userRepository = userRepository;
     }
-
+    @Transactional
     public void login(LoginReqDto loginReqDto , HttpSession httpSession) {
         log.info("로그인 시작");
         String userEmail = loginReqDto.getUserEmail();
@@ -55,7 +55,7 @@ public class AuthService {
         httpSession.setMaxInactiveInterval(60);
 
 
-        String sessionId = UUID.randomUUID().toString();
+//        String sessionId = UUID.randomUUID().toString();
 
 //        redisUtil.set(sessionId, user, 30);
 //        TokenDto tokenDto = tokenProvider.createToken(authentication.getName(), authorities);
@@ -67,7 +67,7 @@ public class AuthService {
 //            .sessionId(sessionId)
 //            .build();
     }
-
+    @Transactional
     public void logout(String sessionId) {
         redisUtil.delete(sessionId);
         log.info("로그아웃");

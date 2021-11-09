@@ -108,9 +108,6 @@ spring:
 ---
 
 spring :
-  config:
-    active:
-      on-profile: "h2db"
   servlet:
     session:
       timeout: 60 * 1

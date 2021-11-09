@@ -6,11 +6,10 @@ import com.ssafy.welog.api.controller.dto.AdminDto.ChangeBoardReqDto;
 import com.ssafy.welog.api.controller.dto.AdminDto.SeachUserDto;
 import com.ssafy.welog.api.controller.dto.AdminDto.SearchAllUserResDto;
 import com.ssafy.welog.api.controller.dto.AdminDto.UserChangeReqDto;
-import com.ssafy.welog.domain.common.AuthLevel;
-import com.ssafy.welog.domain.entity.BoardRepository;
+import com.ssafy.welog.domain.entity.Board;
 import com.ssafy.welog.domain.entity.User;
 import com.ssafy.welog.domain.entity.UserRepository;
-import java.util.ArrayList;
+import com.ssafy.welog.domain.repository.BoardRepository;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -81,6 +80,9 @@ public class AdminService {
     @Transactional
     public void changeBoard(ChangeBoardReqDto changeBoardReqDto) {
         log.info("게시글 권한 변경");
+        Board board = boardRepository.findById(changeBoardReqDto.getBoardId()).get();
+        System.out.println(changeBoardReqDto);
+        board.changeAuth(changeBoardReqDto.getAuthLevel());
     }
     @Transactional
     public BoardRollBackResDto rollBackBoard(BoardRollBackReqDto boardRollBackReqDto) {

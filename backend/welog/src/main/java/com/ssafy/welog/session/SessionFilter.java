@@ -48,14 +48,14 @@ public class SessionFilter extends GenericFilterBean {
         logger.debug("doFilter 들어옴");
         User user = (User)httpSession.getAttribute("user");
         System.out.println("doFilter 시작");
-        System.out.println(user);
+//        System.out.println(user);
 //        if (StringUtils.hasText(sessionId) && redisUtil.get(sessionId) != null) {
         if (user != null) {
 //            User user = (User)redisUtil.get(sessionId);
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                 user, null, authorities(user.getUserRole()));
             System.out.println("doFIlter 들어옴");
-            System.out.println("user:"+user);
+//            System.out.println("user:"+user);
 //            UsernamePasswordAuthenticationToken authenticationToken =
 //                new UsernamePasswordAuthenticationToken(user.getUserName(), user.getPassword());
 //
@@ -67,8 +67,8 @@ public class SessionFilter extends GenericFilterBean {
 //            String authorities = getAuthorities(authentication);
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
-            logger.debug("Security Context에 '{}' 인증 정보를 저장했습니다, uri: {}", authentication.getName(),
-                requestURI);
+//            logger.debug("Security Context에 '{}' 인증 정보를 저장했습니다, uri: {}", authentication.getName(),
+//                requestURI);
         } else {
             System.out.println("예외");
             logger.debug("유효한 SessionId가 없습니다, uri: {}", requestURI);

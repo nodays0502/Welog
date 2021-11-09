@@ -6,6 +6,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 public class AdminDto {
 
@@ -84,15 +85,16 @@ public class AdminDto {
 
     @Getter
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    @ToString
     public static class ChangeBoardReqDto {
 
         private Long boardId;
-        private AuthLevel Auth;
+        private AuthLevel authLevel;
 
         @Builder
-        public ChangeBoardReqDto(Long boardId, AuthLevel auth) {
+        public ChangeBoardReqDto(Long boardId, AuthLevel authLevel) {
             this.boardId = boardId;
-            Auth = auth;
+            this.authLevel = authLevel;
         }
     }
 }
