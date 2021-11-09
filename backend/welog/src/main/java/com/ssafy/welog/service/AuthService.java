@@ -8,6 +8,7 @@ import com.ssafy.welog.domain.entity.UserRepository;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -34,7 +35,7 @@ public class AuthService {
         this.userRepository = userRepository;
     }
 
-    public LoginResDto login(LoginReqDto loginReqDto) {
+    public void login(LoginReqDto loginReqDto , HttpSession httpSession) {
         log.info("로그인 시작");
         String userEmail = loginReqDto.getUserEmail();
         String password = loginReqDto.getPassword();
@@ -50,17 +51,21 @@ public class AuthService {
         String authorities = getAuthorities(authentication);
         System.out.println("authorities:"+authorities);
 
+        httpSession.setAttribute("user",user);
+        httpSession.setMaxInactiveInterval(60);
+
+
         String sessionId = UUID.randomUUID().toString();
 
-        redisUtil.set(sessionId, user, 30);
+//        redisUtil.set(sessionId, user, 30);
 //        TokenDto tokenDto = tokenProvider.createToken(authentication.getName(), authorities);
 
 //        redisUtil.set(userEmail, tokenDto.getRefreshToken(), 60 * 24 * 7);
         log.info("로그인 끝");
-        return LoginResDto.builder()
-//            .sessionId(UUID.randomUUID().toString())
-            .sessionId(sessionId)
-            .build();
+//        return LoginResDto.builder()
+////            .sessionId(UUID.randomUUID().toString())
+//            .sessionId(sessionId)
+//            .build();
     }
 
     public void logout(String sessionId) {

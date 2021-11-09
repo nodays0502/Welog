@@ -110,7 +110,14 @@ spring:
 spring :
   config:
     active:
-        on-profile: "h2db"
+      on-profile: "h2db"
+  servlet:
+    session:
+      timeout: 60 * 1
+  session:
+    store-type: redis
+    redis:
+      flush-mode: on_save
   redis:
     port: 6379
     host: localhost
