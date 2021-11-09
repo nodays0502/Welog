@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -42,10 +43,15 @@ public class SessionFilter extends GenericFilterBean {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
         String sessionId = resolveSessionId(httpServletRequest);
         String requestURI = httpServletRequest.getRequestURI();
-        logger.debug("doFilter 들어옴");
-        if (StringUtils.hasText(sessionId) && redisUtil.get(sessionId) != null) {
-            User user = (User)redisUtil.get(sessionId);
+        HttpSession httpSession = httpServletRequest.getSession();
 
+        logger.debug("doFilter 들어옴");
+        User user = (User)httpSession.getAttribute("user");
+        System.out.println("doFilter 시작");
+        System.out.println(user);
+//        if (StringUtils.hasText(sessionId) && redisUtil.get(sessionId) != null) {
+        if (user != null) {
+//            User user = (User)redisUtil.get(sessionId);
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
                 user, null, authorities(user.getUserRole()));
             System.out.println("doFIlter 들어옴");
@@ -64,6 +70,7 @@ public class SessionFilter extends GenericFilterBean {
             logger.debug("Security Context에 '{}' 인증 정보를 저장했습니다, uri: {}", authentication.getName(),
                 requestURI);
         } else {
+            System.out.println("예외");
             logger.debug("유효한 SessionId가 없습니다, uri: {}", requestURI);
         }
 

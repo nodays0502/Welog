@@ -8,7 +8,9 @@ import com.ssafy.welog.domain.entity.User;
 import com.ssafy.welog.service.AuthService;
 import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -30,8 +32,9 @@ public class AuthApiController {
     }
 
     @PostMapping
-    public ResponseEntity<LoginResDto> login(@RequestBody LoginReqDto loginReqDto){
-        return ResponseEntity.ok(authService.login(loginReqDto));
+    public ResponseEntity<Void> login(@RequestBody LoginReqDto loginReqDto, HttpSession httpSession){
+        authService.login(loginReqDto,httpSession);
+        return OK;
     }
 
     @DeleteMapping

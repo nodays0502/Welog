@@ -1,6 +1,7 @@
 package com.ssafy.welog.domain.entity;
 
 import com.ssafy.welog.domain.common.AuthLevel;
+import java.io.Serializable;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -10,7 +11,7 @@ import lombok.ToString;
 @Entity
 @Getter
 @ToString
-public class User {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
