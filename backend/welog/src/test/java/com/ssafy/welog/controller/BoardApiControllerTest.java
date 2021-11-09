@@ -3,6 +3,7 @@ package com.ssafy.welog.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssafy.welog.api.controller.BoardApiController;
 import com.ssafy.welog.api.controller.dto.BoardDto.*;
+import com.ssafy.welog.domain.entity.User;
 import com.ssafy.welog.service.BoardService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -66,9 +67,10 @@ class BoardApiControllerTest {
     public void deleteBoard_success() throws Exception {
         //given
         Long boardID = 1L;
-
+        Long userId = 1L;
+        User user = User.builder().build();
         //when
-        doNothing().when(boardService).deleteBoard(boardID);
+        doNothing().when(boardService).deleteBoard(user,boardID);
 
         //then
         mockMvc.perform(delete("/api/board/{boardID}", boardID)
@@ -90,13 +92,14 @@ class BoardApiControllerTest {
     @DisplayName("게시글 변경 - 성공")
     public void changeBoard_success() throws Exception {
         //given
+        Long userId = 1L;
+        User user = User.builder().build();
         ChangeBoardReqDto changeBoardReqDto = ChangeBoardReqDto.builder()
                 .boardId(1L)
                 .content("예시 내용도 채우기이")
-                .registerTime(LocalDateTime.now())
                 .build();
         //when
-        doNothing().when(boardService).changeBoard(changeBoardReqDto);
+        doNothing().when(boardService).changeBoard(user,changeBoardReqDto);
 
         //then
         mockMvc.perform(put("/api/board")
@@ -161,15 +164,16 @@ class BoardApiControllerTest {
     public void addBoard_success() throws Exception {
         //given
         Long boardID = 1L;
+        User user = User.builder()
+            .build();
         AddBoardReqDto addBoardReqDto = AddBoardReqDto.builder()
-                .boardId(1L)
                 .content("")
                 .title("")
                 .version("")
                 .category("")
                 .build();
         //when
-        doNothing().when(boardService).addBoard(addBoardReqDto);
+        doNothing().when(boardService).addBoard(user,addBoardReqDto);
 
         //then
         mockMvc.perform(post("/api/board")

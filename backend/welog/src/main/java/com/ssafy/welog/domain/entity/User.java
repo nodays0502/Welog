@@ -2,15 +2,20 @@ package com.ssafy.welog.domain.entity;
 
 import com.ssafy.welog.domain.common.AuthLevel;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 import lombok.Builder;
 import lombok.Getter;
 
 import javax.persistence.*;
 import lombok.ToString;
+import org.hibernate.annotations.Fetch;
 
 @Entity
 @Getter
-@ToString
 public class User implements Serializable {
 
     @Id
@@ -24,11 +29,36 @@ public class User implements Serializable {
     @Enumerated(EnumType.STRING)
     private AuthLevel userRole;
 
+//    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+//    private Set<UserBoard> userBoards;
+//
+//    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+//    private List<UserComment> userComments;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private Set<UserBoard> userBoards;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<UserComment> userComments;
+
     public User() {
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+            "userId=" + userId +
+            ", userName='" + userName + '\'' +
+            ", userEmail='" + userEmail + '\'' +
+            ", password='" + password + '\'' +
+            ", userRole=" + userRole +
+            '}';
     }
 
     @Builder
     public User(Long userId, String userName, String userEmail,String password, AuthLevel userRole) {
+        this.userBoards = new LinkedHashSet<>();
+        this.userComments = new ArrayList<>();
         this.userId = userId;
         this.userName = userName;
         this.userEmail = userEmail;
@@ -45,6 +75,8 @@ public class User implements Serializable {
         if(userRole != null){
             this.userRole = userRole;
         }
-
+    }
+    public void addUserBoard(UserBoard userBoard){
+        this.userBoards.add(userBoard);
     }
 }
