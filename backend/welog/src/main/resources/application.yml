@@ -1,4 +1,17 @@
+spring:
+  profiles:
+    group:
+      "dev": "local"
+---
+spring:
+  profiles:
+    group:
+      "dev": "ec2"
+---
 spring :
+  config:
+    active:
+      on-profile: "local"
   servlet:
     session:
       timeout: 60 * 1
@@ -11,6 +24,43 @@ spring :
     host: localhost
   datasource:
     url: jdbc:mysql://localhost:3306/ssafy_web_db?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Seoul&zeroDateTimeBehavior=convertToNull&rewriteBatchedStatements=true
+    #    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ssafy
+    password: ssafy
+    sql:
+      init:
+        mode: always
+        encoding: utf-8
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate :
+        #    show_sql : true // sout 으로 출력
+        format_sql : true
+logging:
+  level:
+    org.hibernate.SQL : debug
+    org.hibernate.type : trace
+
+
+---
+spring :
+  config:
+    active:
+      on-profile: "ec2"
+  servlet:
+    session:
+      timeout: 60 * 1
+  session:
+    store-type: redis
+    redis:
+      flush-mode: on_save
+  redis:
+    port: 6379
+    host: k5B305.p.ssafy.io
+  datasource:
+    url: jdbc:mysql://k5B305.p.ssafy.io:3306/ssafy_web_db?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Seoul&zeroDateTimeBehavior=convertToNull&rewriteBatchedStatements=true
     #    driver-class-name: com.mysql.cj.jdbc.Driver
     username: ssafy
     password: ssafy

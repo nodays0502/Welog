@@ -186,7 +186,7 @@ class AdminApiControllerTest {
         //given
         ChangeBoardReqDto changeBoardReqDto = ChangeBoardReqDto.builder()
             .boardId(1L)
-            .auth(AuthLevel.ADMIN)
+            .authLevel(AuthLevel.ADMIN)
             .build();
         //when
         doNothing().when(adminService).changeBoard(changeBoardReqDto);
