@@ -1,17 +1,11 @@
 package com.ssafy.welog.api.controller.dto;
 
 import com.ssafy.welog.domain.common.AuthLevel;
-import java.util.List;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.JoinColumn;
+import lombok.*;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import java.util.List;
 
 public class UserDto {
 

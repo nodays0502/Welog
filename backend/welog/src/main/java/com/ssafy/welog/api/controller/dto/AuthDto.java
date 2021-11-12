@@ -1,11 +1,12 @@
 package com.ssafy.welog.api.controller.dto;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 public class AuthDto {
     @Getter

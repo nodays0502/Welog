@@ -1,17 +1,17 @@
 package com.ssafy.welog.api.controller;
 
 
-import com.ssafy.welog.api.controller.dto.BoardDto;
+import com.ssafy.welog.api.controller.dto.BoardDto.*;
 import com.ssafy.welog.domain.entity.User;
-import com.ssafy.welog.service.BoardService;
 import com.ssafy.welog.service.BoardService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 import static com.ssafy.welog.common.util.constants.ResponseConstants.OK;
-import com.ssafy.welog.api.controller.dto.BoardDto.*;
 
 
 @Slf4j
@@ -30,7 +30,7 @@ public class BoardApiController {
      */
     @PostMapping
     public ResponseEntity<Void> addBoard(@AuthenticationPrincipal User user,
-        @RequestBody AddBoardReqDto addBoardDto) {
+        @Valid @RequestBody AddBoardReqDto addBoardDto) {
         boardService.addBoard(user,addBoardDto);
         return OK;
     }
@@ -55,7 +55,7 @@ public class BoardApiController {
      * 게시글 수정
      */
     @PatchMapping
-    public ResponseEntity<Void> changeBoard(@AuthenticationPrincipal User user,@RequestBody ChangeBoardReqDto changeBoardDto) {
+    public ResponseEntity<Void> changeBoard(@AuthenticationPrincipal User user,@Valid @RequestBody ChangeBoardReqDto changeBoardDto) {
         boardService.changeBoard(user,changeBoardDto);
         return OK;
     }

@@ -1,13 +1,14 @@
 package com.ssafy.welog.api.controller.dto;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SearchDto {
 
@@ -15,7 +16,9 @@ public class SearchDto {
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class SearchReqDto {
         private Integer page;
+        @NotNull
         private String searchType;
+        @NotBlank
         private String searchWord;
 
         @Builder

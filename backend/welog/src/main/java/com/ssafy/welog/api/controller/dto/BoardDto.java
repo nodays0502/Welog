@@ -1,16 +1,11 @@
 package com.ssafy.welog.api.controller.dto;
 
 import com.ssafy.welog.domain.common.AuthLevel;
-import javax.persistence.Column;
-import javax.validation.constraints.NotBlank;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.List;
-import lombok.ToString;
 
 public class BoardDto {
 

@@ -1,9 +1,6 @@
 package com.ssafy.welog.api.controller;
 
 
-import static com.ssafy.welog.common.util.constants.ResponseConstants.CREATED;
-import static com.ssafy.welog.common.util.constants.ResponseConstants.OK;
-
 import com.ssafy.welog.api.controller.dto.CommentDto.AddCommentReqDto;
 import com.ssafy.welog.api.controller.dto.CommentDto.AddFeelingtReqDto;
 import com.ssafy.welog.api.controller.dto.CommentDto.ChangeCommentReqDto;
@@ -11,14 +8,12 @@ import com.ssafy.welog.api.controller.dto.CommentDto.SearchCommentResDto;
 import com.ssafy.welog.service.CommentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+
+import static com.ssafy.welog.common.util.constants.ResponseConstants.CREATED;
+import static com.ssafy.welog.common.util.constants.ResponseConstants.OK;
 
 @Slf4j
 @RestController
@@ -35,7 +30,7 @@ public class CommentApiController {
      * 댓글 등록을 구현한 메서드
      */
     @PostMapping
-    public ResponseEntity<Void> addComment(AddCommentReqDto addCommentDto) {
+    public ResponseEntity<Void> addComment(@Valid @RequestBody AddCommentReqDto addCommentDto) {
         commentService.addComment(addCommentDto);
         return CREATED;
     }
@@ -52,7 +47,7 @@ public class CommentApiController {
      * 댓글 수정을 구현한 메서드
      */
     @PutMapping
-    public ResponseEntity<Void> changeComment(ChangeCommentReqDto changeCommentDto) {
+    public ResponseEntity<Void> changeComment(@Valid @RequestBody ChangeCommentReqDto changeCommentDto) {
         commentService.changeComment(changeCommentDto);
         return OK;
     }
@@ -70,7 +65,7 @@ public class CommentApiController {
      * 댓글 좋아요/ 싫어요 기능을 구현한 메서드
      */
     @PatchMapping
-    public ResponseEntity<Void> addLike(AddFeelingtReqDto addFeelingtDto) {
+    public ResponseEntity<Void> addLike(@Valid @RequestBody AddFeelingtReqDto addFeelingtDto) {
         commentService.addLike(addFeelingtDto);
         return OK;
     }
