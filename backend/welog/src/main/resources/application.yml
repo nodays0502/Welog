@@ -1,16 +1,16 @@
 spring:
   profiles:
     group:
-      "dev": "local"
+      "local": "local"
 ---
 spring:
   profiles:
     group:
-      "dev": "ec2"
+      "ec2": "ec2"
 ---
 spring :
   config:
-    active:
+    activate:
       on-profile: "local"
   servlet:
     session:
@@ -47,7 +47,7 @@ logging:
 ---
 spring :
   config:
-    active:
+    activate:
       on-profile: "ec2"
   servlet:
     session:
