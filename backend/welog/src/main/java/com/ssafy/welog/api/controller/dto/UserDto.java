@@ -1,9 +1,12 @@
 package com.ssafy.welog.api.controller.dto;
 
 import com.ssafy.welog.domain.common.AuthLevel;
+import java.util.List;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -33,9 +36,14 @@ public class UserDto {
     @ToString
     public static class UserCreateReqDto{
 
+        @NotBlank
         private String userName;
+        @Email
         private String userEmail;
+        @NotBlank
         private String password;
+
+        @NotBlank
         private AuthLevel userRole;
 
         @Builder
@@ -62,6 +70,17 @@ public class UserDto {
             this.userEmail = userEmail;
             this.password = password;
             this.userRole = userRole;
+        }
+    }
+    @Getter
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class UserListResDto{
+
+        private List<String> userNames;
+
+        @Builder
+        public UserListResDto(List<String> userNames) {
+            this.userNames = userNames;
         }
     }
 }

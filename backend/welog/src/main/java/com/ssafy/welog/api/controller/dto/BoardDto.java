@@ -2,6 +2,7 @@ package com.ssafy.welog.api.controller.dto;
 
 import com.ssafy.welog.domain.common.AuthLevel;
 import javax.persistence.Column;
+import javax.validation.constraints.NotBlank;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,11 +18,16 @@ public class BoardDto {
     @NoArgsConstructor(access = AccessLevel.PROTECTED)//인자가 없는 객체를 만들었을때
     @ToString
     public static class AddBoardReqDto {
-
+        @NotBlank
         private String content;
+        @NotBlank
         private String title;
+        @NotBlank
         private String version;
+
         private String category;
+
+        @NotBlank
         private AuthLevel authLevel;
 
         @Builder

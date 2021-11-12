@@ -3,10 +3,13 @@ package com.ssafy.welog.service;
 
 import com.ssafy.welog.api.controller.dto.UserDto.UserCreateReqDto;
 import com.ssafy.welog.api.controller.dto.UserDto.UserInfoDto;
+import com.ssafy.welog.api.controller.dto.UserDto.UserListResDto;
 import com.ssafy.welog.api.controller.dto.UserDto.UserPutReqDto;
 import com.ssafy.welog.common.util.RedisUtil;
 import com.ssafy.welog.domain.entity.User;
 import com.ssafy.welog.domain.repository.UserRepository;
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -90,4 +93,12 @@ public class UserService implements UserDetailsService {
     }
 
 
+    public UserListResDto getUserNameList() {
+        List<User> users = userRepository.findAll();
+        List<String> collect = users.stream().map(o -> o.getUserName())
+            .collect(Collectors.toList());
+        return UserListResDto.builder()
+            .userNames(collect)
+            .build();
+    }
 }
