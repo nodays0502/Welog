@@ -13,7 +13,7 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "comment_id")
     private Long commentId;
-    @Column(length = 1000)
+    @Column(length = 1000, nullable = false)
     private String content;
     private LocalDateTime registerTime;
 

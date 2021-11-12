@@ -16,12 +16,19 @@ import org.hibernate.annotations.Fetch;
 
 @Entity
 @Getter
+@Table(uniqueConstraints = {
+        @UniqueConstraint(
+                columnNames = {"user_name","user_email"}
+        )
+})
 public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
+    @Column(name = "user_name", nullable = false)
     private String userName;
+    @Column(name = "user_email", nullable = false)
     private String userEmail;
     private String password;
 

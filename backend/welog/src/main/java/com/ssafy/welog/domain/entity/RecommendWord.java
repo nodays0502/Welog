@@ -3,10 +3,7 @@ package com.ssafy.welog.domain.entity;
 import lombok.Builder;
 import lombok.Getter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @Entity
@@ -14,6 +11,7 @@ public class RecommendWord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long recommendWordId;
+    @Column(nullable = false)
     private String word;
     private Long cnt;
 
