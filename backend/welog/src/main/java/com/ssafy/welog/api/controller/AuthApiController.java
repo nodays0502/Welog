@@ -3,7 +3,6 @@ package com.ssafy.welog.api.controller;
 import static com.ssafy.welog.common.util.constants.ResponseConstants.OK;
 
 import com.ssafy.welog.api.controller.dto.AuthDto.LoginReqDto;
-import com.ssafy.welog.api.controller.dto.AuthDto.LoginResDto;
 import com.ssafy.welog.domain.entity.User;
 import com.ssafy.welog.service.AuthService;
 import java.util.UUID;

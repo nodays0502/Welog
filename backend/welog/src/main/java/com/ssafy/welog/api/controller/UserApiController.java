@@ -6,6 +6,7 @@ import static com.ssafy.welog.common.util.constants.ResponseConstants.*;
 
 import com.ssafy.welog.api.controller.dto.UserDto.UserCreateReqDto;
 import com.ssafy.welog.api.controller.dto.UserDto.UserInfoDto;
+import com.ssafy.welog.api.controller.dto.UserDto.UserListResDto;
 import com.ssafy.welog.api.controller.dto.UserDto.UserPutReqDto;
 import com.ssafy.welog.domain.entity.User;
 import com.ssafy.welog.service.UserService;
@@ -71,5 +72,10 @@ public class UserApiController {
     public ResponseEntity<Void> patchUserInfo(@AuthenticationPrincipal User user, @RequestBody UserPutReqDto userPutReqDto) {
         userService.patchUser(user.getUserId(), userPutReqDto);
         return OK;
+    }
+    @GetMapping("/usernames")
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
+    public ResponseEntity<UserListResDto> getUserNameList() {
+        return ResponseEntity.ok(userService.getUserNameList());
     }
 }

@@ -2,6 +2,9 @@ package com.ssafy.welog.api.controller.dto;
 
 import com.ssafy.welog.domain.common.AuthLevel;
 import java.util.List;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,8 +16,10 @@ public class AdminDto {
     @Getter
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class UserChangeReqDto {
-
+        @Email
         private String userEmail;
+
+        @NotBlank
         private AuthLevel authLevel;
 
         @Builder
@@ -58,8 +63,10 @@ public class AdminDto {
     @Getter
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class BoardRollBackReqDto {
-
+        @NotNull
         private Long boardId;
+
+        @NotBlank
         private String version;
 
         @Builder
@@ -87,8 +94,10 @@ public class AdminDto {
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     @ToString
     public static class ChangeBoardReqDto {
-
+        @NotNull
         private Long boardId;
+
+        @NotBlank
         private AuthLevel authLevel;
 
         @Builder
