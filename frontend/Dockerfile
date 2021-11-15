@@ -5,6 +5,7 @@ ENV NODE_ENV production
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
 RUN chown -R nextjs:nodejs /app/.next
+RUN chown -R nextjs:nodejs /app/.yarn
 RUN echo "YARN VERSION IN RUNNER: " && yarn --version
 USER nextjs
 EXPOSE 3000
