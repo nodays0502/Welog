@@ -13,6 +13,8 @@ import com.ssafy.welog.domain.entity.User;
 import com.ssafy.welog.domain.entity.UserBoard;
 import com.ssafy.welog.domain.repository.UserBoardRepository;
 import com.ssafy.welog.domain.repository.UserRepository;
+import com.ssafy.welog.exception.board.BoardNotFoundException;
+import com.ssafy.welog.exception.user.UserNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
@@ -38,7 +40,8 @@ public class BoardService {
 
     @Transactional
     public void addBoard(User user, AddBoardReqDto addBoardDto) {
-        User writer = userRepository.findById(user.getUserId()).get();
+        User writer = userRepository.findById(user.getUserId())
+            .orElseThrow(() -> new UserNotFoundException("해당하는 유저가 존재하지 않습니다."));
         System.out.println(addBoardDto);
         Board board = Board.builder()
             .content(addBoardDto.getContent())
@@ -74,7 +77,8 @@ public class BoardService {
     }
 
     public SearchBoardDto searchBoard(Long boardId) {
-        Board board = boardRepository.findById(boardId).get();
+        Board board = boardRepository.findById(boardId)
+            .orElseThrow(() -> new BoardNotFoundException("해당하는 게시글이 존재하지 않습니다."));
         log.info("게시글 상세 조회");
         return SearchBoardDto.builder()
             .boardId(board.getBoardId())
@@ -92,7 +96,8 @@ public class BoardService {
         log.info("게시글 수정");
         System.out.println(changeBoardDto);
         User writer = userRepository.findById(user.getUserId()).get();
-        Board board = boardRepository.findById(changeBoardDto.getBoardId()).get();
+        Board board = boardRepository.findById(changeBoardDto.getBoardId())
+            .orElseThrow(() -> new BoardNotFoundException("해당하는 게시글이 존재하지 않습니다."));
         if (writer.getUserRole() == AuthLevel.ADMIN
             || board.getAuthLevel() == writer.getUserRole()) {
             board.change(changeBoardDto.getTitle(), changeBoardDto.getContent(),
@@ -106,8 +111,10 @@ public class BoardService {
     @Transactional
     public void deleteBoard(User user, Long boardId) {
         log.info("게시글 삭제");
-        User writer = userRepository.findById(user.getUserId()).get();
-        Board board = boardRepository.findById(boardId).get();
+        User writer = userRepository.findById(user.getUserId())
+            .orElseThrow(() -> new UserNotFoundException("해당하는 유저가 존재하지 않습니다."));
+        Board board = boardRepository.findById(boardId)
+            .orElseThrow(() -> new BoardNotFoundException("해당하는 게시글이 존재하지 않습니다."));
         if (writer.getUserRole() == AuthLevel.ADMIN || writer.getUserRole() != board.getAuthLevel()
             || userBoardRepository.existsByUserAndBoard(writer, board)) {
             board.getUserBoards().forEach(o -> {

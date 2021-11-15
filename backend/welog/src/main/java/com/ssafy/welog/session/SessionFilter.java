@@ -3,6 +3,7 @@ package com.ssafy.welog.session;
 import com.ssafy.welog.common.util.RedisUtil;
 import com.ssafy.welog.domain.common.AuthLevel;
 import com.ssafy.welog.domain.entity.User;
+import com.ssafy.welog.exception.auth.SessionNotFoundException;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
@@ -70,8 +71,8 @@ public class SessionFilter extends GenericFilterBean {
 //            logger.debug("Security Context에 '{}' 인증 정보를 저장했습니다, uri: {}", authentication.getName(),
 //                requestURI);
         } else {
-            System.out.println("예외");
             logger.debug("유효한 SessionId가 없습니다, uri: {}", requestURI);
+            throw new SessionNotFoundException("유효한 SessionId가 없습니다.");
         }
 
         filterChain.doFilter(servletRequest, servletResponse);

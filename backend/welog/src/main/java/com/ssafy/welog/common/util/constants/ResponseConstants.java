@@ -51,4 +51,7 @@ public class ResponseConstants {
     public static final ResponseEntity<Object> GENERAL_SERVER_ERROR =
             new ResponseEntity<>("서버 에러.", HttpStatus.INTERNAL_SERVER_ERROR);
 
+    public static final ResponseEntity<String> BOARD_NOT_FOUND =
+        new ResponseEntity<>("게시글이 존재하지 않습니다.", HttpStatus.BAD_REQUEST);
+
 }

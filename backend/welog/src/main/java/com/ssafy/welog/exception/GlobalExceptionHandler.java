@@ -1,4 +1,5 @@
 package com.ssafy.welog.exception;
+import com.ssafy.welog.exception.board.BoardNotFoundException;
 import com.ssafy.welog.exception.user.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -17,12 +18,20 @@ import static com.ssafy.welog.common.util.constants.ResponseConstants.*;
 @RestControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
+
     @Override
     public ResponseEntity<Object> handleMethodArgumentNotValid(
             MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status,
             WebRequest request) {
         log.debug("유효성 검사 실패", ex);
         return VALIDATION_FAILED;
+    }
+    // 존재하지 않는 게시글에 대한 에러 핸들러
+    @ExceptionHandler(BoardNotFoundException.class)
+    public final ResponseEntity<String> handleBoardNotFoundException(
+        UserDuplicateEmailException ex) {
+        log.debug("존재하지 않는 게시글", ex);
+        return BOARD_NOT_FOUND;
     }
 
     // 이미 존재하는 Email 가입에 대한 에러 핸들러
