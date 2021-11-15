@@ -10,18 +10,15 @@ Object.defineProperty(NextImage, "default", {
 
 import { GlobalStyle } from "../src/shared/global";
 
-
 const customViewports = {
   kindleFire2: {
-    name: '1920*1080 view',
+    name: "1920*1080 view",
     styles: {
-      width: '1920px',
-      height: '1080px',
+      width: "1920px",
+      height: "1080px",
     },
   },
-
-}
-
+};
 
 // 모든 스토리에 스타일을 적용하기 위한 글로벌 decorator
 export const decorators = [
@@ -41,5 +38,5 @@ export const parameters = {
       date: /Date$/,
     },
   },
-  viewport: { viewports: customViewports }
+  viewport: { viewports: customViewports },
 };

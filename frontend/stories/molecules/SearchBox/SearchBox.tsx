@@ -18,7 +18,7 @@ interface SearchBoxProps {
 const SearchBox = ({ style, className }: SearchBoxProps) => (
   <div style={style} className={`searchBox_default ${className.join(" ")}`}>
     <Input placeHolder="Search Documentation" />
-    <FindIconButton className="findIconButton_default"/>
+    <FindIconButton className="findIconButton_default" />
   </div>
 );
 

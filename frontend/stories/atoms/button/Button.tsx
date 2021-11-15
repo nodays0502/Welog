@@ -21,13 +21,12 @@ interface ButtonProps {
    * style 설정
    */
   style?: object;
-
 }
 
 /**
  * Primary UI component for user interaction
  */
-const Button = ({ label, className, style,onClick }: ButtonProps) => (
+const Button = ({ label, className, style, onClick }: ButtonProps) => (
   <button
     type="button"
     style={style}
@@ -51,15 +50,9 @@ interface FindIconButtonProps {
   className: string;
 }
 
-export const FindIconButton = ({ 
-    className
-}: FindIconButtonProps) =>
-(
-  <div
-    className={className}
-  >
+export const FindIconButton = ({ className }: FindIconButtonProps) => (
+  <div className={className}>
     <MdFindInPage size="30" />
-    
   </div>
 );
 
@@ -69,7 +62,7 @@ export const FindIconButton = ({
 Button.defaultProps = {
   className: [],
   style: {},
-  onClick: () => { },
+  onClick: () => {},
   label: "this is button",
 };
 
