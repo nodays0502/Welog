@@ -4,7 +4,7 @@ import { ComponentMeta } from "@storybook/react";
 
 import styled from "styled-components";
 
-import { Article } from "./Article";
+import Article from "./Article";
 
 export default {
   component: Article,

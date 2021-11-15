@@ -3,7 +3,7 @@ import React from "react";
 import { ComponentMeta } from "@storybook/react";
 
 import styled from "styled-components";
-import { Link } from "./Link";
+import Link from "./Link";
 
 export default {
   component: Link,

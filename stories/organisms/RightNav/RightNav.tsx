@@ -1,6 +1,6 @@
 import React from "react";
-import "./RightNav.css";
-import { TextBox } from "../../molecules/TextBox/TextBox";
+// import "./RightNav.css";
+import TextBox from "../../molecules/TextBox/TextBox";
 
 interface RightNavProps {
   /**
@@ -22,10 +22,10 @@ interface RightNavProps {
 /**
  * Primary UI component for user interaction
  */
-export const RightNav = ({ className, style, onClick }: RightNavProps) => (
+const RightNav = ({ className, style, onClick }: RightNavProps) => (
   <div
     style={style}
-    className={`${className.join(" ")}`}
+    className={` rightNav_default ${className.join(" ")}`}
     onClick={onClick}
     aria-hidden="true"
   >

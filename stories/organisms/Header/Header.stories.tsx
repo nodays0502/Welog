@@ -4,7 +4,7 @@ import { ComponentMeta } from "@storybook/react";
 
 import styled from "styled-components";
 
-import { Header } from "./Header";
+import Header from "./Header";
 
 export default {
   component: Header,
