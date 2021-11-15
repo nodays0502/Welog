@@ -3,7 +3,7 @@
 /* eslint-disable react/prop-types */
 import React, { Fragment } from "react";
 import MenuItem from "./MenuItem";
-import "./MenuBar.scss";
+// import "./MenuBar.scss";
 
 export default ({ editor }) => {
   const items = [
