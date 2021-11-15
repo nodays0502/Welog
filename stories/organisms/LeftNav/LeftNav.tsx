@@ -1,6 +1,6 @@
 import React from "react";
 import { ImageContent } from "../../atoms/image/ImageContent";
-import ButtonGroup from '../../molecules/ButtonGroup/ButtonGroup';
+import ButtonGroup from "../../molecules/ButtonGroup/ButtonGroup";
 // import "./LeftNav.css";
 
 interface LeftNavProps {
@@ -25,22 +25,19 @@ interface LeftNavProps {
   image: string;
 }
 
-
 const buttonTitle = [
-    "대문",
-    "최근 바뀜",
-    "요즘 화제",
-    "기부",
-    "사용자 모임",
-    "관리 요청",
-    "도움말",
-    "정책과 지침",
-    "질문방"
+  "대문",
+  "최근 바뀜",
+  "요즘 화제",
+  "기부",
+  "사용자 모임",
+  "관리 요청",
+  "도움말",
+  "정책과 지침",
+  "질문방",
 ];
 
-const buttonGroupClasses = [
-  'button_leftNav'
-];
+const buttonGroupClasses = ["button_leftNav"];
 
 /**
  * Primary UI component for user interaction
@@ -60,9 +57,7 @@ const LeftNav = ({ className, style, image, onClick }: LeftNavProps) => (
       />
     </div>
     <div className="leftNav_bottomBox">
-      <ButtonGroup
-        buttons={buttonTitle} className={buttonGroupClasses}
-      />
+      <ButtonGroup buttons={buttonTitle} className={buttonGroupClasses} />
     </div>
   </div>
 );

@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require("path");
 module.exports = {
   stories: [
     "../stories/**/*.stories.mdx",
@@ -17,15 +17,15 @@ module.exports = {
 
     // Make whatever fine-grained changes you need
     config.module.rules.push({
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
-        include: [
-          path.resolve(__dirname, 'src/'),
-          path.resolve(__dirname, 'stories/'),
-        ],
+      test: /\.scss$/,
+      use: ["style-loader", "css-loader", "sass-loader"],
+      include: [
+        path.resolve(__dirname, "src/"),
+        path.resolve(__dirname, "stories/"),
+      ],
     });
 
     // Return the altered config
     return config;
-},
+  },
 };

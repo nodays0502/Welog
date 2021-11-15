@@ -1,9 +1,9 @@
 .buttonGroup_default {
-    width: 50%;
-    display: flex;
+  width: 50%;
+  display: flex;
 }
 
 .button_leftNav {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }

@@ -45,9 +45,7 @@ export const ImageContent = ({
     onClick={onClick}
     aria-hidden="true"
   >
-    <Image className="image" 
-      layout="fill"
-      src={src} alt={alt} />
+    <Image className="image" layout="fill" src={src} alt={alt} />
   </div>
 );
 

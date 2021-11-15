@@ -19,14 +19,10 @@ interface ButtonGroupProps {
   buttons?: string[];
 }
 
-const ButtonGroup = ({
-  style,
-  className,
-  buttons,
-}: ButtonGroupProps) => (
+const ButtonGroup = ({ style, className, buttons }: ButtonGroupProps) => (
   <div style={style} className={`buttonGroup_default ${className.join(" ")}`}>
     {buttons.map((button) => (
-      <Button label={button} key={button}/>
+      <Button label={button} key={button} />
     ))}
   </div>
 );
@@ -40,4 +36,3 @@ ButtonGroup.defaultProps = {
   buttons: [],
 };
 export default ButtonGroup;
-

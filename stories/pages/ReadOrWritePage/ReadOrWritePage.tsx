@@ -37,7 +37,11 @@ const image = "/public/static/logos/logo.png";
 /**
  * Primary UI component for user interaction
  */
-const ReadOrWritePage = ({ className, style, onClick }: ReadOrWritePageProps) => (
+const ReadOrWritePage = ({
+  className,
+  style,
+  onClick,
+}: ReadOrWritePageProps) => (
   <div
     style={style}
     className={`ReadOrWritePage_structure_wholeBox ${className.join(" ")}`}

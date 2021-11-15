@@ -29,7 +29,7 @@ export const Default: React.VFC<{}> = () => (
     <>
       <h5>ImageBox</h5>
       <ComponentBox>
-        <ImageBox  />
+        <ImageBox />
         <ImageBox />
       </ComponentBox>
     </>
