@@ -4,6 +4,7 @@ import com.ssafy.welog.domain.common.AuthLevel;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class BoardDto {
 
         private String category;
 
-        @NotBlank
+        @NotNull
         private AuthLevel authLevel;
 
         @Builder
@@ -32,6 +33,7 @@ public class BoardDto {
             this.title = title;
             this.version = version;
             this.category = category;
+            this.authLevel = authLevel;
         }
     }
 

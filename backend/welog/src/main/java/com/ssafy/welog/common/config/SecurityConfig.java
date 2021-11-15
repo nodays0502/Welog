@@ -44,10 +44,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) {
         web.ignoring()
                 .antMatchers(
-                        "/h2-console/**"
-                        , "/favicon.ico"
-                        , "/error"
-                );
+                        "/h2-console/**")
+                .antMatchers("/favicon.ico","/error")
+                //swagger
+                .antMatchers( "/v2/api-docs", "/configuration/ui", "/swagger-resources", "/configuration/security", "/swagger-ui.html", "/webjars/**","/swagger/**");;
         web.ignoring().antMatchers("/api/docs/**");
         web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
     }
@@ -85,6 +85,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/hello").permitAll()
                 .antMatchers("/api/docs/api-doc.html").permitAll()
                 .antMatchers("/api/search/**").permitAll()
+                .antMatchers("/swagger-resources/**").permitAll()
 
                 .anyRequest().authenticated()
                 .and()

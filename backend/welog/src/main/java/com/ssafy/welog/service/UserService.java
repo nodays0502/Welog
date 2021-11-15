@@ -42,6 +42,7 @@ public class UserService implements UserDetailsService {
     }
     @Transactional
     public void createUser(UserCreateReqDto userCreateReqDto) {
+        System.out.println("service");
         log.info("회원 가입");
         if(userRepository.existsByUserName(userCreateReqDto.getUserName())){
             // 예외처리

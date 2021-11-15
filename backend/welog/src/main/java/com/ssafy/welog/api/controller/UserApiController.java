@@ -30,6 +30,7 @@ public class UserApiController {
 
     @PostMapping
     public ResponseEntity<Void> createUser(@Valid @RequestBody UserCreateReqDto userCreateReqDto ){
+        System.out.println("controller");
         userService.createUser(userCreateReqDto);
         return OK;
     }

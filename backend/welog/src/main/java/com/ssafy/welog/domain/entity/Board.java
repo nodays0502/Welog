@@ -26,6 +26,7 @@ public class Board {
     private String title;
     private String version;
     private String category;
+    @Enumerated(EnumType.STRING)
     private AuthLevel authLevel;
     private LocalDateTime registerTime;
 

@@ -5,7 +5,7 @@ import com.ssafy.welog.api.controller.dto.CommentDto.AddFeelingtReqDto;
 import com.ssafy.welog.api.controller.dto.CommentDto.ChangeCommentReqDto;
 import com.ssafy.welog.api.controller.dto.CommentDto.SearchCommentDto;
 import com.ssafy.welog.api.controller.dto.CommentDto.SearchCommentResDto;
-import com.ssafy.welog.domain.entity.Feeling;
+import com.ssafy.welog.domain.common.Feeling;
 import java.util.ArrayList;
 import java.util.List;
 

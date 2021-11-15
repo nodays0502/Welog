@@ -49,7 +49,7 @@ public class AuthService {
         System.out.println("authorities:"+authorities);
 
         httpSession.setAttribute("user",user);
-        httpSession.setMaxInactiveInterval(60);
+        httpSession.setMaxInactiveInterval(60 * 30);
 
 
 //        String sessionId = UUID.randomUUID().toString();

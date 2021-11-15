@@ -1,6 +1,6 @@
 package com.ssafy.welog.api.controller.dto;
 
-import com.ssafy.welog.domain.entity.Feeling;
+import com.ssafy.welog.domain.common.Feeling;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

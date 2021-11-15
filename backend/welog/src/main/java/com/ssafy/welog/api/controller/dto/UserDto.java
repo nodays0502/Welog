@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 public class UserDto {
@@ -37,7 +38,7 @@ public class UserDto {
         @NotBlank
         private String password;
 
-        @NotBlank
+        @NotNull
         private AuthLevel userRole;
 
         @Builder
