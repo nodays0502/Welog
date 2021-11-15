@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssafy.welog.api.controller.SearchApiController;
 import com.ssafy.welog.api.controller.dto.BoardDto;
 import com.ssafy.welog.api.controller.dto.SearchDto;
+import com.ssafy.welog.domain.entity.Board;
 import com.ssafy.welog.service.SearchService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -24,6 +25,7 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static com.ssafy.welog.ApiDocumentUtils.getDocumentRequest;
@@ -72,13 +74,8 @@ public class SearchApiControllerTest {
                 .searchType("제목")
                 .searchWord("안녕")
                 .build();
-        List<Object> data = new ArrayList<>();
-        data.add(SearchBoardDto.builder()
-                .boardId(1L)
-                .content("내용")
-                .registerTime(LocalDateTime.now())
-                .build());
-        SearchResDto searchResDto = SearchResDto.builder().data(data).build();
+        List<Board> data = searchService.search(searchReqDto);
+        SearchResDto searchResDto = SearchResDto.builder().data(Collections.singletonList(data)).build();
 
         //when
         doReturn(searchResDto).when(searchService).search(searchReqDto);

@@ -2,23 +2,29 @@ package com.ssafy.welog.api.controller.dto;
 
 import com.ssafy.welog.domain.common.AuthLevel;
 import java.util.List;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 public class AdminDto {
 
     @Getter
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class UserChangeReqDto {
+        @Email
+        private String userEmail;
 
-        private Long userId;
+        @NotBlank
         private AuthLevel authLevel;
 
         @Builder
-        public UserChangeReqDto(Long userId, AuthLevel authLevel) {
-            this.userId = userId;
+        public UserChangeReqDto(String userEmail, AuthLevel authLevel) {
+            this.userEmail = userEmail;
             this.authLevel = authLevel;
         }
     }
@@ -57,8 +63,10 @@ public class AdminDto {
     @Getter
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class BoardRollBackReqDto {
-
+        @NotNull
         private Long boardId;
+
+        @NotBlank
         private String version;
 
         @Builder
@@ -84,15 +92,18 @@ public class AdminDto {
 
     @Getter
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    @ToString
     public static class ChangeBoardReqDto {
-
+        @NotNull
         private Long boardId;
-        private AuthLevel Auth;
+
+        @NotBlank
+        private AuthLevel authLevel;
 
         @Builder
-        public ChangeBoardReqDto(Long boardId, AuthLevel auth) {
+        public ChangeBoardReqDto(Long boardId, AuthLevel authLevel) {
             this.boardId = boardId;
-            Auth = auth;
+            this.authLevel = authLevel;
         }
     }
 }

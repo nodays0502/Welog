@@ -22,12 +22,12 @@ public class SearchApiController {
     }
 
     @GetMapping
-    public ResponseEntity<SearchResDto> search(SearchReqDto param){
+    public ResponseEntity<Object> search(SearchReqDto param){
         return ResponseEntity.ok(searchService.search(param));
     }
 
     @GetMapping("/recommend")
-    public ResponseEntity<SearchResDto> searchRecommendWords(SearchReqDto param){
+    public ResponseEntity<Object> searchRecommendWords(SearchReqDto param){
         return ResponseEntity.ok(searchService.searchRecommendWords(param));
     }
 }
