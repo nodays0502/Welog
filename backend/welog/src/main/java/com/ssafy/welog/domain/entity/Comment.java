@@ -19,7 +19,7 @@ public class Comment {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "comment_id")
-    private Comment comment;
+    private Comment parentComment;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_id")
@@ -29,12 +29,17 @@ public class Comment {
     }
 
     @Builder
-
     public Comment(Long commentId, String content, LocalDateTime registerTime, Comment comment, Board board) {
         this.commentId = commentId;
         this.content = content;
-        this.registerTime = registerTime;
-        this.comment = comment;
+        this.registerTime = LocalDateTime.now();
+        this.parentComment = comment;
         this.board = board;
+    }
+
+    public void change(String content) {
+        if (content != null) {
+            this.content = content;
+        }
     }
 }

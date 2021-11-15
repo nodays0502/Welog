@@ -39,8 +39,8 @@ public class CommentApiController {
      * 댓글 조회를 구현한 메서드
      */
     @GetMapping
-    public ResponseEntity<SearchCommentResDto> searchComment(Long BoardId) {
-        return ResponseEntity.ok(commentService.searchComment(BoardId));
+    public ResponseEntity<SearchCommentResDto> searchComment(Long boardId) {
+        return ResponseEntity.ok(commentService.searchComment(boardId));
     }
 
     /*

@@ -24,7 +24,7 @@ public class QFeel extends EntityPathBase<Feel> {
 
     public final QComment comment;
 
-    public final EnumPath<Feeling> feeling = createEnum("feeling", Feeling.class);
+    public final EnumPath<com.ssafy.welog.domain.common.Feeling> feeling = createEnum("feeling", com.ssafy.welog.domain.common.Feeling.class);
 
     public final QUser user;
 
