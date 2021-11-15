@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/button-has-type */
 import React from "react";
-import "./MenuItem.scss";
+// import "./MenuItem.scss";
 import remixiconUrl from "remixicon/fonts/remixicon.symbol.svg";
 
 interface MenuItemProps {
@@ -12,14 +12,22 @@ interface MenuItemProps {
   type?: string;
 }
 
-export default ({ icon, title, action, isActive = null }: MenuItemProps) => (
+export const MenuItem = ({
+  icon,
+  title,
+  action,
+  isActive = null,
+}: MenuItemProps) => (
   <button
     className={`menu-item${isActive && isActive() ? " is-active" : ""}`}
     onClick={action}
     title={title}
   >
-    <svg className="remix">
-      <use xlinkHref={`${remixiconUrl}#ri-${icon}`} />
-    </svg>
+    <div className="remix">
+      {/* <use xlinkHref={`.ri-${icon}`} /> */}
+      <i className={`ri-${icon} ri-1x`} />
+    </div>
   </button>
 );
+
+export default MenuItem;

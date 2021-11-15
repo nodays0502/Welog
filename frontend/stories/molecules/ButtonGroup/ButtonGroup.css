@@ -7,3 +7,17 @@
   display: flex;
   flex-direction: column;
 }
+
+.buttons_edit {
+  margin-top: 5vh;
+  margin-left: auto;
+}
+
+.buttons_edit > * {
+  border: 1px solid black;
+  margin: 0 2vw;
+}
+
+.buttons_edit > *:hover {
+  background: skyblue;
+}
