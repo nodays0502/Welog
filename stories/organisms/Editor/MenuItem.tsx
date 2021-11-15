@@ -12,7 +12,12 @@ interface MenuItemProps {
   type?: string;
 }
 
-export const MenuItem = ({ icon, title, action, isActive = null }: MenuItemProps) => (
+export const MenuItem = ({
+  icon,
+  title,
+  action,
+  isActive = null,
+}: MenuItemProps) => (
   <button
     className={`menu-item${isActive && isActive() ? " is-active" : ""}`}
     onClick={action}

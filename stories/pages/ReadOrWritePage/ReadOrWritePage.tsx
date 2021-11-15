@@ -57,9 +57,9 @@ const ReadOrWritePage = ({
       <div className="ReadOrWritePage_structure_rightBox_2">
         <div className="ReadOrWritePage_structure_leftBox_2">
           <Editor />
-          <ButtonGroup buttons={editButtons} className={["buttons_edit"]}/>
+          <ButtonGroup buttons={editButtons} className={["buttons_edit"]} />
         </div>
-        
+
         <RightNav />
       </div>
     </div>
