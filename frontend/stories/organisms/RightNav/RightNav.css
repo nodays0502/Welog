@@ -1,0 +1,6 @@
+.rightNav_default {
+  width: 30%;
+  height: 95vh;
+  display: grid;
+  grid-template-columns: 1fr;
+}
