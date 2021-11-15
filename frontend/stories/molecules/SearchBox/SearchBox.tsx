@@ -1,7 +1,7 @@
 import React from "react";
 import { FindIconButton } from "../../atoms/button/Button";
-import { Input } from "../../atoms/input/Input";
-import "./SearchBox.css";
+import Input from "../../atoms/input/Input";
+// import "./SearchBox.css";
 
 interface SearchBoxProps {
   /**
@@ -15,10 +15,10 @@ interface SearchBoxProps {
   style?: object;
 }
 
-export const SearchBox = ({ style, className }: SearchBoxProps) => (
+const SearchBox = ({ style, className }: SearchBoxProps) => (
   <div style={style} className={`searchBox_default ${className.join(" ")}`}>
     <Input placeHolder="Search Documentation" />
-    <FindIconButton />
+    <FindIconButton className="findIconButton_default" />
   </div>
 );
 

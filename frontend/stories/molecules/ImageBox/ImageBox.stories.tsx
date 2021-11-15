@@ -3,34 +3,34 @@ import React from "react";
 import { ComponentMeta } from "@storybook/react";
 
 import styled from "styled-components";
-import { ButtonGroup } from "./ImageBox";
+import ImageBox from "./ImageBox";
 
 export default {
-  component: ButtonGroup,
-  title: "molecules/ButtonGroup",
-} as ComponentMeta<typeof ButtonGroup>;
+  component: ImageBox,
+  title: "molecules/ImageBox",
+} as ComponentMeta<typeof ImageBox>;
 
 const ComponentBox = styled.div`
   display: flex;
   justify-content: space-around;
 `;
 
-const ButtongroupExample1 = [
-  "Home",
-  "Cloud",
-  "Platform",
-  "Connectors",
-  "Tools",
-  "Clients",
-];
+// const ButtongroupExample1 = [
+//   "Home",
+//   "Cloud",
+//   "Platform",
+//   "Connectors",
+//   "Tools",
+//   "Clients",
+// ];
 
 export const Default: React.VFC<{}> = () => (
   <>
     <>
-      <h5>ButtonGroup</h5>
+      <h5>ImageBox</h5>
       <ComponentBox>
-        <ButtonGroup buttons={ButtongroupExample1} />
-        <ButtonGroup />
+        <ImageBox />
+        <ImageBox />
       </ComponentBox>
     </>
   </>

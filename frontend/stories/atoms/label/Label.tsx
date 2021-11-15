@@ -1,5 +1,5 @@
 import React from "react";
-import "./label.css";
+// import "./label.css";
 
 interface LabelProps {
   /**
@@ -18,8 +18,8 @@ interface LabelProps {
   className?: string[];
 }
 
-export const Label = ({ text, style, className }: LabelProps) => (
-  <div style={style} className={`${className.join(" ")}`}>
+const Label = ({ text, style, className }: LabelProps) => (
+  <div style={style} className={`Label_default ${className.join(" ")}`}>
     {text}
   </div>
 );

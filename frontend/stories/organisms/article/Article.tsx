@@ -1,6 +1,6 @@
 import React from "react";
-import "./Article.css";
-import { TextBox } from "../../molecules/TextBox/TextBox";
+// import "./Article.css";
+import TextBox from "../../molecules/TextBox/TextBox";
 
 interface ArticleProps {
   /**
@@ -17,8 +17,8 @@ interface ArticleProps {
 /**
  * Primary UI component for user interaction
  */
-export const Article = ({ className, style }: ArticleProps) => (
-  <div style={style} className={`${className.join(" ")}`}>
+const Article = ({ className, style }: ArticleProps) => (
+  <div style={style} className={`article_default ${className.join(" ")}`}>
     <TextBox text="kiwi wiki" />
     <TextBox text="키위 위키는 거꾸로 해도 키위위키" />
   </div>

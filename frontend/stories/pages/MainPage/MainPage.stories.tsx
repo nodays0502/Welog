@@ -19,7 +19,6 @@ const ComponentBox = styled.div`
 export const Default: React.VFC<{}> = () => (
   <>
     <>
-      <h5>MainPage</h5>
       <ComponentBox>
         <MainPage />
       </ComponentBox>

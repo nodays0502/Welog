@@ -1,5 +1,5 @@
 import React from "react";
-import "./input.css";
+// import "./input.css";
 
 interface InputProps {
   /**
@@ -18,11 +18,11 @@ interface InputProps {
   style?: object;
 }
 
-export const Input = ({ style, placeHolder, className }: InputProps) => (
+const Input = ({ style, placeHolder, className }: InputProps) => (
   <input
     style={style}
     placeholder={placeHolder}
-    className={`${className.join(" ")}`}
+    className={`input_default ${className.join(" ")}`}
   />
 );
 

@@ -1,9 +1,9 @@
 import React from "react";
-import "./MainPage.css";
-import { LeftNav } from "../../organisms/LeftNav/LeftNav";
-import { RightNav } from "../../organisms/RightNav/RightNav";
-import { Header } from "../../organisms/Header/Header";
-import { Article } from "../../organisms/article/Article";
+// import "./MainPage.css";
+import LeftNav from "../../organisms/LeftNav/LeftNav";
+import RightNav from "../../organisms/RightNav/RightNav";
+import Header from "../../organisms/Header/Header";
+import Article from "../../organisms/article/Article";
 
 interface MainPageProps {
   /**
@@ -32,12 +32,13 @@ const ButtongroupExample1 = [
   "Login",
 ];
 
-const image = "/public/static/logos/logo.png";
+// const image = "/public/static/logos/logo.png";
+const image = "/static/logos/logo.png";
 
 /**
  * Primary UI component for user interaction
  */
-export const MainPage = ({ className, style, onClick }: MainPageProps) => (
+const MainPage = ({ className, style, onClick }: MainPageProps) => (
   <div
     style={style}
     className={`main_structure_wholeBox ${className.join(" ")}`}
@@ -45,9 +46,9 @@ export const MainPage = ({ className, style, onClick }: MainPageProps) => (
     aria-hidden="true"
   >
     <LeftNav image={image} />
-    <div>
+    <div className="main_structure_rightBox">
       <Header buttons={ButtongroupExample1} />
-      <div className="main_structure_rightBox">
+      <div className="main_structure_rightBox_2">
         <Article />
         <RightNav />
       </div>

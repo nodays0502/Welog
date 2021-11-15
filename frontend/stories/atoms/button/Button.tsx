@@ -1,5 +1,5 @@
 import React from "react";
-import "./button.css";
+// import "./button.css";
 import { MdFindInPage, MdModeEditOutline } from "react-icons/md";
 
 interface ButtonProps {
@@ -26,7 +26,7 @@ interface ButtonProps {
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ label, className, style, onClick }: ButtonProps) => (
+const Button = ({ label, className, style, onClick }: ButtonProps) => (
   <button
     type="button"
     style={style}
@@ -43,7 +43,18 @@ export const Button = ({ label, className, style, onClick }: ButtonProps) => (
  */
 export const IconButton = () => <MdModeEditOutline />;
 
-export const FindIconButton = () => <MdFindInPage />;
+interface FindIconButtonProps {
+  /**
+   * className
+   */
+  className: string;
+}
+
+export const FindIconButton = ({ className }: FindIconButtonProps) => (
+  <div className={className}>
+    <MdFindInPage size="30" />
+  </div>
+);
 
 /**
  * react/require-default-props

@@ -4,7 +4,7 @@ import { ComponentMeta } from "@storybook/react";
 
 import styled from "styled-components";
 
-import { Button, IconButton } from "./Button";
+import Button, { IconButton } from "./Button";
 
 export default {
   component: Button,

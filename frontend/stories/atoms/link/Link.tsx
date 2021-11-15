@@ -1,5 +1,5 @@
 import React from "react";
-import "./link.css";
+// import "./link.css";
 
 interface LinkProps {
   /**
@@ -23,7 +23,7 @@ interface LinkProps {
   className?: string[];
 }
 
-export const Link = ({ text, style, href, className }: LinkProps) => (
+const Link = ({ text, style, href, className }: LinkProps) => (
   <a style={style} href={href} className={`${className.join(" ")}`}>
     {text}
   </a>

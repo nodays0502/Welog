@@ -1,34 +1,6 @@
-.button_hover:hover {
-  background: #dfe1e6;
-}
-.button_default {
-  padding: 2vw 10vh;
-  font-family: NunitoSans;
-  font-size: 1.4vw;
-  border-style: none;
-  background: white;
-  border-radius: 15px;
-}
-
-.button_default:hover {
-  cursor: pointer;
-}
-
-.button_Ghost {
-  border: 1px solid #dfe1e6;
-}
-
-.button_Outline {
-  color: black;
-  font-weight: 600;
-  border: 1px solid #dfe1e6;
-}
-
-.button_Text {
-  border: none;
-}
-.button_Destructive {
-  border: none;
-  color: red;
-  font-weight: 600;
+.article_default {
+  width: 70%;
+  height: 95vh;
+  display: grid;
+  grid-template-columns: 1fr;
 }

@@ -4,12 +4,12 @@ import { ComponentMeta } from "@storybook/react";
 
 import styled from "styled-components";
 
-import { MainPage } from "./ReadOrWritePage";
+import ReadOrWritePage from "./ReadOrWritePage";
 
 export default {
-  component: MainPage,
-  title: "Pages/MainPage",
-} as ComponentMeta<typeof MainPage>;
+  component: ReadOrWritePage,
+  title: "Pages/ReadOrWritePage",
+} as ComponentMeta<typeof ReadOrWritePage>;
 
 const ComponentBox = styled.div`
   display: flex;
@@ -19,9 +19,8 @@ const ComponentBox = styled.div`
 export const Default: React.VFC<{}> = () => (
   <>
     <>
-      <h5>MainPage</h5>
       <ComponentBox>
-        <MainPage />
+        <ReadOrWritePage />
       </ComponentBox>
     </>
   </>

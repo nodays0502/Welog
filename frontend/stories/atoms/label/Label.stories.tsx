@@ -3,7 +3,7 @@ import React from "react";
 import { ComponentMeta } from "@storybook/react";
 
 import styled from "styled-components";
-import { Label } from "./Label";
+import Label from "./Label";
 
 export default {
   component: Label,

@@ -4,7 +4,7 @@ import { ComponentMeta } from "@storybook/react";
 
 import styled from "styled-components";
 
-import { LeftNav } from "./LeftNav";
+import LeftNav from "./LeftNav";
 
 export default {
   component: LeftNav,

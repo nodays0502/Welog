@@ -1,6 +1,6 @@
 import React from "react";
-import { Button } from "../../atoms/button/Button";
-import "./ButtonGroup.css";
+import Button from "../../atoms/button/Button";
+// import "./ButtonGroup.css";
 
 interface ButtonGroupProps {
   /**
@@ -19,14 +19,10 @@ interface ButtonGroupProps {
   buttons?: string[];
 }
 
-export const ButtonGroup = ({
-  style,
-  className,
-  buttons,
-}: ButtonGroupProps) => (
-  <div style={style} className={`${className.join(" ")}`}>
+const ButtonGroup = ({ style, className, buttons }: ButtonGroupProps) => (
+  <div style={style} className={`buttonGroup_default ${className.join(" ")}`}>
     {buttons.map((button) => (
-      <Button label={button} />
+      <Button label={button} key={button} />
     ))}
   </div>
 );
@@ -39,5 +35,4 @@ ButtonGroup.defaultProps = {
   className: [],
   buttons: [],
 };
-
 export default ButtonGroup;

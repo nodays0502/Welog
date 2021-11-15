@@ -1,6 +1,6 @@
 import React from "react";
 // import { ImageContent } from '../../atoms/image/ImageContent';
-import "./ImageBox.css";
+// import "./ImageBox.css";
 
 interface ImageBoxProps {
   /**
@@ -19,7 +19,7 @@ interface ImageBoxProps {
   // ImageBoxs?: ImageContent[];
 }
 
-export const ImageBox = ({ style, className }: ImageBoxProps) => (
+const ImageBox = ({ style, className }: ImageBoxProps) => (
   <div style={style} className={`${className.join(" ")}`} />
 );
 

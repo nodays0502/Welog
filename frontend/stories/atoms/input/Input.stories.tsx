@@ -3,7 +3,7 @@ import React from "react";
 import { ComponentMeta } from "@storybook/react";
 
 import styled from "styled-components";
-import { Input } from "./Input";
+import Input from "./Input";
 
 export default {
   component: Input,

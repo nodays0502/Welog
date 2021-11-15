@@ -1,7 +1,7 @@
 import React from "react";
-import "./Header.css";
-import { ButtonGroup } from "../../molecules/ButtonGroup/ButtonGroup";
-import { SearchBox } from "../../molecules/SearchBox/SearchBox";
+// import "./Header.css";
+import ButtonGroup from "../../molecules/ButtonGroup/ButtonGroup";
+import SearchBox from "../../molecules/SearchBox/SearchBox";
 
 interface HeaderProps {
   /**
@@ -23,7 +23,7 @@ interface HeaderProps {
 /**
  * Primary UI component for user interaction
  */
-export const Header = ({ className, style, buttons }: HeaderProps) => (
+const Header = ({ className, style, buttons }: HeaderProps) => (
   <div style={style} className={`header_default ${className.join(" ")}`}>
     <SearchBox />
     <ButtonGroup buttons={buttons} />

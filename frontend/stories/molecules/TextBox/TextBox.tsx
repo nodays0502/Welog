@@ -1,6 +1,6 @@
 import React from "react";
-import { Label } from "../../atoms/label/Label";
-import "./TextBox.css";
+import Label from "../../atoms/label/Label";
+// import "./TextBox.css";
 
 interface TextBoxProps {
   /**
@@ -20,7 +20,7 @@ interface TextBoxProps {
   text: string;
 }
 
-export const TextBox = ({ style, className, text }: TextBoxProps) => (
+const TextBox = ({ style, className, text }: TextBoxProps) => (
   <div style={style} className={`TextBox_default ${className.join(" ")}`}>
     <Label text={text} />
   </div>

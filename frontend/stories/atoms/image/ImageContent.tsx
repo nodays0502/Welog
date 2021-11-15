@@ -1,5 +1,5 @@
 import React from "react";
-import "./imageContent.css";
+// import "./imageContent.css";
 // @ts-ignore
 import Image from "next/image";
 
@@ -41,11 +41,11 @@ export const ImageContent = ({
 }: ImageContentProps) => (
   <div
     style={style}
-    className={`${className.join(" ")}`}
+    className={`imageContent_default ${className.join(" ")}`}
     onClick={onClick}
     aria-hidden="true"
   >
-    <Image className="image" width="100%" height="100%" src={src} alt={alt} />
+    <Image className="image" layout="fill" src={src} alt={alt} />
   </div>
 );
 
