@@ -20,8 +20,12 @@ spring :
     redis:
       flush-mode: on_save
   redis:
-    port: 6379
-    host: localhost
+    session:
+      port: 6379
+      host: localhost
+    management:
+      port: 6378
+      host: localhost
   datasource:
     url: jdbc:mysql://localhost:3306/ssafy_web_db?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Seoul&zeroDateTimeBehavior=convertToNull&rewriteBatchedStatements=true
     #    driver-class-name: com.mysql.cj.jdbc.Driver
@@ -59,8 +63,12 @@ spring :
     redis:
       flush-mode: on_save
   redis:
-    port: 6379
-    host: k5B305.p.ssafy.io
+    session:
+      port: 6379
+      host: k5B305.p.ssafy.io
+    management:
+      port: 6378
+      host: k5B305.p.ssafy.io
   datasource:
     url: jdbc:mysql://k5B305.p.ssafy.io:3306/ssafy_web_db?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Seoul&zeroDateTimeBehavior=convertToNull&rewriteBatchedStatements=true
     #    driver-class-name: com.mysql.cj.jdbc.Driver

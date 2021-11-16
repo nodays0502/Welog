@@ -108,5 +108,15 @@ public class BoardDto {
         }
     }
 
+    @Getter
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class getRollbackResDto {
 
+        private List<String> versions;
+
+        @Builder
+        public getRollbackResDto(List<String> versions) {
+            this.versions = versions;
+        }
+    }
 }

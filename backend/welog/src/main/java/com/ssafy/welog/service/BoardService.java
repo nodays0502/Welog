@@ -5,6 +5,7 @@ import com.ssafy.welog.api.controller.dto.BoardDto.AddBoardReqDto;
 import com.ssafy.welog.api.controller.dto.BoardDto.PageDto;
 import com.ssafy.welog.api.controller.dto.BoardDto.SearchBoardDto;
 import com.ssafy.welog.api.controller.dto.BoardDto.SearchBoardResDto;
+import com.ssafy.welog.common.util.RedisUtil;
 import com.ssafy.welog.domain.repository.BoardRepository;
 import com.ssafy.welog.api.controller.dto.BoardDto.*;
 import com.ssafy.welog.domain.common.AuthLevel;
@@ -33,12 +34,15 @@ public class BoardService {
     private final BoardRepository boardRepository;
     private final UserRepository userRepository;
     private final UserBoardRepository userBoardRepository;
+    private final RedisUtil redisUtil;
 
     public BoardService(UserRepository userRepository, BoardRepository boardRepository
-        , UserBoardRepository userBoardRepository) {
+        , UserBoardRepository userBoardRepository,
+        RedisUtil redisUtil) {
         this.boardRepository = boardRepository;
         this.userRepository = userRepository;
         this.userBoardRepository = userBoardRepository;
+        this.redisUtil = redisUtil;
     }
 
     @Transactional
@@ -61,17 +65,22 @@ public class BoardService {
             .build();
         userBoardRepository.save(userBoard);
         log.info("게시글 등록");
+        try {
+            String key = board.getBoardId() + ":" + board.getVersion();
+            redisUtil.setManagement(key, board);
+            redisUtil.setManagementVersionList(board.getBoardId().toString(), key);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public SearchBoardResDto searchAllBoard(Integer page) {
         log.info("게시글 전체 조회");
-        if(page == null){
+        if (page == null) {
             page = 0;
         }
         PageRequest pageRequest = PageRequest.of(page, 10, Direction.ASC, "boardId");
-        System.out.println("1");
         Page<Board> boardList = boardRepository.findAll(pageRequest);
-        System.out.println("2");
         List<SearchBoardDto> collect = boardList.stream()
             .map(o -> SearchBoardDto.builder()
                 .boardId(o.getBoardId())
@@ -82,7 +91,6 @@ public class BoardService {
                 .auth(o.getAuthLevel())
                 .registerTime(o.getRegisterTime())
                 .build()).collect(Collectors.toList());
-        System.out.println("3");
         return SearchBoardResDto.builder().boardList(collect).build();
     }
 
@@ -112,6 +120,9 @@ public class BoardService {
             || board.getAuthLevel() == writer.getUserRole()) {
             board.change(changeBoardDto.getTitle(), changeBoardDto.getContent(),
                 changeBoardDto.getVersion());
+            String key = board.getBoardId() + ":" + board.getVersion();
+            redisUtil.setManagement(key, board);
+            redisUtil.setManagementVersionList(board.getBoardId().toString(), key);
         } else {
             // 에러 권한 없음
             log.info("에러 발생");
@@ -131,7 +142,17 @@ public class BoardService {
                 o.deleteUserBoard();
                 userBoardRepository.delete(o);
             });
-            boardRepository.delete(board);
+            try {
+                redisUtil.getManagementVersionList(board.getBoardId().toString()).stream()
+                    .forEach(s -> {
+                        System.out.println("delete:"+s);
+                        redisUtil.deleteManagement(s);
+                    });
+                redisUtil.deleteManagement(board.getBoardId().toString());
+                boardRepository.delete(board);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else {
             // 권한 없음 에러  -> 글쓴이가 아님
         }
@@ -147,4 +168,16 @@ public class BoardService {
         log.info("즐겨찾기 삭제");
     }
 
+    public getRollbackResDto getRollbackList(Long boardId) {
+        log.info("롤백 리스트");
+        List<String> managementVersionList = null;
+        try {
+            managementVersionList = redisUtil.getManagementVersionList(boardId.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return getRollbackResDto.builder()
+            .versions(managementVersionList)
+            .build();
+    }
 }

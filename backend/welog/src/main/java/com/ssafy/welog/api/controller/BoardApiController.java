@@ -68,6 +68,9 @@ public class BoardApiController {
         return OK;
     }
 
-
+    @GetMapping("/rollbacks/{boardId}")
+    public ResponseEntity<getRollbackResDto> getRollbackList(@PathVariable Long boardId) {
+        return ResponseEntity.ok(boardService.getRollbackList(boardId));
+    }
 
 }

@@ -7,6 +7,7 @@ import com.ssafy.welog.api.controller.dto.AdminDto.SeachUserDto;
 import com.ssafy.welog.api.controller.dto.AdminDto.SearchAllUserResDto;
 import com.ssafy.welog.api.controller.dto.AdminDto.UserChangeReqDto;
 
+import com.ssafy.welog.common.util.RedisUtil;
 import com.ssafy.welog.domain.entity.User;
 import com.ssafy.welog.domain.repository.BoardRepository;
 import com.ssafy.welog.domain.repository.UserRepository;
@@ -28,10 +29,12 @@ public class AdminService {
 
     private final UserRepository userRepository;
     private final BoardRepository boardRepository;
-
-    public AdminService(UserRepository userRepository, BoardRepository boardRepository) {
+    private final RedisUtil redisUtil;
+    public AdminService(UserRepository userRepository, BoardRepository boardRepository,
+        RedisUtil redisUtil) {
         this.userRepository = userRepository;
         this.boardRepository = boardRepository;
+        this.redisUtil = redisUtil;
     }
 
     @Transactional
@@ -95,9 +98,22 @@ public class AdminService {
     @Transactional
     public BoardRollBackResDto rollBackBoard(BoardRollBackReqDto boardRollBackReqDto) {
         log.info("게시글 롤백");
+        Board board = boardRepository.findById(boardRollBackReqDto.getBoardId()).orElseThrow(
+            () -> new BoardNotFoundException("해당하는 게시글이 존재하지 않습니다.")
+        );
+        Board management = null;
+        try{
+            management = (Board)redisUtil.getManagement(board.getBoardId() + ":" + boardRollBackReqDto.getVersion());
+            System.out.println(management);
+            System.out.println(management.getVersion());
+            System.out.println(management.getContent());
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        board.change(null, management.getContent(), management.getVersion());
         return BoardRollBackResDto.builder()
-            .content("내용")
-            .version("3.5.1")
+            .content(board.getContent())
+            .version(board.getVersion())
             .build();
     }
 
