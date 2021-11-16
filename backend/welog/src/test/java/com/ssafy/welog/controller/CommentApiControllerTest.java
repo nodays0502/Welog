@@ -83,7 +83,6 @@ public class CommentApiControllerTest {
         AddCommentReqDto addCommentReqDto = AddCommentReqDto.builder()
             .content("내용")
             .line(2L)
-            .registerTime(LocalDateTime.now())
             .parentId(1L)
             .build();
         //when

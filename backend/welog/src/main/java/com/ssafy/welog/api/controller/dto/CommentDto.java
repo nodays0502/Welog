@@ -19,16 +19,12 @@ public class CommentDto {
         @NotBlank
         private String content;
         private Long line;
-        private Long ParentId;
-        private LocalDateTime registerTime;
-
+        private Long parentId;
         @Builder
-        public AddCommentReqDto(String content,  Long line, Long parentId,
-            LocalDateTime registerTime) {
+        public AddCommentReqDto(String content,  Long line, Long parentId) {
             this.content = content;
             this.line = line;
-            ParentId = parentId;
-            this.registerTime = registerTime;
+            this.parentId = parentId;
         }
     }
 

@@ -16,19 +16,12 @@ import org.hibernate.annotations.Fetch;
 
 @Entity
 @Getter
-@Table(uniqueConstraints = {
-        @UniqueConstraint(
-                columnNames = {"user_name","user_email"}
-        )
-})
 public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
-    @Column(name = "user_name", nullable = false)
     private String userName;
-    @Column(name = "user_email", nullable = false)
     private String userEmail;
     private String password;
 
@@ -46,7 +39,7 @@ public class User implements Serializable {
     private Set<UserBoard> userBoards;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private List<UserComment> userComments;
+    private List<Comment> comment;
 
     public User() {
     }
@@ -54,18 +47,18 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "User{" +
-            "userId=" + userId +
-            ", userName='" + userName + '\'' +
-            ", userEmail='" + userEmail + '\'' +
-            ", password='" + password + '\'' +
-            ", userRole=" + userRole +
-            '}';
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", password='" + password + '\'' +
+                ", userRole=" + userRole +
+                '}';
     }
 
     @Builder
     public User(Long userId, String userName, String userEmail,String password, AuthLevel userRole) {
         this.userBoards = new LinkedHashSet<>();
-        this.userComments = new ArrayList<>();
+        this.comment = new ArrayList<>();
         this.userId = userId;
         this.userName = userName;
         this.userEmail = userEmail;

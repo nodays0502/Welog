@@ -20,15 +20,15 @@ public class QComment extends EntityPathBase<Comment> {
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
-    public static final QComment comment1 = new QComment("comment1");
+    public static final QComment comment = new QComment("comment");
 
     public final QBoard board;
-
-    public final QComment comment;
 
     public final NumberPath<Long> commentId = createNumber("commentId", Long.class);
 
     public final StringPath content = createString("content");
+
+    public final QComment parentComment;
 
     public final DateTimePath<java.time.LocalDateTime> registerTime = createDateTime("registerTime", java.time.LocalDateTime.class);
 
@@ -51,7 +51,7 @@ public class QComment extends EntityPathBase<Comment> {
     public QComment(Class<? extends Comment> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.board = inits.isInitialized("board") ? new QBoard(forProperty("board")) : null;
-        this.comment = inits.isInitialized("comment") ? new QComment(forProperty("comment"), inits.get("comment")) : null;
+        this.parentComment = inits.isInitialized("parentComment") ? new QComment(forProperty("parentComment"), inits.get("parentComment")) : null;
     }
 
 }
