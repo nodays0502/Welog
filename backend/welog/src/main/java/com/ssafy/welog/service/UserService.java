@@ -51,7 +51,7 @@ public class UserService implements UserDetailsService {
         if(userRepository.existsByUserName(userCreateReqDto.getUserName())){
             throw new UserDuplicateNicknameException("중복된 유저 이름입니다.");
         }
-        if(userRepository.existsByUserEmail(userCreateReqDto.getUserName())){
+        if(userRepository.existsByUserEmail(userCreateReqDto.getUserEmail())){
             throw new UserDuplicateEmailException("중복된 이메일 입니다.");
         }
         User newUser = User.builder()

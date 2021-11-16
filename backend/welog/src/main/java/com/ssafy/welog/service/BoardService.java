@@ -18,6 +18,9 @@ import com.ssafy.welog.exception.user.UserNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -60,9 +63,15 @@ public class BoardService {
         log.info("게시글 등록");
     }
 
-    public SearchBoardResDto searchAllBoard(PageDto page) {
+    public SearchBoardResDto searchAllBoard(Integer page) {
         log.info("게시글 전체 조회");
-        List<Board> boardList = boardRepository.findAll();
+        if(page == null){
+            page = 0;
+        }
+        PageRequest pageRequest = PageRequest.of(page, 10, Direction.ASC, "boardId");
+        System.out.println("1");
+        Page<Board> boardList = boardRepository.findAll(pageRequest);
+        System.out.println("2");
         List<SearchBoardDto> collect = boardList.stream()
             .map(o -> SearchBoardDto.builder()
                 .boardId(o.getBoardId())
@@ -73,6 +82,7 @@ public class BoardService {
                 .auth(o.getAuthLevel())
                 .registerTime(o.getRegisterTime())
                 .build()).collect(Collectors.toList());
+        System.out.println("3");
         return SearchBoardResDto.builder().boardList(collect).build();
     }
 

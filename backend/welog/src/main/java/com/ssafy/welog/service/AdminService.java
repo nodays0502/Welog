@@ -45,14 +45,11 @@ public class AdminService {
     @Transactional
     public void changeUser(UserChangeReqDto userChangeReqDto) {
         String email = userChangeReqDto.getUserEmail();
-        if (userRepository.existsByUserEmail(email)) {
-
-            User user = userRepository.findByUserEmail(email)
-                .orElseThrow(() -> new UserNotFoundException("해당하는 유저가 존재하지 않습니다."));
-            System.out.println(user);
-            user.changeInfo(null, null, userChangeReqDto.getAuthLevel());
-            System.out.println(user);
-        }
+        User user = userRepository.findByUserEmail(email)
+            .orElseThrow(() -> new UserNotFoundException("해당하는 유저가 존재하지 않습니다."));
+        System.out.println(user);
+        user.changeInfo(null, null, userChangeReqDto.getAuthLevel());
+        System.out.println(user);
         log.info("유저 권한 변경");
     }
 

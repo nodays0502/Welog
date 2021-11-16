@@ -29,7 +29,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     // 존재하지 않는 게시글에 대한 에러 핸들러
     @ExceptionHandler(BoardNotFoundException.class)
     public final ResponseEntity<String> handleBoardNotFoundException(
-        UserDuplicateEmailException ex) {
+        BoardNotFoundException ex) {
         log.debug("존재하지 않는 게시글", ex);
         return BOARD_NOT_FOUND;
     }

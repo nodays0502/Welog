@@ -67,8 +67,10 @@ public class AuthService {
 //            .build();
     }
     @Transactional
-    public void logout(String sessionId) {
-        redisUtil.delete(sessionId);
+    public void logout(HttpSession httpSession) {
+        httpSession.invalidate();
+
+//        redisUtil.delete(sessionId);
         log.info("로그아웃");
     }
 

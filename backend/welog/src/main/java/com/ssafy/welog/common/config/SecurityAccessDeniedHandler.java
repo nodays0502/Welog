@@ -15,7 +15,7 @@ public class SecurityAccessDeniedHandler implements AccessDeniedHandler {
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response,
         AccessDeniedException accessDeniedException) throws IOException {
-
+        System.out.println("403에러");
         response.sendError(HttpServletResponse.SC_FORBIDDEN); // 403에러
     }
 }

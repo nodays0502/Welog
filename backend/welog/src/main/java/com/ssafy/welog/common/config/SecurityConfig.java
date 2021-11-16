@@ -90,13 +90,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
             .antMatchers("/api/auth").permitAll()
             .antMatchers("/api/user").permitAll()
-            .antMatchers("/api/reissue").permitAll()
-            .antMatchers("/api/hello").permitAll()
             .antMatchers("/api/docs/api-doc.html").permitAll()
             .antMatchers("/api/search/**").permitAll()
             .antMatchers("/swagger-resources/**").permitAll()
 
             .anyRequest().authenticated()
+
             .and()
             .apply(new SessionSecurityConfig(redisUtil, authenticationManagerBuilder));
     }

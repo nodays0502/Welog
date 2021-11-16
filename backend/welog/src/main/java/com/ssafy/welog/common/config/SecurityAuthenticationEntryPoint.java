@@ -17,7 +17,7 @@ public class SecurityAuthenticationEntryPoint implements
     public void commence(HttpServletRequest request,
         HttpServletResponse response,
         AuthenticationException authException) throws IOException {
-
+        System.out.println("401에러");
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED); // 401에러
     }
 }

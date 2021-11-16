@@ -72,7 +72,7 @@ public class SessionFilter extends GenericFilterBean {
 //                requestURI);
         } else {
             logger.debug("유효한 SessionId가 없습니다, uri: {}", requestURI);
-            throw new SessionNotFoundException("유효한 SessionId가 없습니다.");
+//            throw new SessionNotFoundException("유효한 SessionId가 없습니다.");
         }
 
         filterChain.doFilter(servletRequest, servletResponse);
