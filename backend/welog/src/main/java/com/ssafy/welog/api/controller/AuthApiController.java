@@ -32,8 +32,9 @@ public class AuthApiController {
 
     @DeleteMapping
     @PreAuthorize("hasAnyRole('USER','ADMIN')")
-    public ResponseEntity<Void> logout(HttpServletRequest req){
-        authService.logout(req.getHeader("Authorization").substring(7));
+    public ResponseEntity<Void> logout(HttpServletRequest request){
+        authService.logout(request.getSession());
+        request.getSession(true);
         return OK;
     }
 }

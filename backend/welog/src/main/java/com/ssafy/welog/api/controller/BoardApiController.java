@@ -38,8 +38,8 @@ public class BoardApiController {
     /*
      * 게시글 전체 조회
      */
-    @GetMapping
-    public ResponseEntity<SearchBoardResDto> searchAllBoard(PageDto page) {
+    @GetMapping("/boards/{page}")
+    public ResponseEntity<SearchBoardResDto> searchAllBoard(@PathVariable Integer page) {
         return ResponseEntity.ok(boardService.searchAllBoard(page));
     }
 

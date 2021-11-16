@@ -3,6 +3,7 @@ package com.ssafy.welog.controller;
 import static com.ssafy.welog.ApiDocumentUtils.getDocumentRequest;
 import static com.ssafy.welog.ApiDocumentUtils.getDocumentResponse;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
@@ -21,7 +22,7 @@ import static org.springframework.test.web.servlet.setup.SharedHttpSessionConfig
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssafy.welog.api.controller.AuthApiController;
 import com.ssafy.welog.api.controller.dto.AuthDto.LoginReqDto;
-import com.ssafy.welog.api.controller.dto.AuthDto.LoginResDto;
+//import com.ssafy.welog.api.controller.dto.AuthDto.LoginResDto;
 import com.ssafy.welog.service.AuthService;
 import java.util.Enumeration;
 import javax.servlet.ServletContext;
@@ -75,9 +76,9 @@ class AuthApiControllerTest {
             .password("비밀번호")
             .build();
 
-        LoginResDto loginResDto = LoginResDto.builder()
-            .sessionId("세션 아이디")
-            .build();
+//        LoginResDto loginResDto = LoginResDto.builder()
+//            .sessionId("세션 아이디")
+//            .build();
         HttpSession httpSession = new HttpSession() {
             @Override
             public long getCreationTime() {
@@ -164,7 +165,7 @@ class AuthApiControllerTest {
                 return false;
             }
         };
-        doReturn(loginResDto).when(authService).login(loginReqDto , httpSession);
+        doNothing().when(authService).login(loginReqDto , httpSession);
 
         mockMvc.perform(post("/api/auth")
             .contentType(MediaType.APPLICATION_JSON)
