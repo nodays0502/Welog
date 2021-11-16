@@ -236,9 +236,11 @@ public class CommentApiControllerTest {
             .commentId(1L)
             .feeling(Feeling.LIKE)
             .build();
+        User user = User.builder()
+                .build();
 
         //when
-        doNothing().when(commentService).addLike(addFeelingtDto);
+        doNothing().when(commentService).addLike(user, addFeelingtDto);
 
         //then
         mockMvc.perform(patch("/api/comment")

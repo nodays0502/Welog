@@ -68,7 +68,7 @@ public class CommentApiController {
      */
     @PatchMapping
     public ResponseEntity<Void> addLike(@AuthenticationPrincipal User user, @Valid @RequestBody AddFeelingtReqDto addFeelingtDto) {
-        commentService.addLike(addFeelingtDto);
+        commentService.addLike(user, addFeelingtDto);
         return OK;
     }
 

@@ -14,14 +14,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.ssafy.welog.domain.common.AuthLevel;
-import com.ssafy.welog.domain.entity.Board;
-import com.ssafy.welog.domain.entity.Comment;
-import com.ssafy.welog.domain.entity.User;
-import com.ssafy.welog.domain.entity.UserBoard;
-import com.ssafy.welog.domain.repository.BoardRepository;
-import com.ssafy.welog.domain.repository.CommentRepository;
-import com.ssafy.welog.domain.repository.UserBoardRepository;
-import com.ssafy.welog.domain.repository.UserRepository;
+import com.ssafy.welog.domain.entity.*;
+import com.ssafy.welog.domain.repository.*;
 import com.ssafy.welog.exception.user.UserNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -32,11 +26,13 @@ public class CommentService {
     private final UserRepository userRepository;
     private final BoardRepository boardRepository;
     private final CommentRepository commentRepository;
+    private final FeelingRepository feelingRepository;
 
-    public CommentService(UserRepository userRepository, BoardRepository boardRepository, CommentRepository commentRepository) {
+    public CommentService(UserRepository userRepository, BoardRepository boardRepository, CommentRepository commentRepository, FeelingRepository feelingRepository) {
         this.userRepository = userRepository;
         this.boardRepository = boardRepository;
         this.commentRepository = commentRepository;
+        this.feelingRepository = feelingRepository;
     }
 
     public void addComment(User user, AddCommentReqDto addCommentDto) {
@@ -92,7 +88,28 @@ public class CommentService {
         log.info("댓글 삭제");
     }
 
-    public void addLike(AddFeelingtReqDto addFeelingtDto) {
-        log.info("댓글 좋아요 알림 설정까지 따르르르릉");
+    public void addLike(User user, AddFeelingtReqDto addFeelingtDto) {
+        log.info("댓글 좋아요/싫어요 등록 및 삭제");
+        Comment comment = commentRepository.findById(addFeelingtDto.getCommentId()).get();
+        User writer = userRepository.findById(user.getUserId()).get();
+        List<Feel> feels = feelingRepository.getByCommentIdAndUserId(comment.getCommentId(), writer.getUserId());
+        if (feels.isEmpty()) { // 사용자가 좋아요/싫어요 안눌렀으면
+            Feel feel = Feel.builder()
+                    .comment(comment)
+                    .user(writer)
+                    .feeling(addFeelingtDto.getFeeling())
+                    .build();
+
+            feelingRepository.save(feel); // 좋아요/싫어요 등록하기
+        }
+        else { // 기존에 저장된게 있으면
+            Feel feel = feels.stream().findFirst().get();
+            if (feel.getFeeling() == addFeelingtDto.getFeeling()) // 같은경우 삭제
+                feelingRepository.delete(feel);
+            else {
+                feel.change(addFeelingtDto.getFeeling()); // 다를경우 변경
+                feelingRepository.save(feel);
+            }
+        }
     }
 }
