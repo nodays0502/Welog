@@ -13,33 +13,32 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "comment_id")
     private Long commentId;
-    @Column(length = 1000, nullable = false)
+    @Column(length = 1000)
     private String content;
     private LocalDateTime registerTime;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "comment_id")
-    private Comment parentComment;
+    private Comment comment;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "board_id")
     private Board board;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+
     public Comment() {
     }
 
     @Builder
-    public Comment(Long commentId, String content, LocalDateTime registerTime, Comment comment, Board board) {
-        this.commentId = commentId;
+    public Comment(String content, LocalDateTime registerTime, Comment comment, Board board, User user) {
         this.content = content;
-        this.registerTime = LocalDateTime.now();
-        this.parentComment = comment;
+        this.registerTime = registerTime;
+        this.comment = comment;
         this.board = board;
-    }
-
-    public void change(String content) {
-        if (content != null) {
-            this.content = content;
-        }
+        this.user = user;
     }
 }
