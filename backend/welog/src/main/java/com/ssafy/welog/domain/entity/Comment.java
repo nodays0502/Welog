@@ -34,11 +34,17 @@ public class Comment {
     }
 
     @Builder
-    public Comment(String content, LocalDateTime registerTime, Comment comment, Board board, User user) {
+    public Comment(String content, Comment comment, Board board, User user) {
         this.content = content;
-        this.registerTime = registerTime;
+        this.registerTime = LocalDateTime.now();
         this.comment = comment;
         this.board = board;
         this.user = user;
+    }
+
+    public void change(String content) {
+        if (content != null) {
+            this.content = content;
+        }
     }
 }

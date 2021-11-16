@@ -22,27 +22,37 @@ import com.ssafy.welog.domain.repository.BoardRepository;
 import com.ssafy.welog.domain.repository.CommentRepository;
 import com.ssafy.welog.domain.repository.UserBoardRepository;
 import com.ssafy.welog.domain.repository.UserRepository;
+import com.ssafy.welog.exception.user.UserNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
 public class CommentService {
+    private final UserRepository userRepository;
     private final BoardRepository boardRepository;
     private final CommentRepository commentRepository;
 
-    public CommentService(BoardRepository boardRepository, CommentRepository commentRepository) {
+    public CommentService(UserRepository userRepository, BoardRepository boardRepository, CommentRepository commentRepository) {
+        this.userRepository = userRepository;
         this.boardRepository = boardRepository;
         this.commentRepository = commentRepository;
     }
 
-    public void addComment(AddCommentReqDto addCommentDto) {
-        Comment comment = Comment.builder()
-                .content(addCommentDto.getContent())
-                .board(boardRepository.getById(addCommentDto.getParentId()))
-                .build();
-        commentRepository.save(comment);
-        log.info("댓글 추가");
+    public void addComment(User user, AddCommentReqDto addCommentDto) {
+        try {
+            User writer = userRepository.findById(user.getUserId())
+                    .orElseThrow(() -> new UserNotFoundException("해당하는 유저가 존재하지 않습니다."));
+            Comment comment = Comment.builder()
+                    .content(addCommentDto.getContent())
+                    .board(boardRepository.getById(addCommentDto.getParentId()))
+                    .user(writer)
+                    .build();
+            commentRepository.save(comment);
+            log.info("댓글 추가");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public SearchCommentResDto searchComment(Long boardId) {
@@ -62,11 +72,18 @@ public class CommentService {
                 .build();
     }
 
-    public void changeComment(ChangeCommentReqDto changeCommentDto) {
+    public void changeComment(User user, ChangeCommentReqDto changeCommentDto) {
         log.info("댓글 변경");
+        User writer = userRepository.findById(user.getUserId()).get();
         Comment comment = commentRepository.findById(changeCommentDto.getCommentId()).get();
-//        comment.change(changeCommentDto.getContent());
-        commentRepository.save(comment);
+
+        if (writer.getUserId().equals(comment.getUser().getUserId())) {
+            comment.change(changeCommentDto.getContent());
+            commentRepository.save(comment);
+        } else {
+            // 에러 권한 없음
+            log.info("에러 발생");
+        }
     }
 
     public void deleteComment(Long commentId) {

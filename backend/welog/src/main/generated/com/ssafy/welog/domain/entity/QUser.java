@@ -20,11 +20,11 @@ public class QUser extends EntityPathBase<User> {
 
     public static final QUser user = new QUser("user");
 
+    public final ListPath<Comment, QComment> comment = this.<Comment, QComment>createList("comment", Comment.class, QComment.class, PathInits.DIRECT2);
+
     public final StringPath password = createString("password");
 
     public final SetPath<UserBoard, QUserBoard> userBoards = this.<UserBoard, QUserBoard>createSet("userBoards", UserBoard.class, QUserBoard.class, PathInits.DIRECT2);
-
-    public final ListPath<UserComment, QUserComment> userComments = this.<UserComment, QUserComment>createList("userComments", UserComment.class, QUserComment.class, PathInits.DIRECT2);
 
     public final StringPath userEmail = createString("userEmail");
 

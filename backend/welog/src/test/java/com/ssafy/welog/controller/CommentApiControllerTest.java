@@ -34,6 +34,7 @@ import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuild
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ssafy.welog.api.controller.dto.CommentDto.AddCommentReqDto;
+import com.ssafy.welog.domain.entity.User;
 import com.ssafy.welog.service.CommentService;
 import java.time.LocalDateTime;
 import org.junit.jupiter.api.BeforeEach;
@@ -85,8 +86,10 @@ public class CommentApiControllerTest {
             .line(2L)
             .parentId(1L)
             .build();
+        User user = User.builder()
+                .build();
         //when
-        doNothing().when(commentService).addComment(addCommentReqDto);
+        doNothing().when(commentService).addComment(user, addCommentReqDto);
 
         //then
         mockMvc.perform(post("/api/comment")
@@ -172,9 +175,11 @@ public class CommentApiControllerTest {
             .commentId(1L)
             .content("바뀐 내용")
             .build();
+        User user = User.builder()
+                .build();
 
         //when
-        doNothing().when(commentService).changeComment(changeCommentDto);
+        doNothing().when(commentService).changeComment(user, changeCommentDto);
 
         //then
         mockMvc.perform(put("/api/comment")
