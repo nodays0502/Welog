@@ -77,4 +77,13 @@ CREATE TABLE IF NOT EXISTS `user_board` (
                               CONSTRAINT `FKtmjpuif5sbn7e6e9bl5vo0bd6` FOREIGN KEY (`board_id`) REFERENCES `board` (`board_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+-- ssafy_web_db.favorite definition
 
+CREATE TABLE IF NOT EXISTS `favorite` (
+                            `board_id` bigint NOT NULL,
+                            `user_id` bigint NOT NULL,
+                            PRIMARY KEY (`board_id`,`user_id`),
+                            KEY `FKh3f2dg11ibnht4fvnmx60jcif` (`user_id`),
+                            CONSTRAINT `FK3si7lox7au1xuled4ixv91k8` FOREIGN KEY (`board_id`) REFERENCES `board` (`board_id`),
+                            CONSTRAINT `FKh3f2dg11ibnht4fvnmx60jcif` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
