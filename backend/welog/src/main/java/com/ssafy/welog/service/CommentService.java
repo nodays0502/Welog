@@ -65,7 +65,7 @@ public class CommentService {
     public void changeComment(ChangeCommentReqDto changeCommentDto) {
         log.info("댓글 변경");
         Comment comment = commentRepository.findById(changeCommentDto.getCommentId()).get();
-        comment.change(changeCommentDto.getContent());
+//        comment.change(changeCommentDto.getContent());
         commentRepository.save(comment);
     }
 

@@ -34,19 +34,20 @@ CREATE TABLE IF NOT EXISTS `user` (
                         UNIQUE KEY `UK1m1yqc8twtkik1ufw1wqggmyp` (`user_name`,`user_email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-
 -- ssafy_web_db.comment definition
 
 CREATE TABLE IF NOT EXISTS `comment` (
                            `comment_id` bigint NOT NULL AUTO_INCREMENT,
-                           `content` varchar(1000) NOT NULL,
+                           `content` varchar(1000) DEFAULT NULL,
                            `register_time` datetime(6) DEFAULT NULL,
                            `board_id` bigint DEFAULT NULL,
+                           `user_id` bigint DEFAULT NULL,
                            PRIMARY KEY (`comment_id`),
                            KEY `FKlij9oor1nav89jeat35s6kbp1` (`board_id`),
+                           KEY `FK8kcum44fvpupyw6f5baccx25c` (`user_id`),
+                           CONSTRAINT `FK8kcum44fvpupyw6f5baccx25c` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`),
                            CONSTRAINT `FKlij9oor1nav89jeat35s6kbp1` FOREIGN KEY (`board_id`) REFERENCES `board` (`board_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
 
 -- ssafy_web_db.feel definition
 
@@ -77,15 +78,3 @@ CREATE TABLE IF NOT EXISTS `user_board` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
--- ssafy_web_db.user_comment definition
-
-CREATE TABLE IF NOT EXISTS `user_comment` (
-                                `user_comment_id` bigint NOT NULL AUTO_INCREMENT,
-                                `comment_id` bigint DEFAULT NULL,
-                                `user_id` bigint DEFAULT NULL,
-                                PRIMARY KEY (`user_comment_id`),
-                                KEY `FK8run8dgvadrrwcwe5xpdscynm` (`comment_id`),
-                                KEY `FKornrskknlmumgdhlohpbcvrw5` (`user_id`),
-                                CONSTRAINT `FK8run8dgvadrrwcwe5xpdscynm` FOREIGN KEY (`comment_id`) REFERENCES `comment` (`comment_id`),
-                                CONSTRAINT `FKornrskknlmumgdhlohpbcvrw5` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
