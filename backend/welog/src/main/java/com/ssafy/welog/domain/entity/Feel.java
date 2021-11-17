@@ -36,9 +36,16 @@ public class Feel {
     }
 
     @Builder
-    public Feel(Long userCommentId, Comment comment, User user) {
+    public Feel(Long userCommentId, Comment comment, User user, Feeling feeling) {
         this.userCommentId = userCommentId;
         this.comment = comment;
         this.user = user;
+        this.feeling = feeling;
+    }
+
+    public void change(Feeling feeling) {
+        if (feeling != null) {
+            this.feeling = feeling;
+        }
     }
 }
