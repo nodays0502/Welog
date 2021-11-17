@@ -104,7 +104,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
 
-        configuration.addAllowedOrigin("http://i5b305.p.ssafy.io:3000");
+//        configuration.addAllowedOrigin("http://k5B305.p.ssafy.io:3000");
+//        configuration.addAllowedOrigin("https://k5B305.p.ssafy.io");
+//        configuration.addAllowedOrigin("http://localhost:3000");
+        configuration.addAllowedOrigin("*");
         configuration.addAllowedHeader("*");
         configuration.addAllowedMethod("*");
         configuration.setAllowCredentials(true);
