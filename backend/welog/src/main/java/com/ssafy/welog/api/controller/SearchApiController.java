@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
+import java.util.Map;
+
 import static com.ssafy.welog.api.controller.dto.SearchDto.SearchReqDto;
 
 
@@ -24,12 +26,12 @@ public class SearchApiController {
     }
 
     @GetMapping
-    public ResponseEntity<Object> search(@Valid @RequestParam SearchReqDto param){
+    public ResponseEntity<Object> search(SearchReqDto param){
         return ResponseEntity.ok(searchService.search(param));
     }
 
     @GetMapping("/recommend")
-    public ResponseEntity<Object> searchRecommendWords(@Valid @RequestParam SearchReqDto param){
+    public ResponseEntity<Object> searchRecommendWords(SearchReqDto param){
         return ResponseEntity.ok(searchService.searchRecommendWords(param));
     }
 }
