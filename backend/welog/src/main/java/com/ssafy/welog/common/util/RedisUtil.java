@@ -1,5 +1,6 @@
 package com.ssafy.welog.common.util;
 
+import com.ssafy.welog.domain.entity.Board;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
@@ -41,7 +42,7 @@ public class RedisUtil {
     }
 
     public void setManagement(String key, Object o) {
-        managementTemplate.setValueSerializer(new Jackson2JsonRedisSerializer(o.getClass()));
+        managementTemplate.setValueSerializer(new Jackson2JsonRedisSerializer(Board.class));
         managementTemplate.opsForValue().set(key, o);
     }
 
@@ -51,10 +52,12 @@ public class RedisUtil {
     }
 
     public Object getManagement(String key) {
+        managementTemplate.setValueSerializer(new Jackson2JsonRedisSerializer(Board.class));
         return managementTemplate.opsForValue().get(key);
     }
 
     public List<String> getManagementVersionList(String key) {
+        managementTemplate.setValueSerializer(new StringRedisSerializer());
         long size = managementTemplate.opsForList().size(key);
         List<Object> range = managementTemplate.opsForList().range(key, 0, size);
         List<String> collect = range.stream().map(o -> o.toString())
@@ -63,6 +66,7 @@ public class RedisUtil {
     }
 
     public boolean deleteManagement(String key) {
+
         return managementTemplate.delete(key);
     }
 

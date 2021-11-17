@@ -16,7 +16,7 @@ public class AdminDto {
         @Email
         private String userEmail;
 
-        @NotBlank
+        @NotNull
         private AuthLevel authLevel;
 
         @Builder
@@ -94,7 +94,7 @@ public class AdminDto {
         @NotNull
         private Long boardId;
 
-        @NotBlank
+        @NotNull
         private AuthLevel authLevel;
 
         @Builder
