@@ -9,6 +9,7 @@ import com.ssafy.welog.domain.entity.User;
 import com.ssafy.welog.service.CommentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,6 +33,7 @@ public class CommentApiController {
      * 댓글 등록을 구현한 메서드
      */
     @PostMapping
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public ResponseEntity<Void> addComment(@AuthenticationPrincipal User user, @Valid @RequestBody AddCommentReqDto addCommentDto) {
         commentService.addComment(user, addCommentDto);
         return CREATED;
@@ -41,6 +43,7 @@ public class CommentApiController {
      * 댓글 조회를 구현한 메서드
      */
     @GetMapping
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public ResponseEntity<SearchCommentResDto> searchComment(Long boardId) {
         return ResponseEntity.ok(commentService.searchComment(boardId));
     }
@@ -49,6 +52,7 @@ public class CommentApiController {
      * 댓글 수정을 구현한 메서드
      */
     @PutMapping
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public ResponseEntity<Void> changeComment(@AuthenticationPrincipal User user, @Valid @RequestBody ChangeCommentReqDto changeCommentDto) {
         commentService.changeComment(user, changeCommentDto);
         return OK;
@@ -58,6 +62,7 @@ public class CommentApiController {
      * 댓글 삭제를 구현한 메서드
      */
     @DeleteMapping("/{commentId}")
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public ResponseEntity<Void> deleteComment(@AuthenticationPrincipal User user, @PathVariable Long commentId) {
         commentService.deleteComment(commentId);
         return OK;
@@ -67,6 +72,7 @@ public class CommentApiController {
      * 댓글 좋아요/ 싫어요 기능을 구현한 메서드
      */
     @PatchMapping
+    @PreAuthorize("hasAnyRole('USER','ADMIN')")
     public ResponseEntity<Void> addLike(@AuthenticationPrincipal User user, @Valid @RequestBody AddFeelingtReqDto addFeelingtDto) {
         commentService.addLike(user, addFeelingtDto);
         return OK;
