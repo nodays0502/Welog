@@ -1,6 +1,7 @@
 package com.ssafy.welog.api.controller;
 
 import com.ssafy.welog.api.controller.dto.AuthDto.LoginReqDto;
+import com.ssafy.welog.api.controller.dto.AuthDto.LoginResDto;
 import com.ssafy.welog.service.AuthService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -25,9 +26,8 @@ public class AuthApiController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> login(@Valid @RequestBody LoginReqDto loginReqDto, HttpSession httpSession){
-        authService.login(loginReqDto,httpSession);
-        return OK;
+    public ResponseEntity<LoginResDto> login(@Valid @RequestBody LoginReqDto loginReqDto, HttpSession httpSession){
+        return ResponseEntity.ok(authService.login(loginReqDto,httpSession));
     }
 
     @DeleteMapping

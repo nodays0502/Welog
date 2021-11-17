@@ -1,6 +1,7 @@
 package com.ssafy.welog.service;
 
 import com.ssafy.welog.api.controller.dto.AuthDto.LoginReqDto;
+import com.ssafy.welog.api.controller.dto.AuthDto.LoginResDto;
 import com.ssafy.welog.common.util.RedisUtil;
 import com.ssafy.welog.domain.entity.User;
 import com.ssafy.welog.domain.repository.UserRepository;
@@ -33,7 +34,7 @@ public class AuthService {
         this.userRepository = userRepository;
     }
     @Transactional
-    public void login(LoginReqDto loginReqDto , HttpSession httpSession) {
+    public LoginResDto login(LoginReqDto loginReqDto , HttpSession httpSession) {
         log.info("로그인 시작");
         String userEmail = loginReqDto.getUserEmail();
         String password = loginReqDto.getPassword();
@@ -65,6 +66,12 @@ public class AuthService {
 ////            .sessionId(UUID.randomUUID().toString())
 //            .sessionId(sessionId)
 //            .build();
+        return LoginResDto.builder()
+            .userId(user.getUserId())
+            .userEmail(user.getUserEmail())
+            .userName(user.getUserName())
+            .userRole(user.getUserRole())
+            .build();
     }
     @Transactional
     public void logout(HttpSession httpSession) {
