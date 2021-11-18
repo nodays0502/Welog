@@ -1,4 +1,2 @@
 /* eslint-disable no-unused-vars */
-module.exports = {
-    
-};
+module.exports = {};

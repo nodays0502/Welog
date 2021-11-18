@@ -1,5 +1,5 @@
 import React from "react";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 import Button from "../../atoms/button/Button";
 // import "./ButtonGroup.css";
 
@@ -71,38 +71,49 @@ interface ButtonGroupProps {
 // ];
 
 export const goHome = (router) => {
-  router.push('/');
-}
- 
+  router.push("/");
+};
+
 export const goRegister = (router) => {
-  router.push('/register');
-}
+  router.push("/register");
+};
 export const goLogin = (router) => {
-  router.push('/login');
-}
+  router.push("/login");
+};
 
 const ButtonGroup = ({ style, className, buttons }: ButtonGroupProps) => {
-  
   const router = useRouter();
-  
-  return (<div style={style} className={`buttonGroup_default ${className.join(" ")}`}>
-    {buttons.map((button) => {
-     
-      if (button === "Home") {
-        return <Button label={button} key={button} onClick={()=>goHome(router)} />
-      }
-      if(button === "Login") {
-        return <Button label={button} key={button} onClick={()=>goLogin(router)}/>
-      }
-      if(button === "Login") {
-        return <Button label={button} key={button} />
-      }
-      
-        return <Button label={button} key={button} />
-    })}
-  </div>
-);
-  }
+
+  return (
+    <div style={style} className={`buttonGroup_default ${className.join(" ")}`}>
+      {buttons.map((button) => {
+        if (button === "Home") {
+          return (
+            <Button
+              label={button}
+              key={button}
+              onClick={() => goHome(router)}
+            />
+          );
+        }
+        if (button === "Login") {
+          return (
+            <Button
+              label={button}
+              key={button}
+              onClick={() => goLogin(router)}
+            />
+          );
+        }
+        if (button === "Login") {
+          return <Button label={button} key={button} />;
+        }
+
+        return <Button label={button} key={button} />;
+      })}
+    </div>
+  );
+};
 
 /**
  * react/require-default-props

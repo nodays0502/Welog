@@ -18,7 +18,7 @@ interface ButtonProps {
   onClick?: () => void;
 
   /**
-   * button click해야 할 함수 타입 설정 
+   * button click해야 할 함수 타입 설정
    */
   dataType?: string;
 
@@ -31,7 +31,13 @@ interface ButtonProps {
 /**
  * Primary UI component for user interaction
  */
-const Button = ({ label, className, style, dataType, onClick }: ButtonProps) => (
+const Button = ({
+  label,
+  className,
+  style,
+  dataType,
+  onClick,
+}: ButtonProps) => (
   <button
     type="button"
     style={style}
@@ -68,9 +74,9 @@ export const FindIconButton = ({ className }: FindIconButtonProps) => (
 Button.defaultProps = {
   className: [],
   style: {},
-  onClick: () => { },
+  onClick: () => {},
   label: "this is button",
-  dataType: 'normal'
+  dataType: "normal",
 };
 
 export default Button;
