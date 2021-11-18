@@ -32,9 +32,6 @@ const ButtongroupExample1 = [
   "Login",
 ];
 
-
-
-
 // const image = "/public/static/logos/logo.png";
 const image = "/static/logos/logo.png";
 
