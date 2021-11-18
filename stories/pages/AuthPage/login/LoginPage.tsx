@@ -92,10 +92,10 @@ const LoginPage = () => {
     // }
   };
 
-  const check = async () => {
-    const data = await instance.get("/api/user");
-    console.log(data);
-  };
+  // const check = async () => {
+  //   const data = await instance.get("/api/user");
+  //   console.log(data);
+  // };
 
   const inputRef = useRef(null);
   useEffect(() => {
