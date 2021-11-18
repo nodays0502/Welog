@@ -114,10 +114,10 @@ class BoardApiControllerTest {
     @DisplayName("게시글 전체 조회 - 성공")
     public void searchAllBoard_success() throws Exception {
         //given
-        PageDto pageDto = PageDto.builder()
-                .page(1)
-                .build();
-
+//        PageDto pageDto = PageDto.builder()
+//                .page(1)
+//                .build();
+        int page = 0;
         SearchBoardDto searchBoardDto = SearchBoardDto.builder()
                 .boardId(1L)
                 .content("")
@@ -130,7 +130,7 @@ class BoardApiControllerTest {
                 .boardList(boardList)
                 .build();
         //when
-        doReturn(searchBoardResDto).when(boardService).searchAllBoard(pageDto);
+        doReturn(searchBoardResDto).when(boardService).searchAllBoard(page);
 
         //then
         mockMvc.perform(get("/api/board")

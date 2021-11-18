@@ -1,14 +1,18 @@
 package com.ssafy.welog.api.controller;
 
-import com.ssafy.welog.api.controller.dto.SearchDto;
 import com.ssafy.welog.service.SearchService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import static com.ssafy.welog.api.controller.dto.SearchDto.*;
+import javax.validation.Valid;
+
+import java.util.Map;
+
+import static com.ssafy.welog.api.controller.dto.SearchDto.SearchReqDto;
 
 
 @Slf4j

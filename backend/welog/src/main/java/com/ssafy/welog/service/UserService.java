@@ -8,6 +8,9 @@ import com.ssafy.welog.api.controller.dto.UserDto.UserPutReqDto;
 import com.ssafy.welog.common.util.RedisUtil;
 import com.ssafy.welog.domain.entity.User;
 import com.ssafy.welog.domain.repository.UserRepository;
+import com.ssafy.welog.exception.user.UserDuplicateEmailException;
+import com.ssafy.welog.exception.user.UserDuplicateNicknameException;
+import com.ssafy.welog.exception.user.UserNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
@@ -35,16 +38,21 @@ public class UserService implements UserDetailsService {
     }
     @Transactional
     public void deleteUser(long userId) {
-        User user = userRepository.findById(userId).get();
+        User user = userRepository.findById(userId)
+            .orElseThrow(() -> new UserNotFoundException("해당하는 유저가 존재하지 않습니다."));
         userRepository.delete(user);
 
         log.info("유저 삭제");
     }
     @Transactional
     public void createUser(UserCreateReqDto userCreateReqDto) {
+        System.out.println("service");
         log.info("회원 가입");
         if(userRepository.existsByUserName(userCreateReqDto.getUserName())){
-            // 예외처리
+            throw new UserDuplicateNicknameException("중복된 유저 이름입니다.");
+        }
+        if(userRepository.existsByUserEmail(userCreateReqDto.getUserEmail())){
+            throw new UserDuplicateEmailException("중복된 이메일 입니다.");
         }
         User newUser = User.builder()
             .userEmail(userCreateReqDto.getUserEmail())
@@ -59,7 +67,8 @@ public class UserService implements UserDetailsService {
 
     public UserInfoDto getUser(long userId) {
         log.info("회원정보 얻기");
-        User user = userRepository.findById(userId).get();
+        User user = userRepository.findById(userId)
+            .orElseThrow(() -> new UserNotFoundException("해당하는 유저가 존재하지 않습니다."));
         return UserInfoDto.builder()
             .email(user.getUserEmail())
             .userName(user.getUserName())
@@ -68,7 +77,8 @@ public class UserService implements UserDetailsService {
     }
     @Transactional
     public void patchUser(long userId,UserPutReqDto userPutReqDto) {
-        User user = userRepository.findById(userId).get();
+        User user = userRepository.findById(userId)
+            .orElseThrow(() -> new UserNotFoundException("해당하는 유저가 존재하지 않습니다."));
         String password = null;
         if(userPutReqDto.getPassword() != null){
             password= passwordEncoder.encode(userPutReqDto.getPassword());
@@ -81,7 +91,8 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUserName(username).get();
+        User user = userRepository.findByUserName(username)
+            .orElseThrow(() -> new UserNotFoundException("해당하는 유저가 존재하지 않습니다."));
         if(user == null){
             // 예외처리
         }

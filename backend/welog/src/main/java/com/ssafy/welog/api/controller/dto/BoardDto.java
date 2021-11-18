@@ -1,16 +1,12 @@
 package com.ssafy.welog.api.controller.dto;
 
 import com.ssafy.welog.domain.common.AuthLevel;
-import javax.persistence.Column;
-import javax.validation.constraints.NotBlank;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
-import lombok.ToString;
 
 public class BoardDto {
 
@@ -27,7 +23,7 @@ public class BoardDto {
 
         private String category;
 
-        @NotBlank
+        @NotNull
         private AuthLevel authLevel;
 
         @Builder
@@ -37,6 +33,7 @@ public class BoardDto {
             this.title = title;
             this.version = version;
             this.category = category;
+            this.authLevel = authLevel;
         }
     }
 
@@ -111,5 +108,15 @@ public class BoardDto {
         }
     }
 
+    @Getter
+    @NoArgsConstructor(access = AccessLevel.PROTECTED)
+    public static class getRollbackResDto {
 
+        private List<String> versions;
+
+        @Builder
+        public getRollbackResDto(List<String> versions) {
+            this.versions = versions;
+        }
+    }
 }

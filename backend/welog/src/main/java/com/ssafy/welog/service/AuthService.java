@@ -1,9 +1,11 @@
 package com.ssafy.welog.service;
 
 import com.ssafy.welog.api.controller.dto.AuthDto.LoginReqDto;
+import com.ssafy.welog.api.controller.dto.AuthDto.LoginResDto;
 import com.ssafy.welog.common.util.RedisUtil;
 import com.ssafy.welog.domain.entity.User;
 import com.ssafy.welog.domain.repository.UserRepository;
+import com.ssafy.welog.exception.user.UserNotFoundException;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import javax.servlet.http.HttpSession;
@@ -32,11 +34,12 @@ public class AuthService {
         this.userRepository = userRepository;
     }
     @Transactional
-    public void login(LoginReqDto loginReqDto , HttpSession httpSession) {
+    public LoginResDto login(LoginReqDto loginReqDto , HttpSession httpSession) {
         log.info("로그인 시작");
         String userEmail = loginReqDto.getUserEmail();
         String password = loginReqDto.getPassword();
-        User user = userRepository.findByUserEmail(userEmail).get();
+        User user = userRepository.findByUserEmail(userEmail)
+            .orElseThrow(() -> new UserNotFoundException("해당하는 유저가 존재하지 않습니다."));
         UsernamePasswordAuthenticationToken authenticationToken =
             new UsernamePasswordAuthenticationToken(user.getUserName(), password);
 
@@ -49,7 +52,7 @@ public class AuthService {
         System.out.println("authorities:"+authorities);
 
         httpSession.setAttribute("user",user);
-        httpSession.setMaxInactiveInterval(60);
+        httpSession.setMaxInactiveInterval(60 * 30);
 
 
 //        String sessionId = UUID.randomUUID().toString();
@@ -63,10 +66,18 @@ public class AuthService {
 ////            .sessionId(UUID.randomUUID().toString())
 //            .sessionId(sessionId)
 //            .build();
+        return LoginResDto.builder()
+            .userId(user.getUserId())
+            .userEmail(user.getUserEmail())
+            .userName(user.getUserName())
+            .userRole(user.getUserRole())
+            .build();
     }
     @Transactional
-    public void logout(String sessionId) {
-        redisUtil.delete(sessionId);
+    public void logout(HttpSession httpSession) {
+        httpSession.invalidate();
+
+//        redisUtil.delete(sessionId);
         log.info("로그아웃");
     }
 

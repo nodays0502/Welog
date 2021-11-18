@@ -10,36 +10,39 @@ import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactor
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
-import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
-import org.springframework.session.web.context.AbstractHttpSessionApplicationInitializer;
-
 
 @Configuration
-@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 60) /* 세션 만료 시간 : 60초 */
 @RequiredArgsConstructor
-public class RedisConfig extends AbstractHttpSessionApplicationInitializer {
-
-    @Value("${spring.redis.session.host}")
+public class ManagementConfig {
+    @Value("${spring.redis.management.host}")
     private String redisHost;
 
-    @Value("${spring.redis.session.port}")
+    @Value("${spring.redis.management.port}")
     private int redisPort;
 
     private final ObjectMapper objectMapper;
 
     @Bean
-    public RedisConnectionFactory redisConnectionFactory() {
+    public RedisConnectionFactory managementConnectionFactory() {
         return new LettuceConnectionFactory(redisHost, redisPort);
     }
 
-    @Bean
+    @Bean(name = "managementTemplate")
     public RedisTemplate<String, Object> redisTemplate() {
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
+        redisTemplate.setConnectionFactory(managementConnectionFactory());
+        redisTemplate.setKeySerializer(new StringRedisSerializer());
+//        redisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer(objectMapper));
+        return redisTemplate;
+    }
+    /*
+    *         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
 
         redisTemplate.setConnectionFactory(redisConnectionFactory());
         redisTemplate.setEnableTransactionSupport(true);
         redisTemplate.setKeySerializer(new StringRedisSerializer());
         redisTemplate.setValueSerializer(new GenericJackson2JsonRedisSerializer(objectMapper));
         return redisTemplate;
-    }
+    *
+    * */
 }

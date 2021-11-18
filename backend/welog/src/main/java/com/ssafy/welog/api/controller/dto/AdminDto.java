@@ -1,15 +1,12 @@
 package com.ssafy.welog.api.controller.dto;
 
 import com.ssafy.welog.domain.common.AuthLevel;
-import java.util.List;
+import lombok.*;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import java.util.List;
 
 public class AdminDto {
 
@@ -19,7 +16,7 @@ public class AdminDto {
         @Email
         private String userEmail;
 
-        @NotBlank
+        @NotNull
         private AuthLevel authLevel;
 
         @Builder
@@ -97,7 +94,7 @@ public class AdminDto {
         @NotNull
         private Long boardId;
 
-        @NotBlank
+        @NotNull
         private AuthLevel authLevel;
 
         @Builder

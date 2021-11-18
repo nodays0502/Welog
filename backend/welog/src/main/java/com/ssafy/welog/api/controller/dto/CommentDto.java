@@ -1,12 +1,14 @@
 package com.ssafy.welog.api.controller.dto;
 
-import com.ssafy.welog.domain.entity.Feeling;
-import java.time.LocalDateTime;
-import java.util.List;
+import com.ssafy.welog.domain.common.Feeling;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import javax.validation.constraints.NotBlank;
+import java.time.LocalDateTime;
+import java.util.List;
 
 public class CommentDto {
 
@@ -14,18 +16,15 @@ public class CommentDto {
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class AddCommentReqDto {
 
+        @NotBlank
         private String content;
         private Long line;
-        private Long ParentId;
-        private LocalDateTime registerTime;
-
+        private Long parentId;
         @Builder
-        public AddCommentReqDto(String content,  Long line, Long parentId,
-            LocalDateTime registerTime) {
+        public AddCommentReqDto(String content,  Long line, Long parentId) {
             this.content = content;
             this.line = line;
-            ParentId = parentId;
-            this.registerTime = registerTime;
+            this.parentId = parentId;
         }
     }
 
@@ -45,6 +44,7 @@ public class CommentDto {
     public static class SearchCommentDto{
 
         private Long commentId;
+        @NotBlank
         private String content;
         private LocalDateTime registerTime;
 
@@ -60,6 +60,7 @@ public class CommentDto {
     @NoArgsConstructor(access = AccessLevel.PROTECTED)
     public static class ChangeCommentReqDto {
         private Long commentId;
+        @NotBlank
         private String content;
 
         @Builder

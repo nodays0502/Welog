@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.ssafy.welog.domain.common.Feeling;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -34,9 +36,16 @@ public class Feel {
     }
 
     @Builder
-    public Feel(Long userCommentId, Comment comment, User user) {
+    public Feel(Long userCommentId, Comment comment, User user, Feeling feeling) {
         this.userCommentId = userCommentId;
         this.comment = comment;
         this.user = user;
+        this.feeling = feeling;
+    }
+
+    public void change(Feeling feeling) {
+        if (feeling != null) {
+            this.feeling = feeling;
+        }
     }
 }

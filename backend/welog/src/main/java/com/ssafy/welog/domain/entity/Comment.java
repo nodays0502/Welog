@@ -25,16 +25,26 @@ public class Comment {
     @JoinColumn(name = "board_id")
     private Board board;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+
     public Comment() {
     }
 
     @Builder
-
-    public Comment(Long commentId, String content, LocalDateTime registerTime, Comment comment, Board board) {
-        this.commentId = commentId;
+    public Comment(String content, Comment comment, Board board, User user) {
         this.content = content;
-        this.registerTime = registerTime;
+        this.registerTime = LocalDateTime.now();
         this.comment = comment;
         this.board = board;
+        this.user = user;
+    }
+
+    public void change(String content) {
+        if (content != null) {
+            this.content = content;
+        }
     }
 }
