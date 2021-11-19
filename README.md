@@ -52,7 +52,7 @@
 
 ------
 
-[![image](/s05-final/S05P31B305/-/wikis/uploads/c36121a8b48da637fe174859a75c2f65/image.png)]()
+![image](uploads/fcfa92a2d1b2f809eedc13d1bc39f90d/image.png)
 
 ### BE
 
@@ -83,7 +83,7 @@
 
 ### Application Structure
 
-[![Web_App_Reference_Architecture](/s05-final/S05P31B305/-/wikis/uploads/0ea13445651e921a3a7e4caf3f88e505/Web_App_Reference_Architecture.png)]()
+![Web_App_Reference_Architecture](uploads/0ea13445651e921a3a7e4caf3f88e505/Web_App_Reference_Architecture.png)
 
 
 
