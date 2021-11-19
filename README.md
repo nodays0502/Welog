@@ -52,7 +52,7 @@
 
 ------
 
-![image](uploads/fcfa92a2d1b2f809eedc13d1bc39f90d/image.png)
+![Image_Pasted_at_2021-11-17_16-51](/uploads/05cdf0d7a4416e715c69ec5a77e72c15/Image_Pasted_at_2021-11-17_16-51.png)
 
 ### BE
 
@@ -83,7 +83,8 @@
 
 ### Application Structure
 
-![Web_App_Reference_Architecture](uploads/0ea13445651e921a3a7e4caf3f88e505/Web_App_Reference_Architecture.png)
+![Web_App_Reference_Architecture](/uploads/ca3a088ddc75a853864e70071c069ad3/Web_App_Reference_Architecture.png)
+
 
 
 
