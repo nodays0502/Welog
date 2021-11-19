@@ -4,7 +4,7 @@
   <img src="https://img.shields.io/badge/License-SSAFY-blue"/></a> &ensp;
 
 
-  
+
 ![Archive Team Wiki Wrapup: 20160409082617 : Free Download, Borrow, and  Streaming : Internet Archive](https://archive.org/download/archiveteam_wiki_20160409082617/wikilogo.jpg)
 
 </div>
@@ -13,8 +13,7 @@
 
 # 👥Welog📜
 
-> Welog는 어쩌구 저쩌구인  뫄뫄뫄 기능을 바탕으로,  사용자 간의 뫄뫄 기능을 제공하는 어쩌구  서비스입니다. <br>
-> Welog는 새로운 지식 공유 문화를 만들어 갑니다.
+> 블로그의 자료는 보통 최신의 정보를 제공해 주지 않아 사용자가 여러 사이트를 찾아다니면서 최신의 정보를 찾아야합니다. 이러한 문제를 해결하기 위해 블로그의 접근성과 위키의 집단지성을 이용하여 정보의 최신화와 잘못된 정보의 수정이 빠르게 수정할 수 있도록 모두가 참여할 기회를 제공하는 서비스 플랫폼입니다.
 
 <br>
 
@@ -49,6 +48,47 @@
 
 <br>
 
+### 사용 기술스택
+
+------
+
+[![image](/s05-final/S05P31B305/-/wikis/uploads/c36121a8b48da637fe174859a75c2f65/image.png)]()
+
+### BE
+
+- Spring Boot Framework
+- Java openjdk
+- Redis
+- MySql
+- QueryDSL
+- JPA
+
+### FE
+
+- react
+- next.js
+- yarn berry
+- typescript
+- storybook
+- nodejs
+- express
+
+---
+
+
+
+### welog 구조
+
+------
+
+### Application Structure
+
+[![Web_App_Reference_Architecture](/s05-final/S05P31B305/-/wikis/uploads/0ea13445651e921a3a7e4caf3f88e505/Web_App_Reference_Architecture.png)]()
+
+
+
+
+
 ## ⚙️ Install & Run
 
 #### ✨Front-End
@@ -81,6 +121,6 @@ $ sudo docker run -d -p 8399:8399 --rm --name jaringulbi-spring hotoron/jaringul
 ```
 © ✨Welog
 
-Our Team: 김주현, 김종혁, 임호정, 최승재, 하태린
+Our Team: 김종혁, 임호정, 최승재, 하태린
 ```
 
