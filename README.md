@@ -52,7 +52,7 @@
 
 ------
 
-![Image_Pasted_at_2021-11-17_16-51](/uploads/05cdf0d7a4416e715c69ec5a77e72c15/Image_Pasted_at_2021-11-17_16-51.png)
+![image](https://user-images.githubusercontent.com/76464235/148238699-c3352969-e2ae-43e6-b401-8e1d3eacbf2a.png)
 
 ### BE
 
@@ -83,30 +83,11 @@
 
 ### Application Structure
 
-![Web_App_Reference_Architecture](/uploads/ca3a088ddc75a853864e70071c069ad3/Web_App_Reference_Architecture.png)
+![image](https://user-images.githubusercontent.com/76464235/148238715-ddcf98eb-8d40-43c1-bf5d-adabf24628e1.png)
 
 
 
 
-
-
-## ⚙️ Install & Run
-
-#### ✨Front-End
-
-```bash
-$ cd Front
-$ docker pull hotoron/jaringulbi-spring-dockerize:v5
-$ sudo docker run -d -p 80:80 --rm --name jaringulbi-vue hotoron/jaringulbi-vue-dockerize:v7
-```
-
-#### 💻Back-End
-
-```bash
-$ cd Back
-$ docker pull hotoron/jaringulbi-spring-dockerize:v5
-$ sudo docker run -d -p 8399:8399 --rm --name jaringulbi-spring hotoron/jaringulbi-spring-dockerize:v5
-```
 
 <br>
 
