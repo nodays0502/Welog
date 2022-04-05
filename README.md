@@ -25,28 +25,7 @@
 | Position |                           Backend                            |                           Backend                            |                           Frontend                           |                           Backend                            |                           Backend                            |
 |  GitHub  |            [@KJH-Sun](https://github.com/KJH-Sun)            |           [@alb7979s](https://github.com/alb7979s)           |          [@IMHOJEONG](https://github.com/IMHOJEONG)          |         [@nodays0502](https://github.com/nodays0502)         |           [@hataerin](https://github.com/hataerin)           |
 
-#### 
 
-<br>
-
-## 🖥 [Demo Video/Page]()
-
-<br>
-
-## 🗃 Project Folder
-
-```
-💻Welog
- ├── 📁Front				# 프론트 서버
- │	 ├── 📁public
- │	 ├── 📁src
- │   ├── App
- │   └── 📁modules
- ├── 📁Back					# API 서버
- └── 📄README.md
-```
-
-<br>
 
 ### 사용 기술스택
 
